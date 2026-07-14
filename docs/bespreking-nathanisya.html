@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Besprekingsdocument — Nathanisya × Beerthuizen Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/beerthuizen-logo.png" type="image/png">
+  <style>
+    :root {
+      --ink: #0a0a0f; --ink-soft: #3d3d4a; --ink-muted: #6b6b7b;
+      --surface: #fff; --surface-alt: #f4f7ff; --border: #dce4f5;
+      --brand: #0048ff; --brand-dark: #0036cc; --brand-light: #e6eeff;
+      --green: #059669; --green-bg: #ecfdf5;
+      --amber: #d97706; --amber-bg: #fffbeb;
+      --radius: 12px;
+      --font: 'DM Sans', system-ui, sans-serif;
+      --font-brand: 'Montserrat', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 16mm; }
+    body { font-family: var(--font); color: var(--ink); background: #dde5f7; line-height: 1.55; font-size: 10.5pt; }
+    .document { max-width: 210mm; margin: 0 auto; background: var(--surface); box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+
+    .cover {
+      min-height: 260mm; padding: 48px 56px; background: var(--brand); color: white;
+      page-break-after: always; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cover-logo { max-width: 300px; margin-bottom: 36px; }
+    .cover-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; margin-bottom: 12px; }
+    .cover h1 { font-family: var(--font-brand); font-size: 36px; font-weight: 800; font-style: italic; text-transform: uppercase; line-height: 1.15; margin-bottom: 16px; }
+    .cover-sub { font-size: 16px; opacity: 0.75; max-width: 460px; line-height: 1.5; }
+    .cover-agenda { background: rgba(255,255,255,0.1); border-radius: var(--radius); padding: 24px 28px; margin-top: 40px; }
+    .cover-agenda h2 { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 14px; font-weight: 600; }
+    .cover-agenda ol { padding-left: 20px; font-size: 14px; line-height: 2; opacity: 0.9; }
+
+    .page { padding: 0 56px 40px; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    .bar { display: flex; justify-content: space-between; align-items: center; background: var(--brand); margin: 0 -56px 28px; padding: 11px 56px; }
+    .bar img { height: 24px; }
+    .bar span { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+
+    .part { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 6px; }
+    h2 { font-family: var(--font-brand); font-size: 22px; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 8px; }
+    .lead { color: var(--ink-soft); margin-bottom: 22px; max-width: 620px; }
+    h3 { font-size: 14px; font-weight: 700; margin: 22px 0 10px; }
+
+    .discuss {
+      background: var(--amber-bg); border: 1px solid #fcd34d; border-radius: var(--radius);
+      padding: 14px 18px; margin: 16px 0; font-size: 12px; color: var(--ink-soft);
+    }
+    .discuss strong { color: var(--amber); }
+
+    .agree-box {
+      border: 2px dashed var(--border); border-radius: var(--radius); padding: 16px 18px; margin: 20px 0;
+    }
+    .agree-box h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 10px; }
+    .agree-line { border-bottom: 1px solid var(--border); height: 32px; margin-bottom: 8px; }
+    .agree-line.half { width: 48%; display: inline-block; margin-right: 3%; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0 18px; }
+    thead th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); padding: 10px 12px; background: var(--surface-alt); border-bottom: 2px solid var(--border); }
+    tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink-soft); vertical-align: top; }
+    tbody td:first-child { font-weight: 600; color: var(--ink); }
+    .pct { font-weight: 700; color: var(--brand); }
+    .money { font-weight: 700; color: var(--green); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+    .card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+    .card p, .card li { font-size: 12px; color: var(--ink-soft); }
+    .card ul { padding-left: 16px; margin-top: 6px; }
+
+    .calc-block { border: 2px solid var(--brand); border-radius: var(--radius); overflow: hidden; margin: 16px 0; }
+    .calc-top { background: var(--brand); color: white; padding: 10px 16px; font-weight: 700; font-size: 13px; }
+    .calc-inner { padding: 14px 16px; }
+    .calc-line { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 12px; }
+    .calc-line:last-child { border-bottom: none; }
+    .calc-sum { display: flex; justify-content: space-between; padding-top: 12px; margin-top: 8px; border-top: 2px solid var(--brand); font-size: 15px; font-weight: 800; }
+    .calc-sum span:last-child { color: var(--green); }
+
+    .checklist { list-style: none; margin: 12px 0; }
+    .checklist li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--ink-soft); align-items: flex-start; }
+    .checklist li::before { content: ''; width: 18px; height: 18px; border: 2px solid var(--brand); border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+
+    .summary-table td:nth-child(3), .summary-table td:nth-child(4) { text-align: center; }
+
+    .print-btn { position: fixed; bottom: 24px; right: 24px; background: var(--brand); color: white; border: none; padding: 14px 24px; border-radius: 8px; font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(0,72,255,0.35); z-index: 100; }
+    @media print { body { background: white; } .document { box-shadow: none; } .print-btn { display: none; } .page { padding: 0 48px 32px; } .bar { margin: 0 -48px 24px; padding: 10px 48px; } }
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Printen / PDF</button>
+
+<div class="document">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div>
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios" class="cover-logo">
+      <div class="cover-tag">Besprekingsdocument · Samen doornemen</div>
+      <h1>Samen afstemmen</h1>
+      <p class="cover-sub">Dit document gebruiken we om alles samen door te nemen: jouw rol, onze diensten, commissie per pakket en wat we afspreken.</p>
+      <div class="cover-agenda">
+        <h2>Agenda bespreking</h2>
+        <ol>
+          <li>Jouw rol & wat we van je verwachten</li>
+          <li>Onze diensten & pakketten</li>
+          <li>Commissie per dienst — voorstel</li>
+          <li>Rekenvoorbeelden — wat verdien je?</li>
+          <li>Open punten & afspraken vastleggen</li>
+        </ol>
+      </div>
+    </div>
+    <p style="font-size:13px; opacity:0.6;">Productiehuis Beerthuizen Studios · Nathanisya · Juli 2026</p>
+  </section>
+
+  <!-- DEEL 1: ROL -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 1 — Jouw rol</span></div>
+    <div class="part">Deel 1</div>
+    <h2>Jouw rol — fulltime Media Manager</h2>
+    <p class="lead">Je bent ons vaste aanspreekpunt voor alle klanten. Alles wat hieronder staat, begeleid jij volledig.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <h4>Wat jij doet</h4>
+        <ul>
+          <li>E-mail outreach — 20.000 mails per maand opvolgen</li>
+          <li>Alle klantcommunicatie (mail, telefoon, WhatsApp)</li>
+          <li>Fotostudio: bellen na elke online boeking</li>
+          <li>Podcast: intake-call met elke klant</li>
+          <li>Influencer: volledig project begeleiden</li>
+          <li>Upsells & extras actief aanbieden</li>
+          <li>Afspraken afstemmen & planning</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Wat wij doen</h4>
+        <ul>
+          <li>Studio & faciliteiten beschikbaar stellen</li>
+          <li>Editing & productie (podcast/influencer)</li>
+          <li>Techniek & opname-infrastructuur</li>
+          <li>Marketing e-mailcampagnes versturen</li>
+          <li>Pakketten & prijzen bepalen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="discuss"><strong>Samen bespreken:</strong> Klopt dit beeld van fulltime? Zijn er punten die je anders ziet of vragen over?</div>
+
+    <div class="agree-box">
+      <h4>Afspraak — akkoord op rol</h4>
+      <div class="agree-line"></div>
+      <div class="agree-line half"></div><div class="agree-line half"></div>
+      <p style="font-size:11px;color:var(--ink-muted);margin-top:4px;">Handtekening Nathanisya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Datum</p>
+    </div>
+  </section>
+
+  <!-- DEEL 2: DIENSTEN -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 2 — Diensten</span></div>
+    <div class="part">Deel 2</div>
+    <h2>Onze diensten & pakketten</h2>
+    <p class="lead">Dit zijn alle pakketten die jij verkoopt en begeleidt. Per dienst andere werkwijze.</p>
+
+    <h3>Fotostudio — online boeken, jij belt na</h3>
+    <table>
+      <thead><tr><th>Pakket</th><th>Inhoud</th><th>Prijs</th><th>Jouw actie</th></tr></thead>
+      <tbody>
+        <tr><td>Starter</td><td>2 uur · 1 setting · basis licht</td><td>€200</td><td>Follow-up call + extras</td></tr>
+        <tr><td>Growth</td><td>4 uur · licht + assistentie</td><td>€350</td><td>Follow-up call + extras</td></tr>
+        <tr><td>Authority</td><td>10 uur · assistentie</td><td>€650</td><td>Follow-up call + extras</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-muted);">Extras op aanvraag: fotograaf, visagie, stylist, catering</p>
+
+    <h3>Podcast — altijd intake-call met jou</h3>
+    <table>
+      <thead><tr><th>Pakket</th><th>Afleveringen</th><th>Prijs</th><th>Inbegrepen</th></tr></thead>
+      <tbody>
+        <tr><td>Starter</td><td>3 · 4 snippets/aflevering</td><td>Op aanvraag</td><td>Nabewerking, muziek, marketing support</td></tr>
+        <tr><td>Growth</td><td>6 · 4 snippets/aflevering</td><td>€1.900</td><td>Idem</td></tr>
+        <tr><td>Authority</td><td>12 · 4 snippets/aflevering</td><td>€3.600</td><td>Idem</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--ink-muted);">Extra shorts: €25/st · Jaardeals: maatwerk · Eigen setting/logo: op aanvraag</p>
+
+    <h3>Influencer — jij begeleidt het hele project</h3>
+    <table>
+      <thead><tr><th>Pakket</th><th>Status</th><th>Jouw rol</th></tr></thead>
+      <tbody>
+        <tr><td>Starter / Growth / Authority</td><td>Nog vast te stellen</td><td>Volledig project — wij doen editing/productie</td></tr>
+      </tbody>
+    </table>
+
+    <div class="discuss"><strong>Samen bespreken:</strong> Podcast Starter-prijs en influencer pakketten moeten we nog invullen. Heb je hier vragen over?</div>
+  </section>
+
+  <!-- DEEL 3: COMMISSIE -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 3 — Commissie</span></div>
+    <div class="part">Deel 3</div>
+    <h2>Commissievoorstel per dienst</h2>
+    <p class="lead">Omdat je fulltime alles begeleidt, stellen we dit voor. Fotostudio op bruto — podcast/influencer op netto (na onze editingkosten).</p>
+
+    <table class="summary-table">
+      <thead><tr><th>Dienst</th><th>Wat</th><th>Commissie</th><th>Op basis van</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">Fotostudio</td><td>Pakketten</td><td class="pct">16%</td><td>Volledige pakketprijs</td></tr>
+        <tr><td>Extras</td><td class="pct">30%</td><td>Fotograaf, visagie, styling, catering</td></tr>
+        <tr><td rowspan="3">Podcast</td><td>Pakketten</td><td class="pct">28%</td><td>Netto na editingkosten</td></tr>
+        <tr><td>Extras & shorts</td><td class="pct">35%</td><td>Extra shorts, intro, setting</td></tr>
+        <tr><td>Jaardeals</td><td class="pct">22%</td><td>Netto — maatwerk</td></tr>
+        <tr><td>Influencer</td><td>Alle pakketten</td><td class="pct">32%</td><td>Netto na productie/editing</td></tr>
+        <tr><td colspan="2"><strong>Minimum garantie (fulltime)</strong></td><td class="money">€2.400</td><td>Per maand als commissie lager is</td></tr>
+        <tr><td colspan="2">Volume-bonus ≥15 klanten/maand</td><td class="money">+€300</td><td>Extra</td></tr>
+        <tr><td colspan="2">Volume-bonus ≥25 klanten/maand</td><td class="money">+€500</td><td>Extra</td></tr>
+      </tbody>
+    </table>
+
+    <div style="background:var(--ink);color:white;border-radius:var(--radius);padding:16px 20px;font-size:13px;margin:16px 0;">
+      <strong>Formule podcast & influencer:</strong><br>
+      Netto = Pakketprijs − editingkosten − directe kosten<br>
+      Jouw commissie = Netto × percentage
+    </div>
+
+    <h3>Wat je per pakket verdient (indicatie)</h3>
+    <table>
+      <thead><tr><th>Dienst</th><th>Pakket</th><th>Prijs</th><th>Commissie</th><th>Jij verdient</th></tr></thead>
+      <tbody>
+        <tr><td>Foto</td><td>Starter</td><td>€200</td><td>16%</td><td class="money">€32</td></tr>
+        <tr><td>Foto</td><td>Growth</td><td>€350</td><td>16%</td><td class="money">€56</td></tr>
+        <tr><td>Foto</td><td>Authority</td><td>€650</td><td>16%</td><td class="money">€104</td></tr>
+        <tr><td>Podcast</td><td>Growth</td><td>€1.900</td><td>28% netto</td><td class="money">± €280</td></tr>
+        <tr><td>Podcast</td><td>Authority</td><td>€3.600</td><td>28% netto</td><td class="money">± €504</td></tr>
+        <tr><td>Podcast</td><td>Extra short</td><td>€25/st</td><td>35%</td><td class="money">€8,75</td></tr>
+        <tr><td>Influencer</td><td>Growth (vb.)</td><td>€2.500</td><td>32% netto</td><td class="money">± €544</td></tr>
+      </tbody>
+    </table>
+
+    <div class="discuss"><strong>Samen bespreken:</strong> Voelen deze percentages fair voor fulltime? Willen we iets aanpassen?</div>
+  </section>
+
+  <!-- DEEL 4: BEREKENING -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 4 — Rekenvoorbeelden</span></div>
+    <div class="part">Deel 4</div>
+    <h2>Wat verdien je per maand?</h2>
+    <p class="lead">Drie scenario's op basis van 20.000 mails per maand. Je krijgt altijd het hoogste van commissie of minimum €2.400.</p>
+
+    <div class="calc-block">
+      <div class="calc-top">Rustige maand — 12 klanten</div>
+      <div class="calc-inner">
+        <div class="calc-line"><span>10× Foto Growth (€350 × 16%)</span><span>€560</span></div>
+        <div class="calc-line"><span>2× Foto Authority (€650 × 16%)</span><span>€208</span></div>
+        <div class="calc-line"><span>1× Podcast Growth (netto × 28%)</span><span>€280</span></div>
+        <div class="calc-line"><span>Extras</span><span>€128</span></div>
+        <div class="calc-sum"><span>Jij ontvangt (minimum)</span><span>€2.400</span></div>
+      </div>
+    </div>
+
+    <div class="calc-block">
+      <div class="calc-top">Gemiddelde maand — 22 klanten</div>
+      <div class="calc-inner">
+        <div class="calc-line"><span>18× Fotostudio (gem. €380 × 16%)</span><span>€1.094</span></div>
+        <div class="calc-line"><span>3× Podcast Growth</span><span>€840</span></div>
+        <div class="calc-line"><span>1× Podcast Authority</span><span>€504</span></div>
+        <div class="calc-line"><span>2× Influencer Growth</span><span>€1.088</span></div>
+        <div class="calc-line"><span>Extras + volume-bonus (+€300)</span><span>€545</span></div>
+        <div class="calc-sum"><span>Jij ontvangt</span><span>€4.071</span></div>
+      </div>
+    </div>
+
+    <div class="calc-block">
+      <div class="calc-top">Goede maand — 30+ klanten</div>
+      <div class="calc-inner">
+        <div class="calc-line"><span>25× Fotostudio</span><span>€1.520</span></div>
+        <div class="calc-line"><span>4× Podcast Growth + 2× Authority</span><span>€2.128</span></div>
+        <div class="calc-line"><span>3× Influencer</span><span>€1.632</span></div>
+        <div class="calc-line"><span>Extras + volume-bonus (+€500)</span><span>€920</span></div>
+        <div class="calc-sum"><span>Jij ontvangt</span><span>€6.200</span></div>
+      </div>
+    </div>
+
+    <div class="discuss"><strong>Samen bespreken:</strong> Past dit bij wat je verwacht fulltime? Zijn de rekenvoorbeelden realistisch?</div>
+  </section>
+
+  <!-- DEEL 5: AFSPRAKEN -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 5 — Afspraken</span></div>
+    <div class="part">Deel 5</div>
+    <h2>Samen vastleggen</h2>
+    <p class="lead">Loop deze punten door en vink af wat we akkoord zijn.</p>
+
+    <ul class="checklist">
+      <li>Fulltime — dit is je hoofdfunctie, geen bijbaan</li>
+      <li>Commissie op betaalde & bevestigde klanten</li>
+      <li>Podcast/influencer: commissie op netto (na editingkosten)</li>
+      <li>Minimum €2.400/maand als commissie lager uitvalt</li>
+      <li>Volume-bonus: +€300 (15 klanten) / +€500 (25 klanten)</li>
+      <li>Editingkosten worden transparant gedeeld per project</li>
+      <li>Review commissie na 3 maanden — meten en bijstellen</li>
+      <li>Podcast Starter-prijs nog vast te stellen</li>
+      <li>Influencer pakketten & prijzen nog vast te stellen</li>
+    </ul>
+
+    <h3>Open punten om vandaag te beslissen</h3>
+    <table>
+      <thead><tr><th>Punt</th><th>Voorstel</th><th>Afgesproken</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum garantie</td><td>€2.400/maand</td><td style="border-bottom:1px solid var(--border);min-width:120px;"></td></tr>
+        <tr><td>Foto commissie</td><td>16% bruto</td><td></td></tr>
+        <tr><td>Podcast commissie</td><td>28% netto</td><td></td></tr>
+        <tr><td>Influencer commissie</td><td>32% netto</td><td></td></tr>
+        <tr><td>Extras commissie</td><td>30–35%</td><td></td></tr>
+        <tr><td>Startdatum</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="agree-box" style="margin-top:28px;">
+      <h4>Wij gaan akkoord met bovenstaande afspraken</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:20px;">
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:8px;">Beerthuizen Studios</p>
+          <div class="agree-line"></div>
+          <p style="font-size:11px;color:var(--ink-muted);">Naam & handtekening</p>
+          <div class="agree-line" style="margin-top:16px;width:60%;"></div>
+          <p style="font-size:11px;color:var(--ink-muted);">Datum</p>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:8px;">Nathanisya</p>
+          <div class="agree-line"></div>
+          <p style="font-size:11px;color:var(--ink-muted);">Naam & handtekening</p>
+          <div class="agree-line" style="margin-top:16px;width:60%;"></div>
+          <p style="font-size:11px;color:var(--ink-muted);">Datum</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:11px;color:var(--ink-muted);margin-top:24px;">Productiehuis Beerthuizen Studios · Besprekingsdocument · Juli 2026</p>
+  </section>
+
+</div>
+</body>
+</html>
