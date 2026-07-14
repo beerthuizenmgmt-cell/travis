@@ -1,5 +1,6 @@
-# Verkoop- & Communicatiegids voor Nathanisya
-**Fotostudio & Podcaststudio — Media Manager Handleiding**
+# Verkoopgids Nathanisya
+**Productiehuis Beerthuizen Studios**  
+*Fotostudio & Podcaststudio — Media Manager Handleiding*
 
 > **Doel van dit document:** Jij weet exact wat wij aanbieden, welke vragen je per dienst stelt, welke extras je kunt verkopen, en hoe je klanten van eerste contact tot afgestemde afspraak begeleidt. Jij bent het vaste aanspreekpunt voor alle klanten.
 
@@ -239,10 +240,10 @@ Gebruik deze checklist bij elk follow-up telefoontje (na online boeking) of bij 
 ## 8. Gespreksscripts & tips
 
 ### Fotostudio — openingszin (telefoon na online boeking)
-> *"Hoi [naam], met Nathanisya van [studionaam]. Ik zie dat u een boeking heeft gemaakt voor onze fotostudio — wat leuk! Ik bel even kort om alles af te stemmen en te kijken of we u nog ergens mee kunnen helpen. Heeft u nu even tijd?"*
+> *"Hoi [naam], met Nathanisya van Productiehuis Beerthuizen Studios. Ik zie dat u een boeking heeft gemaakt voor onze fotostudio — wat leuk! Ik bel even kort om alles af te stemmen en te kijken of we u nog ergens mee kunnen helpen. Heeft u nu even tijd?"*
 
 ### Podcast — openingszin (intake-call)
-> *"Hoi [naam], met Nathanisya. Leuk dat u interesse heeft in onze podcaststudio! In dit gesprek ga ik met u door wat u precies nodig heeft — van het aantal afleveringen tot extras — zodat we een perfect voorstel kunnen maken. Zullen we beginnen met uw idee voor de podcast?"*
+> *"Hoi [naam], met Nathanisya van Productiehuis Beerthuizen Studios. Leuk dat u interesse heeft in onze podcaststudio! In dit gesprek ga ik met u door wat u precies nodig heeft — van het aantal afleveringen tot extras — zodat we een perfect voorstel kunnen maken. Zullen we beginnen met uw idee voor de podcast?"*
 
 ### Upsell — langdurige podcastdeal
 > *"Als u van plan bent om structureel te podcasten, bijvoorbeeld voor een heel jaar, kunnen we een maatwerk tarief bespreken. Dat is vaak interessanter dan losse afleveringen. Zullen we daar een apart moment voor inplannen?"*
@@ -299,5 +300,5 @@ Langdurige deal (12 mnd): maatwerk → vervolggesprek
 
 ---
 
-*Document versie 1.0 — bijgewerkt: juli 2026*  
+*Productiehuis Beerthuizen Studios · Verkoopgids Nathanisya · v2.0 — juli 2026*  
 *Bij twijfel over de prijs van het podcast Starter-pakket: check altijd eerst met het team voordat je een definitief bedrag noemt.*
