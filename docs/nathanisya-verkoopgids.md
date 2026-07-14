@@ -55,7 +55,7 @@ Lead binnenkomst → Jij plant intake-call → Alles doornemen → Offerte/maatw
 |--------|------|--------|-------|
 | **Starter** | 2 uur | 1 setting, basisverlichting, assistentie indien nodig | **€200** |
 | **Growth** | 4 uur | Basisverlichting + assistentie inbegrepen | **€350** |
-| **Authority** | 10 uur | Fotostudio + assistentie indien nodig | **Op aanvraag — check met team** |
+| **Authority** | 10 uur | Fotostudio + assistentie indien nodig | **€650** |
 
 ### Altijd inbegrepen bij elke boeking
 - Meerdere settings beschikbaar in de studio
@@ -264,7 +264,7 @@ Gebruik deze checklist bij elk follow-up telefoontje (na online boeking) of bij 
 ```
 STARTER   │ 2 uur  │ 1 setting │ basis licht │     €200
 GROWTH    │ 4 uur  │ basis licht + assistentie │     €350
-AUTHORITY │ 10 uur │ assistentie indien nodig  │  op aanvraag
+AUTHORITY │ 10 uur │ assistentie indien nodig  │     €650
 ```
 
 ### Podcast — Pakketten
@@ -300,4 +300,4 @@ Langdurige deal (12 mnd): maatwerk → vervolggesprek
 ---
 
 *Document versie 1.0 — bijgewerkt: juli 2026*  
-*Bij twijfel over prijzen (Starter podcast, Authority fotostudio): check altijd eerst met het team voordat je een definitief bedrag noemt.*
+*Bij twijfel over de prijs van het podcast Starter-pakket: check altijd eerst met het team voordat je een definitief bedrag noemt.*
