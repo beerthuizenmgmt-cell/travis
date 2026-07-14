@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Commissie Percentages — Nathanisya · Beerthuizen Studios</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#0a0a0f; --soft:#3d3d4a; --muted:#6b6b7b; --bg:#f4f7ff; --border:#dce4f5; --brand:#0048ff; --green:#059669; --green-bg:#ecfdf5; --r:10px; --f:'DM Sans',sans-serif; --fb:'Montserrat',sans-serif; }
+    *{box-sizing:border-box;margin:0;padding:0} @page{size:A4;margin:14mm}
+    body{font-family:var(--f);color:var(--ink);background:#dde5f7;font-size:10.5pt;line-height:1.5}
+    .doc{max-width:210mm;margin:0 auto;background:#fff;box-shadow:0 4px 40px rgba(0,0,0,.08)}
+    .cover{min-height:240mm;padding:44px 52px;background:var(--brand);color:#fff;page-break-after:always;display:flex;flex-direction:column;justify-content:space-between}
+    .cover img{max-width:280px;margin-bottom:28px}
+    .cover .tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-bottom:10px}
+    .cover h1{font-family:var(--fb);font-size:38px;font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
+    .cover p{font-size:15px;opacity:.75;max-width:420px}
+    .page{padding:0 52px 36px;page-break-after:always}.page:last-child{page-break-after:auto}
+    .bar{display:flex;justify-content:space-between;align-items:center;background:var(--brand);margin:0 -52px 24px;padding:10px 52px}
+    .bar img{height:22px}.bar span{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+    h2{font-family:var(--fb);font-size:20px;font-weight:800;font-style:italic;text-transform:uppercase;margin-bottom:6px}
+    .lead{color:var(--soft);margin-bottom:20px;max-width:580px}
+    h3{font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--brand)}
+
+    .pct-big{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+    .pct-card{border:2px solid var(--brand);border-radius:var(--r);padding:20px;text-align:center;background:var(--bg)}
+    .pct-card .num{font-size:42px;font-weight:800;color:var(--brand);line-height:1;margin-bottom:6px}
+    .pct-card .lbl{font-size:12px;font-weight:600;color:var(--ink)}
+    .pct-card .sub{font-size:10px;color:var(--muted);margin-top:4px}
+
+    table{width:100%;border-collapse:collapse;font-size:11.5px;margin:12px 0 20px}
+    th{text-align:left;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px;background:var(--bg);border-bottom:2px solid var(--border)}
+    td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--soft);vertical-align:middle}
+    td:first-child{font-weight:600;color:var(--ink)}
+    .pct{font-size:15px;font-weight:800;color:var(--brand)}
+    .money{font-weight:700;color:var(--green)}
+    tr.highlight td{background:var(--green-bg)}
+
+    .formula{background:var(--ink);color:#fff;border-radius:var(--r);padding:18px 22px;margin:16px 0;font-size:13px;line-height:1.8}
+    .formula strong{color:#93c5fd}
+    .note{background:var(--bg);border-left:3px solid var(--brand);padding:12px 16px;margin:14px 0;font-size:11px;color:var(--soft)}
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+    .mini-table td,.mini-table th{padding:8px 10px;font-size:11px}
+
+    .foot{text-align:center;font-size:10px;color:var(--muted);margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+    @media print{body{background:#fff}.doc{box-shadow:none}.page{padding:0 44px 28px}.bar{margin:0 -44px 20px;padding:8px 44px}}
+  </style>
+</head>
+<body>
+<div class="doc">
+
+<section class="cover">
+  <div>
+    <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+    <div class="tag">Productiehuis Beerthuizen Studios</div>
+    <h1>Commissie Percentages</h1>
+    <p>Volledig overzicht van alle percentages per dienst, pakket en extra — Nathanisya, Media Manager (fulltime).</p>
+  </div>
+  <p style="font-size:12px;opacity:.6">Juli 2026 · Intern document</p>
+</section>
+
+<!-- OVERZICHT -->
+<section class="page">
+  <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Overzicht</span></div>
+  <h2>Alle percentages op één rij</h2>
+  <p class="lead">Fulltime — 20.000 mails/maand — alle klantcommunicatie. Commissie op betaalde & bevestigde klanten.</p>
+
+  <div class="pct-big">
+    <div class="pct-card"><div class="num">16%</div><div class="lbl">Fotostudio pakketten</div><div class="sub">Op bruto prijs</div></div>
+    <div class="pct-card"><div class="num">28%</div><div class="lbl">Podcast pakketten</div><div class="sub">Op netto na editing</div></div>
+    <div class="pct-card"><div class="num">32%</div><div class="lbl">Influencer pakketten</div><div class="sub">Op netto na productie</div></div>
+    <div class="pct-card"><div class="num">30%</div><div class="lbl">Foto extras</div><div class="sub">Visagie, fotograaf, etc.</div></div>
+    <div class="pct-card"><div class="num">35%</div><div class="lbl">Podcast extras</div><div class="sub">Shorts, intro, setting</div></div>
+    <div class="pct-card"><div class="num">22%</div><div class="lbl">Jaardeals podcast</div><div class="sub">Op netto maatwerk</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Type</th><th>Dienst</th><th>Percentage</th><th>Berekend over</th></tr></thead>
+    <tbody>
+      <tr class="highlight"><td>Minimum</td><td>Alle diensten</td><td class="money">€2.400/maand</td><td>Als commissie lager uitvalt</td></tr>
+      <tr><td>Pakket</td><td>Fotostudio</td><td class="pct">16%</td><td>Volledige pakketprijs (bruto)</td></tr>
+      <tr><td>Extra</td><td>Fotostudio</td><td class="pct">30%</td><td>Fotograaf, visagie, stylist, catering</td></tr>
+      <tr><td>Pakket</td><td>Podcast</td><td class="pct">28%</td><td>Netto na editingkosten</td></tr>
+      <tr><td>Extra</td><td>Podcast</td><td class="pct">35%</td><td>Extra shorts, intro, setting, logo</td></tr>
+      <tr><td>Maatwerk</td><td>Podcast jaardeals</td><td class="pct">22%</td><td>Netto — 12-maanden contracten</td></tr>
+      <tr><td>Pakket</td><td>Influencer</td><td class="pct">32%</td><td>Netto na productie/editing</td></tr>
+      <tr class="highlight"><td>Bonus</td><td>Volume ≥15 klanten/maand</td><td class="money">+€300</td><td>Extra bovenop commissie</td></tr>
+      <tr class="highlight"><td>Bonus</td><td>Volume ≥25 klanten/maand</td><td class="money">+€500</td><td>Extra bovenop commissie</td></tr>
+    </tbody>
+  </table>
+
+  <div class="formula">
+    <strong>Formule podcast & influencer:</strong><br>
+    Netto = Pakketprijs − editing/productiekosten − directe kosten<br>
+    Commissie = Netto × percentage<br><br>
+    <strong>Regel:</strong> Nathanisya ontvangt altijd het hoogste van totale commissie óf €2.400 minimum.
+  </div>
+</section>
+
+<!-- FOTO -->
+<section class="page">
+  <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Fotostudio</span></div>
+  <h2>Fotostudio — 16% + 30%</h2>
+  <p class="lead">Commissie op <strong>bruto</strong> pakketprijs. Geen editingkosten af te trekken.</p>
+
+  <h3>Pakketten — 16% bruto</h3>
+  <table>
+    <thead><tr><th>Pakket</th><th>Prijs</th><th>Percentage</th><th>Jij verdient</th></tr></thead>
+    <tbody>
+      <tr><td>Starter · 2 uur</td><td>€200</td><td class="pct">16%</td><td class="money">€32</td></tr>
+      <tr><td>Growth · 4 uur</td><td>€350</td><td class="pct">16%</td><td class="money">€56</td></tr>
+      <tr><td>Authority · 10 uur</td><td>€650</td><td class="pct">16%</td><td class="money">€104</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Extras — 30%</h3>
+  <table>
+    <thead><tr><th>Extra</th><th>Voorbeeldprijs</th><th>Percentage</th><th>Jij verdient</th></tr></thead>
+    <tbody>
+      <tr><td>Fotograaf</td><td>€300</td><td class="pct">30%</td><td class="money">€90</td></tr>
+      <tr><td>Visagie</td><td>€150</td><td class="pct">30%</td><td class="money">€45</td></tr>
+      <tr><td>Stylist</td><td>€200</td><td class="pct">30%</td><td class="money">€60</td></tr>
+      <tr><td>Catering</td><td>€250</td><td class="pct">30%</td><td class="money">€75</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Voorbeeldprijzen extras zijn indicatief — commissie altijd <strong>30%</strong> van werkelijke prijs.</div>
+</section>
+
+<!-- PODCAST -->
+<section class="page">
+  <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Podcaststudio</span></div>
+  <h2>Podcast — 28% + 35% + 22%</h2>
+  <p class="lead">Pakketten op <strong>netto</strong> (na editing). Extras op volledige extra-prijs.</p>
+
+  <h3>Pakketten — 28% netto</h3>
+  <table>
+    <thead><tr><th>Pakket</th><th>Prijs</th><th>Editing (richt)</th><th>Netto</th><th>28%</th><th>Jij verdient</th></tr></thead>
+    <tbody>
+      <tr><td>Starter · 3 afleveringen</td><td>Op aanvraag</td><td>± €450</td><td>—</td><td class="pct">28%</td><td>—</td></tr>
+      <tr><td>Growth · 6 afleveringen</td><td>€1.900</td><td>± €900</td><td>€1.000</td><td class="pct">28%</td><td class="money">€280</td></tr>
+      <tr><td>Authority · 12 afleveringen</td><td>€3.600</td><td>± €1.800</td><td>€1.800</td><td class="pct">28%</td><td class="money">€504</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Extras — 35%</h3>
+  <table>
+    <thead><tr><th>Extra</th><th>Prijs</th><th>Percentage</th><th>Jij verdient</th></tr></thead>
+    <tbody>
+      <tr><td>Extra short (boven 4 per aflevering)</td><td>€25 per stuk</td><td class="pct">35%</td><td class="money">€8,75 per short</td></tr>
+      <tr><td>Eigen intro / outro</td><td>Op aanvraag</td><td class="pct">35%</td><td>35% van prijs</td></tr>
+      <tr><td>Eigen setting</td><td>Op aanvraag</td><td class="pct">35%</td><td>35% van prijs</td></tr>
+      <tr><td>Logo prominent in beeld</td><td>Op aanvraag</td><td class="pct">35%</td><td>35% van prijs</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Jaardeals — 22% netto</h3>
+  <table>
+    <thead><tr><th>Type</th><th>Percentage</th><th>Toelichting</th></tr></thead>
+    <tbody>
+      <tr><td>12-maanden samenwerking</td><td class="pct">22%</td><td>Op netto maatwerk tarief (na editing)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note"><strong>Rekenvoorbeeld extra shorts:</strong> Growth = 6 afleveringen. Klant wil 6 shorts i.p.v. 4 → 2 extra × 6 = 12 shorts → 12 × €8,75 = <strong>€105 extra commissie</strong>.</div>
+</section>
+
+<!-- INFLUENCER + MINIMUM -->
+<section class="page">
+  <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Influencer & minimum</span></div>
+  <h2>Influencer — 32% netto</h2>
+  <p class="lead">Jij begeleidt het hele project. Commissie op netto na productie/editingkosten.</p>
+
+  <table>
+    <thead><tr><th>Pakket (voorbeeld)</th><th>Prijs</th><th>Productie</th><th>Netto</th><th>32%</th><th>Jij verdient</th></tr></thead>
+    <tbody>
+      <tr><td>Starter</td><td>€1.500</td><td>± €500</td><td>€1.000</td><td class="pct">32%</td><td class="money">€320</td></tr>
+      <tr><td>Growth</td><td>€2.500</td><td>± €800</td><td>€1.700</td><td class="pct">32%</td><td class="money">€544</td></tr>
+      <tr><td>Authority</td><td>€4.000</td><td>± €1.200</td><td>€2.800</td><td class="pct">32%</td><td class="money">€896</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:28px">Minimum & bonussen</h2>
+  <div class="grid2">
+    <table class="mini-table">
+      <thead><tr><th>Regel</th><th>Bedrag</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum garantie (fulltime)</td><td class="money">€2.400/maand</td></tr>
+        <tr><td>Volume-bonus ≥15 klanten</td><td class="money">+€300</td></tr>
+        <tr><td>Volume-bonus ≥25 klanten</td><td class="money">+€500</td></tr>
+      </tbody>
+    </table>
+    <table class="mini-table">
+      <thead><tr><th>Regel</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum</td><td>Als commissie &lt; €2.400 → zij krijgt €2.400</td></tr>
+        <tr><td>Goede maand</td><td>Commissie &gt; €2.400 → zij krijgt commissie</td></tr>
+        <tr><td>Bonus</td><td>Extra bovenop commissie, niet in plaats van</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="margin-top:28px">Complete percentage-kaart</h2>
+  <table>
+    <thead><tr><th>#</th><th>Dienst</th><th>Item</th><th>%</th><th>Basis</th><th>Voorbeeld verdienste</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Fotostudio</td><td>Starter €200</td><td class="pct">16%</td><td>Bruto</td><td class="money">€32</td></tr>
+      <tr><td>2</td><td>Fotostudio</td><td>Growth €350</td><td class="pct">16%</td><td>Bruto</td><td class="money">€56</td></tr>
+      <tr><td>3</td><td>Fotostudio</td><td>Authority €650</td><td class="pct">16%</td><td>Bruto</td><td class="money">€104</td></tr>
+      <tr><td>4</td><td>Fotostudio</td><td>Extras</td><td class="pct">30%</td><td>Extra prijs</td><td class="money">Variabel</td></tr>
+      <tr><td>5</td><td>Podcast</td><td>Growth €1.900</td><td class="pct">28%</td><td>Netto</td><td class="money">± €280</td></tr>
+      <tr><td>6</td><td>Podcast</td><td>Authority €3.600</td><td class="pct">28%</td><td>Netto</td><td class="money">± €504</td></tr>
+      <tr><td>7</td><td>Podcast</td><td>Extra short €25</td><td class="pct">35%</td><td>Per stuk</td><td class="money">€8,75</td></tr>
+      <tr><td>8</td><td>Podcast</td><td>Extras (intro, setting)</td><td class="pct">35%</td><td>Extra prijs</td><td class="money">Variabel</td></tr>
+      <tr><td>9</td><td>Podcast</td><td>Jaardeal 12 mnd</td><td class="pct">22%</td><td>Netto maatwerk</td><td class="money">Variabel</td></tr>
+      <tr><td>10</td><td>Influencer</td><td>Alle pakketten</td><td class="pct">32%</td><td>Netto</td><td class="money">€320 – €896</td></tr>
+      <tr class="highlight"><td>—</td><td>Algemeen</td><td>Minimum fulltime</td><td class="money">€2.400</td><td>Per maand</td><td>—</td></tr>
+      <tr class="highlight"><td>—</td><td>Algemeen</td><td>Volume bonus</td><td class="money">+€300 / +€500</td><td>Per maand</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p class="foot">Productiehuis Beerthuizen Studios · Commissie Percentages · Nathanisya · Juli 2026</p>
+</section>
+
+</div>
+</body>
+</html>
