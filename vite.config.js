@@ -8,6 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         admin: resolve(__dirname, 'admin/index.html'),
         verkoopgids: resolve(__dirname, 'docs/nathanisya-verkoopgids.html'),
+        commissie: resolve(__dirname, 'docs/nathanisya-commissie-overzicht.html'),
       },
     },
   },
