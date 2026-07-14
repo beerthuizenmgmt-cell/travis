@@ -6,25 +6,30 @@
   <title>Verkoopgids Nathanisya — Productiehuis Beerthuizen Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/beerthuizen-logo.png" type="image/png">
   <style>
     :root {
-      --ink: #1a1a1c;
-      --ink-soft: #4a4a4f;
-      --ink-muted: #71717a;
+      --ink: #0a0a0f;
+      --ink-soft: #3d3d4a;
+      --ink-muted: #6b6b7b;
       --surface: #ffffff;
-      --surface-alt: #f8f8f9;
-      --border: #e4e4e7;
-      --accent: #c8956c;
-      --accent-dark: #a67548;
-      --accent-light: #f5ebe3;
-      --photo: #2563eb;
-      --photo-bg: #eff6ff;
-      --podcast: #7c3aed;
-      --podcast-bg: #f5f3ff;
+      --surface-alt: #f4f7ff;
+      --border: #dce4f5;
+      --brand: #0048ff;
+      --brand-dark: #0036cc;
+      --brand-light: #e6eeff;
+      --accent: #0048ff;
+      --accent-dark: #0036cc;
+      --accent-light: #e6eeff;
+      --photo: #0048ff;
+      --photo-bg: #e6eeff;
+      --podcast: #0048ff;
+      --podcast-bg: #eef2ff;
       --success: #059669;
       --radius: 12px;
       --font: 'DM Sans', system-ui, sans-serif;
+      --font-brand: 'Montserrat', 'DM Sans', sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +42,7 @@
     body {
       font-family: var(--font);
       color: var(--ink);
-      background: #ececee;
+      background: #dde5f7;
       line-height: 1.6;
       font-size: 10.5pt;
       -webkit-font-smoothing: antialiased;
@@ -57,7 +62,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: linear-gradient(165deg, #1a1a1c 0%, #2d2d32 55%, #1a1a1c 100%);
+      background: var(--brand);
       color: white;
       page-break-after: always;
       position: relative;
@@ -66,37 +71,59 @@
     .cover::before {
       content: '';
       position: absolute;
-      top: -20%;
-      right: -15%;
-      width: 60%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(200,149,108,0.15) 0%, transparent 70%);
+      bottom: -30%;
+      left: -20%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.06) 100%);
       pointer-events: none;
     }
     .cover-top { position: relative; z-index: 1; }
+    .cover-logo {
+      display: block;
+      max-width: 340px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 48px;
+    }
     .cover-brand {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-family: var(--font-brand);
+      font-size: 12px;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 20px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 12px;
     }
     .cover-label {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: rgba(255,255,255,0.9);
       margin-bottom: 32px;
     }
     .cover h1 {
-      font-size: 42px;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
+      font-family: var(--font-brand);
+      font-size: 48px;
+      font-weight: 800;
+      font-style: italic;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       max-width: 480px;
       margin-bottom: 20px;
+      text-transform: uppercase;
     }
     .cover-sub {
       font-size: 18px;
@@ -127,25 +154,48 @@
 
     /* Content pages */
     .page {
-      padding: 44px 56px;
+      padding: 0 56px 44px;
       page-break-after: always;
     }
     .page:last-child { page-break-after: auto; }
+
+    .page-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--brand);
+      margin: 0 -56px 36px;
+      padding: 14px 56px;
+    }
+    .page-header-bar img {
+      height: 28px;
+      width: auto;
+    }
+    .page-header-bar span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
 
     .section-num {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent-dark);
+      color: var(--brand);
       margin-bottom: 8px;
     }
     h2 {
+      font-family: var(--font-brand);
       font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -0.01em;
       margin-bottom: 8px;
       line-height: 1.2;
+      text-transform: uppercase;
     }
     .section-intro {
       color: var(--ink-soft);
@@ -215,7 +265,7 @@
 
     /* Flow */
     .flow-box {
-      background: var(--ink);
+      background: var(--brand);
       color: white;
       border-radius: var(--radius);
       padding: 20px 24px;
@@ -458,7 +508,7 @@
       margin-top: 20px;
     }
     .ref-card {
-      border: 2px solid var(--ink);
+      border: 2px solid var(--brand);
       border-radius: var(--radius);
       padding: 20px;
     }
@@ -507,7 +557,7 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--ink);
+      background: var(--brand);
       color: white;
       border: none;
       padding: 14px 24px;
@@ -516,16 +566,17 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,72,255,0.35);
       z-index: 100;
     }
-    .print-btn:hover { background: #333; }
+    .print-btn:hover { background: var(--brand-dark); }
 
     @media print {
       body { background: white; }
       .document { box-shadow: none; max-width: none; }
       .print-btn { display: none; }
-      .page { padding: 36px 48px; }
+      .page { padding: 0 48px 36px; }
+      .page-header-bar { margin: 0 -48px 28px; padding: 12px 48px; }
       .cover { min-height: 100vh; }
     }
 
@@ -545,6 +596,7 @@
   <!-- COVER -->
   <section class="cover">
     <div class="cover-top">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Management" class="cover-logo">
       <div class="cover-brand">Productiehuis Beerthuizen Studios</div>
       <div class="cover-label">Verkoopgids · Intern document</div>
       <h1>Nathanisya</h1>
@@ -576,6 +628,10 @@
 
   <!-- TOC -->
   <section class="page">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">Overzicht</div>
     <h2>Inhoudsopgave</h2>
     <p class="section-intro">Dit document is jouw vaste naslagwerk. Gebruik het bij elk klantcontact — van eerste e-mail tot afgestemde afspraak.</p>
@@ -598,6 +654,10 @@
 
   <!-- SECTION 1 -->
   <section class="page" id="rol">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">01</div>
     <h2>Jouw rol & werkwijze</h2>
     <p class="section-intro">Als Media Manager ben jij de schakel tussen binnenkomende leads en tevreden klanten. Dit is wat je doet en hoe de klantreis eruitziet.</p>
@@ -636,6 +696,10 @@
 
   <!-- SECTION 2 - FOTO -->
   <section class="page" id="foto-pakketten">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">02</div>
     <h2>Fotostudio — Pakketten & prijzen</h2>
     <p class="section-intro">Klanten kunnen online boeken en direct betalen. Jij volgt altijd telefonisch op.</p>
@@ -693,6 +757,10 @@
 
   <!-- SECTION 3 & 4 FOTO -->
   <section class="page" id="foto-vragen">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">03</div>
     <h2>Fotostudio — Vragen per klant</h2>
     <p class="section-intro">Checklist voor elk follow-up telefoontje na online boeking.</p>
@@ -738,6 +806,10 @@
   </section>
 
   <section class="page" id="foto-extras">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">04</div>
     <h2>Fotostudio — Extras & upsells</h2>
     <p class="section-intro">Verkoop proactief mee — klanten waarderen het als wij alles regelen.</p>
@@ -769,6 +841,10 @@
 
   <!-- SECTION 5 PODCAST -->
   <section class="page" id="podcast-pakketten">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">05</div>
     <h2>Podcaststudio — Pakketten & prijzen</h2>
     <p class="section-intro">Elke podcastklant start met een intake-call met jou. Nooit direct afsluiten zonder gesprek.</p>
@@ -834,6 +910,10 @@
 
   <!-- SECTION 6 & 7 PODCAST -->
   <section class="page" id="podcast-vragen">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">06</div>
     <h2>Podcaststudio — Intake-call checklist</h2>
     <p class="section-intro">Gebruik deze checklist bij elke intake-call. Neem alles door met de klant.</p>
@@ -894,6 +974,10 @@
   </section>
 
   <section class="page" id="podcast-extras">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">07</div>
     <h2>Podcaststudio — Extras & upsells</h2>
 
@@ -927,6 +1011,10 @@
 
   <!-- SECTION 8 SCRIPTS -->
   <section class="page" id="scripts">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">08</div>
     <h2>Gespreksscripts</h2>
     <p class="section-intro">Gebruik deze scripts als startpunt — pas ze aan op de situatie.</p>
@@ -959,6 +1047,10 @@
 
   <!-- SECTION 9 REFERENCE -->
   <section class="page" id="referentie">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
     <div class="section-num">09</div>
     <h2>Snelle referentiekaart</h2>
     <p class="section-intro">Print deze pagina apart en houd hem bij de hand tijdens calls.</p>
