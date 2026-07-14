@@ -29,10 +29,18 @@ travis/
 
 ## Run locally
 
-Open `index.html` in a browser, or serve with any static server:
-
 ```bash
-python3 -m http.server 8080
+npm run dev
 ```
 
-Then visit http://localhost:8080
+- **Homepage:** http://localhost:5173/
+- **Admin dashboard:** http://localhost:5173/admin/
+
+## Admin Dashboard
+
+Dutch-language admin panel with:
+
+- Dashboard overview (KPIs, revenue chart, channel breakdown)
+- Campagnes, Contacten, Flows, Analytics, Integraties, Instellingen
+- Responsive sidebar navigation
+- Canvas charts and data tables
