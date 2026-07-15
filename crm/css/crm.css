@@ -333,6 +333,7 @@ input, select, textarea { font-family: inherit; }
 /* ── KPI cards ───────────────────────────── */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
 .kpi-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.kpi-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
 .kpi-card { background: var(--white); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
 .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gray-600); margin-bottom: 6px; display: block; }
 .kpi-value { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
@@ -474,6 +475,46 @@ tr:hover td { background: var(--gray-50); }
 .client-suggest-item:hover { background: var(--gray-50); }
 .open-client-link { color: var(--brand); font-weight: 600; }
 .open-client-link:hover { text-decoration: underline; }
+
+.cd-field a { color: var(--brand); font-weight: 600; }
+.cd-field a:hover { text-decoration: underline; }
+
+.client-filters { flex-wrap: wrap; gap: 10px; align-items: center; }
+.client-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.status-lead { background: var(--brand-light); color: var(--brand); }
+.status-contact { background: var(--amber-bg); color: var(--amber); }
+.status-klant { background: var(--green-bg); color: var(--green); }
+.status-inactief { background: var(--gray-200); color: var(--gray-600); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+.cd-title-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pipeline-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 8px 4px 4px;
+  align-items: flex-end;
+}
+.pipeline-stat { display: flex; flex-direction: column; gap: 4px; min-width: 80px; }
+.pipeline-num { font-size: 24px; font-weight: 700; }
+.pipeline-num.warn { color: var(--amber); }
+.pipeline-label { font-size: 12px; color: var(--gray-600); }
+.pipeline-bron { flex: 1; min-width: 200px; font-size: 13px; color: var(--gray-600); padding-top: 8px; }
 
 /* ── Modal ───────────────────────────────── */
 .modal-backdrop {

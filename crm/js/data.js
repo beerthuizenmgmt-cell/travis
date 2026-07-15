@@ -185,6 +185,24 @@ export async function fetchClientsCount() {
   return count || 0;
 }
 
+export async function fetchClientPipelineStats() {
+  const { data, error } = await supabase.from('clients').select('status, bron, created_at');
+  if (error) throw error;
+  const byStatus = { lead: 0, contact: 0, klant: 0, inactief: 0 };
+  const byBron = {};
+  const weekAgo = new Date();
+  weekAgo.setDate(weekAgo.getDate() - 7);
+  const since = weekAgo.toISOString();
+  let leadsThisWeek = 0;
+  for (const row of data || []) {
+    const st = row.status || 'lead';
+    byStatus[st] = (byStatus[st] || 0) + 1;
+    if (row.bron) byBron[row.bron] = (byBron[row.bron] || 0) + 1;
+    if (row.created_at >= since && (st === 'lead' || st === 'contact')) leadsThisWeek += 1;
+  }
+  return { byStatus, byBron, leadsThisWeek, total: data?.length || 0 };
+}
+
 export async function fetchClientById(id) {
   const { data, error } = await supabase.from('clients').select('*').eq('id', id).maybeSingle();
   if (error) throw error;

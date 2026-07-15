@@ -64,36 +64,41 @@ export function berekenMaandoverzicht(reservations, regels, instellingen) {
   };
 }
 
-export function berekenWinst(reservations, advertentiekosten, uitbetalingNathanisya) {
+export function nettoVoorReservering(reservation) {
+  return brutoOmzetVoorReservering(reservation) - Number(reservation.productie_kosten || 0);
+}
+
+export function berekenWinst(reservations, advertentiekosten) {
   const bevestigd = reservations.filter((r) => r.status === 'bevestigd');
   const brutoOmzet = bevestigd.reduce((sum, r) => sum + brutoOmzetVoorReservering(r), 0);
   const productieTotaal = bevestigd.reduce((sum, r) => sum + Number(r.productie_kosten || 0), 0);
   const advertentieTotaal = (advertentiekosten || []).reduce((sum, a) => sum + Number(a.bedrag || 0), 0);
-  const winst = brutoOmzet - productieTotaal - advertentieTotaal - uitbetalingNathanisya;
+  const winst = brutoOmzet - productieTotaal - advertentieTotaal;
   const winstPercentage = brutoOmzet > 0 ? (winst / brutoOmzet) * 100 : 0;
 
-  return { brutoOmzet, productieTotaal, advertentieTotaal, winst, winstPercentage };
+  return { brutoOmzet, productieTotaal, advertentieTotaal, winst, winstPercentage, aantalBevestigd: bevestigd.length };
 }
 
-export function groepeerPerPakket(perReservering) {
+export function groepeerPerPakket(reservations) {
+  const bevestigd = reservations.filter((r) => r.status === 'bevestigd');
   const groepen = new Map();
-  for (const item of perReservering) {
-    const key = `${item.reservation.dienst}__${item.reservation.pakket}`;
+  for (const r of bevestigd) {
+    const key = `${r.dienst}__${r.pakket}`;
     if (!groepen.has(key)) {
       groepen.set(key, {
-        dienst: item.reservation.dienst,
-        pakket: item.reservation.pakket,
+        dienst: r.dienst,
+        pakket: r.pakket,
         aantal: 0,
         brutoOmzet: 0,
-        nettoBasis: 0,
-        commissie: 0,
+        productieKosten: 0,
+        netto: 0,
       });
     }
     const g = groepen.get(key);
     g.aantal += 1;
-    g.brutoOmzet += brutoOmzetVoorReservering(item.reservation);
-    g.nettoBasis += item.nettoBasis;
-    g.commissie += item.totaalCommissie;
+    g.brutoOmzet += brutoOmzetVoorReservering(r);
+    g.productieKosten += Number(r.productie_kosten || 0);
+    g.netto += nettoVoorReservering(r);
   }
   return [...groepen.values()];
 }

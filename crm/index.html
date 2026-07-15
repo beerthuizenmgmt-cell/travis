@@ -17,7 +17,7 @@
     <div class="login-shell">
       <img src="../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen Management" class="login-logo">
       <div class="login-card">
-        <p class="login-lead">Log in om reserveringen en commissies te beheren.</p>
+        <p class="login-lead">Log in om je klanten en reserveringen te beheren.</p>
         <form class="login-form" id="loginForm">
           <label>E-mailadres<input type="email" id="loginEmail" required autocomplete="username"></label>
           <label>Wachtwoord<input type="password" id="loginPassword" required autocomplete="current-password"></label>
@@ -92,10 +92,14 @@
           <div class="page-header">
             <div>
               <h1>Dashboard</h1>
-              <p>Overzicht van deze maand — omzet, commissie, advertentiekosten en winst.</p>
+              <p>Overzicht van deze maand — omzet, kosten en winst.</p>
             </div>
           </div>
           <div class="kpi-grid" id="dashboardKpis"></div>
+          <div class="card" id="dashboardPipelineCard" style="display:none;margin-bottom:20px">
+            <div class="card-header"><h2>Klanten-pipeline</h2><a href="#klanten" class="nav-link" data-page="klanten" style="color:var(--brand);font-weight:600;font-size:13px">Naar klanten →</a></div>
+            <div class="pipeline-stats" id="dashboardPipeline"></div>
+          </div>
           <div class="card table-card" id="dashboardTasksCard" style="display:none">
             <div class="card-header"><h2>Openstaande taken</h2><a href="#klanten" class="nav-link" data-page="klanten" style="color:var(--brand);font-weight:600;font-size:13px">Naar klanten →</a></div>
             <div class="table-wrap"><table><thead><tr><th>Taak</th><th>Klant</th><th>Deadline</th></tr></thead><tbody id="dashboardTasksBody"></tbody></table></div>
@@ -108,7 +112,7 @@
           </div>
           <div class="card table-card">
             <div class="card-header"><h2>Laatste reserveringen</h2><a href="#reserveringen" class="nav-link" data-page="reserveringen" style="color:var(--brand);font-weight:600;font-size:13px">Alles bekijken →</a></div>
-            <div class="table-wrap"><table><thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Datum</th><th>Bedrag</th><th>Commissie</th></tr></thead><tbody id="dashboardRecentBody"></tbody></table></div>
+            <div class="table-wrap"><table><thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Datum</th><th>Bedrag</th><th>Netto</th></tr></thead><tbody id="dashboardRecentBody"></tbody></table></div>
           </div>
         </section>
 
@@ -135,13 +139,13 @@
           <div class="card table-card">
             <div class="table-wrap">
               <table>
-                <thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Bron</th><th>Datum</th><th>Bruto</th><th>Netto</th><th>Commissie</th><th>Status</th><th></th></tr></thead>
+                <thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Bron</th><th>Datum</th><th>Bruto</th><th>Netto</th><th>Status</th><th></th></tr></thead>
                 <tbody id="reservationsBody"></tbody>
               </table>
             </div>
             <div class="empty-state" id="reservationsEmpty" style="display:none">
               <h3>Nog geen reserveringen</h3>
-              <p>Voeg een reservering handmatig toe, importeer een CSV-export uit Calendly, of laat Nathanisya ze insturen via haar invoerportaal.</p>
+              <p>Voeg een reservering handmatig toe, importeer een CSV-export uit Calendly, of laat je secretaresse ze invoeren via het invoerportaal.</p>
             </div>
           </div>
         </section>
@@ -151,25 +155,51 @@
           <div class="page-header">
             <div>
               <h1>Klanten</h1>
-              <p>Je contactendatabase — alle klanten, hun boekingshistorie en notities op één plek.</p>
+              <p>Je contactendatabase — pipeline, bronnen en opvolging op één plek.</p>
             </div>
             <div class="page-header-actions">
+              <button type="button" class="btn btn-secondary" id="exportClientsBtn">↓ CSV export</button>
               <button class="btn btn-primary" id="addClientBtn">+ Klant toevoegen</button>
             </div>
           </div>
-          <div class="filter-bar">
-            <input type="search" class="input-sm" id="clientSearch" placeholder="Zoek op naam…" style="min-width:240px">
+          <div class="kpi-grid cols-4" id="clientPipelineKpis"></div>
+          <div class="filter-bar client-filters">
+            <input type="search" class="input-sm" id="clientSearch" placeholder="Zoek op naam, e-mail, tag…" style="min-width:220px">
+            <div class="filter-chips" id="clientStatusFilters">
+              <button type="button" class="filter-chip active" data-status="">Alle</button>
+              <button type="button" class="filter-chip" data-status="lead">Leads</button>
+              <button type="button" class="filter-chip" data-status="contact">Contact</button>
+              <button type="button" class="filter-chip" data-status="klant">Klanten</button>
+              <button type="button" class="filter-chip" data-status="inactief">Inactief</button>
+            </div>
+            <select class="input-sm" id="clientBronFilter">
+              <option value="">Alle bronnen</option>
+              <option value="Calendly">Calendly</option>
+              <option value="Nathanisya">Nathanisya</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Doorverwijzing">Doorverwijzing</option>
+              <option value="Walk-in">Walk-in</option>
+              <option value="Website">Website</option>
+              <option value="Overig">Overig</option>
+            </select>
+            <select class="input-sm" id="clientInteresseFilter">
+              <option value="">Alle diensten</option>
+              <option value="foto">Fotostudio</option>
+              <option value="podcast">Podcast</option>
+              <option value="influencer">Influencer</option>
+              <option value="meerdere">Meerdere</option>
+            </select>
           </div>
           <div class="card table-card">
             <div class="table-wrap">
               <table>
-                <thead><tr><th>Naam</th><th>Contact</th><th>Bedrijf</th><th>Bron</th><th>Boekingen</th><th>Laatste boeking</th><th></th></tr></thead>
+                <thead><tr><th>Naam</th><th>Status</th><th>Contact</th><th>Interesse</th><th>Bron</th><th>Boekingen</th><th>Laatste</th><th></th></tr></thead>
                 <tbody id="clientsBody"></tbody>
               </table>
             </div>
             <div class="empty-state" id="clientsEmpty" style="display:none">
               <h3>Nog geen klanten</h3>
-              <p>Voeg je eerste klant toe, of ze verschijnen automatisch zodra je reserveringen aan een klant koppelt.</p>
+              <p>Voeg je eerste klant toe, of pas je filters aan.</p>
             </div>
           </div>
         </section>
@@ -179,16 +209,16 @@
           <div class="page-header">
             <div>
               <h1>Maandoverzicht</h1>
-              <p>Wat je per maand aan Nathanisya moet betalen, per dienst en pakket.</p>
+              <p>Omzet en kosten per maand, uitgesplitst per dienst en pakket.</p>
             </div>
             <input type="month" class="input-sm" id="overviewMonthPicker">
           </div>
           <div class="kpi-grid" id="overviewKpis"></div>
           <div class="card table-card">
-            <div class="card-header"><h2>Commissie per pakket deze maand</h2></div>
+            <div class="card-header"><h2>Omzet per pakket deze maand</h2></div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>Dienst</th><th>Pakket</th><th>Aantal</th><th>Bruto omzet</th><th>Netto basis</th><th>Commissie</th></tr></thead>
+                <thead><tr><th>Dienst</th><th>Pakket</th><th>Aantal</th><th>Bruto omzet</th><th>Productiekosten</th><th>Netto</th></tr></thead>
                 <tbody id="overviewBreakdownBody"></tbody>
               </table>
             </div>
@@ -247,16 +277,7 @@
           <div class="page-header">
             <div>
               <h1>Instellingen</h1>
-              <p>Commissiepercentages, minimumgarantie en volumebonus — pas dit aan als je afspraken herziet.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"><h2>Commissiepercentages</h2></div>
-            <div class="table-wrap">
-              <table class="settings-table">
-                <thead><tr><th>Regel</th><th>Basis</th><th>Percentage</th><th></th></tr></thead>
-                <tbody id="commissieRegelsBody"></tbody>
-              </table>
+              <p>Standaard productiekosten per pakket — telt mee in je winstberekening.</p>
             </div>
           </div>
           <div class="card">
@@ -279,23 +300,6 @@
               <label>Pakket<input type="text" id="newProductiePakket" placeholder="bv. Growth"></label>
               <label>Bedrag (€)<input type="number" id="newProductieBedrag" step="0.01" placeholder="0"></label>
               <button type="button" class="btn btn-secondary" id="addProductieRegelBtn">+ Toevoegen</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"><h2>Minimumgarantie &amp; volumebonus</h2></div>
-            <div class="form-grid" id="instellingenForm">
-              <label>Minimumgarantie per maand (€)<input type="number" id="minimumGarantieInput" step="0.01"></label>
-            </div>
-            <h3 style="font-size:13px;font-weight:700;margin:18px 0 8px">Volumebonus-tiers</h3>
-            <div class="table-wrap">
-              <table class="settings-table">
-                <thead><tr><th>Vanaf aantal klanten</th><th>Bonus (€)</th><th></th></tr></thead>
-                <tbody id="bonusTiersBody"></tbody>
-              </table>
-            </div>
-            <div class="form-actions">
-              <button class="btn btn-secondary" id="addBonusTierBtn">+ Tier toevoegen</button>
-              <button class="btn btn-primary" id="saveInstellingenBtn">Opslaan</button>
             </div>
           </div>
         </section>
@@ -417,10 +421,10 @@
 
   <!-- ── Modal: klant toevoegen/bewerken ───── -->
   <div class="modal-backdrop" id="clientModalBackdrop">
-    <div class="modal">
+    <div class="modal modal-wide">
       <button type="button" class="modal-close" aria-label="Sluiten">✕</button>
       <h2 id="clientModalTitle">Klant toevoegen</h2>
-      <p class="sub">Contactgegevens van de klant.</p>
+      <p class="sub">Contactgegevens, pipeline-status en commerciële info.</p>
       <form id="clientForm">
         <input type="hidden" id="cId">
         <div class="form-grid">
@@ -428,6 +432,23 @@
           <label>Bedrijf<input type="text" id="cBedrijf" autocomplete="organization"></label>
           <label>E-mailadres<input type="email" id="cEmail" autocomplete="email"></label>
           <label>Telefoon<input type="tel" id="cTelefoon" autocomplete="tel"></label>
+          <label>Status
+            <select id="cStatus">
+              <option value="lead">Lead — nieuw contact</option>
+              <option value="contact">Contact gehad</option>
+              <option value="klant">Klant — actief</option>
+              <option value="inactief">Inactief</option>
+            </select>
+          </label>
+          <label>Interesse
+            <select id="cInteresse">
+              <option value="">— Onbekend —</option>
+              <option value="foto">Fotostudio</option>
+              <option value="podcast">Podcast</option>
+              <option value="influencer">Influencer</option>
+              <option value="meerdere">Meerdere diensten</option>
+            </select>
+          </label>
           <label>Bron
             <select id="cBron">
               <option value="">— Kies bron —</option>
@@ -440,6 +461,12 @@
               <option value="Overig">Overig</option>
             </select>
           </label>
+          <label>Toegewezen aan
+            <select id="cToegewezen"><option value="">— Niemand —</option></select>
+          </label>
+          <label>Instagram<input type="text" id="cInstagram" placeholder="@gebruikersnaam"></label>
+          <label>Website<input type="url" id="cWebsite" placeholder="https://…"></label>
+          <label class="form-grid full">Tags <input type="text" id="cTags" placeholder="vip, herhaalboeking, zakelijk (komma-gescheiden)"></label>
         </div>
         <div class="contact-quick-actions" id="cContactActions" hidden></div>
         <label class="form-grid full" style="margin-top:14px">Korte notitie
@@ -469,8 +496,12 @@
       <button type="button" class="modal-close" aria-label="Sluiten">✕</button>
       <div class="client-detail-header">
         <div>
-          <h2 id="cdNaam">Klant</h2>
+          <div class="cd-title-row">
+            <h2 id="cdNaam">Klant</h2>
+            <span class="client-status" id="cdStatusBadge"></span>
+          </div>
           <p class="sub" id="cdMeta"></p>
+          <div class="tag-list" id="cdTags"></div>
         </div>
         <div style="display:flex;gap:8px">
           <button type="button" class="btn btn-secondary" id="cdEditBtn">Bewerken</button>

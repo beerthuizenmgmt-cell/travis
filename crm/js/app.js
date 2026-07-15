@@ -111,6 +111,11 @@ navLinks.forEach((link) => {
   });
 });
 
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.slice(1);
+  if (hash && pageRenderers[hash]) showPage(hash, { animate: false });
+});
+
 document.getElementById('sidebarToggle')?.addEventListener('click', () => {
   document.getElementById('sidebar')?.classList.toggle('open');
 });

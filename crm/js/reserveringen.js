@@ -1,9 +1,9 @@
 import {
   fetchReservations, createReservation, deleteReservation, markReservationBekeken, fetchNieuweAantal,
-  fetchCommissieRegels, fetchProductieKostenRegels,
+  fetchProductieKostenRegels,
   searchClients, createClient, fetchClientById, updateClient, sendReservationEmail,
 } from './data.js';
-import { berekenCommissieVoorReservering, brutoOmzetVoorReservering } from './commissieEngine.js';
+import { brutoOmzetVoorReservering, nettoVoorReservering } from './commissieEngine.js';
 import { openClientDetail } from './klanten.js';
 import { formatEuro, formatDatum, openModal, closeModal, toast } from './utils.js';
 
@@ -14,7 +14,7 @@ let lastAutofilledValue = null;
 const bronLabels = {
   handmatig: 'Zelf',
   calendly_import: 'Calendly',
-  nathanisya_invoer: 'Nathanisya',
+  nathanisya_invoer: 'Invoerportaal',
 };
 
 function vindProductieDefault(dienst, pakket) {
@@ -351,7 +351,6 @@ export function initReserveringenPage() {
 }
 
 export async function renderReserveringen() {
-  const regels = await fetchCommissieRegels();
   let range = {};
   if (state.maandFilter) {
     const [j, m] = state.maandFilter.split('-').map(Number);
@@ -379,7 +378,6 @@ export async function renderReserveringen() {
   empty.style.display = 'none';
 
   body.innerHTML = reservations.map((r) => {
-    const c = berekenCommissieVoorReservering(r, regels);
     const nieuw = !r.bekeken;
     const naamCell = r.client_id
       ? `<a href="#" class="open-client-link" data-id="${r.client_id}">${escKlant(r.klantnaam)}</a>`
@@ -391,8 +389,7 @@ export async function renderReserveringen() {
       <td class="text-muted">${bronLabels[r.bron] || r.bron}</td>
       <td>${formatDatum(r.datum)}</td>
       <td>${formatEuro(brutoOmzetVoorReservering(r))}</td>
-      <td>${formatEuro(c.nettoBasis)}</td>
-      <td class="money">${formatEuro(c.totaalCommissie)}</td>
+      <td class="money">${formatEuro(nettoVoorReservering(r))}</td>
       <td><span class="status status-${r.status}">${r.status}</span></td>
       <td style="white-space:nowrap">
         ${r.status !== 'geannuleerd' ? `<button class="btn-icon send-reservation-mail" data-id="${r.id}" title="${r.email_verzonden_op ? 'Mail opnieuw versturen' : 'Mail versturen'}" aria-label="Mail versturen">✉</button>` : ''}

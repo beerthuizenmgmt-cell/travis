@@ -1,5 +1,5 @@
-import { fetchReservations, fetchAdvertentiekosten, fetchCommissieRegels, fetchInstellingen, fetchClientsCount, fetchOpenTakenCount, fetchOpenTakenDezeWeek } from './data.js';
-import { berekenMaandoverzicht, berekenWinst, brutoOmzetVoorReservering, berekenCommissieVoorReservering } from './commissieEngine.js';
+import { fetchReservations, fetchAdvertentiekosten, fetchClientsCount, fetchOpenTakenCount, fetchOpenTakenDezeWeek, fetchClientPipelineStats } from './data.js';
+import { berekenWinst, brutoOmzetVoorReservering, nettoVoorReservering } from './commissieEngine.js';
 import { formatEuro, formatDatum, huidigeMaand, maandBereik } from './utils.js';
 import { drawDualLineChart } from './chart.js';
 
@@ -14,9 +14,7 @@ function laatsteMaanden(n) {
 }
 
 export async function renderDashboard() {
-  const [regels, instellingen, klantenTotaal, openTaken] = await Promise.all([
-    fetchCommissieRegels(),
-    fetchInstellingen(),
+  const [klantenTotaal, openTaken] = await Promise.all([
     fetchClientsCount().catch(() => 0),
     fetchOpenTakenCount().catch(() => 0),
   ]);
@@ -31,22 +29,21 @@ export async function renderDashboard() {
       fetchReservations({ start, eind }),
       fetchAdvertentiekosten({ start, eind }),
     ]);
-    const overzicht = berekenMaandoverzicht(reservations, regels, instellingen);
-    const winst = berekenWinst(reservations, adkosten, overzicht.uitbetaling);
+    const winst = berekenWinst(reservations, adkosten);
     omzetSerie.push(winst.brutoOmzet);
     winstSerie.push(winst.winst);
     if (maand === huidigeMaand()) {
-      dezeMaandData = { reservations, adkosten, overzicht, winst };
+      dezeMaandData = { reservations, winst };
     }
   }
 
   if (!dezeMaandData) {
     const { start, eind } = maandBereik(huidigeMaand());
-    const reservations = await fetchReservations({ start, eind });
-    const adkosten = await fetchAdvertentiekosten({ start, eind });
-    const overzicht = berekenMaandoverzicht(reservations, regels, instellingen);
-    const winst = berekenWinst(reservations, adkosten, overzicht.uitbetaling);
-    dezeMaandData = { reservations, adkosten, overzicht, winst };
+    const [reservations, adkosten] = await Promise.all([
+      fetchReservations({ start, eind }),
+      fetchAdvertentiekosten({ start, eind }),
+    ]);
+    dezeMaandData = { reservations, winst: berekenWinst(reservations, adkosten) };
   }
 
   const labels = maanden.map((m) => {
@@ -55,12 +52,12 @@ export async function renderDashboard() {
   });
   drawDualLineChart('revenueChart', labels, omzetSerie, winstSerie);
 
-  const { overzicht, winst } = dezeMaandData;
+  const { winst } = dezeMaandData;
   const kpiEl = document.getElementById('dashboardKpis');
   kpiEl.classList.add('cols-6');
   kpiEl.innerHTML = `
     <div class="kpi-card"><span class="kpi-label">Omzet deze maand</span><span class="kpi-value">${formatEuro(winst.brutoOmzet)}</span></div>
-    <div class="kpi-card"><span class="kpi-label">Te betalen aan Nathanisya</span><span class="kpi-value money">${formatEuro(overzicht.uitbetaling)}</span>${overzicht.minimumToegepast ? '<div class="kpi-sub">Minimumgarantie toegepast</div>' : ''}</div>
+    <div class="kpi-card"><span class="kpi-label">Productiekosten</span><span class="kpi-value warn">${formatEuro(winst.productieTotaal)}</span></div>
     <div class="kpi-card"><span class="kpi-label">Advertentiekosten</span><span class="kpi-value warn">${formatEuro(winst.advertentieTotaal)}</span></div>
     <div class="kpi-card"><span class="kpi-label">Winst (${winst.winstPercentage.toFixed(1)}%)</span><span class="kpi-value ${winst.winst >= 0 ? 'money' : 'warn'}">${formatEuro(winst.winst)}</span></div>
     <div class="kpi-card"><span class="kpi-label">Totaal klanten</span><span class="kpi-value">${klantenTotaal}</span></div>
@@ -81,12 +78,26 @@ export async function renderDashboard() {
     tasksCard.style.display = 'none';
   }
 
+  const pipeline = await fetchClientPipelineStats().catch(() => null);
+  const pipelineCard = document.getElementById('dashboardPipelineCard');
+  const pipelineEl = document.getElementById('dashboardPipeline');
+  if (pipeline && pipelineCard && pipelineEl) {
+    pipelineCard.style.display = 'block';
+    const bronTop = Object.entries(pipeline.byBron).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    pipelineEl.innerHTML = `
+      <div class="pipeline-stat"><span class="pipeline-num">${pipeline.byStatus.lead || 0}</span><span class="pipeline-label">Leads</span></div>
+      <div class="pipeline-stat"><span class="pipeline-num">${pipeline.byStatus.contact || 0}</span><span class="pipeline-label">Contact gehad</span></div>
+      <div class="pipeline-stat"><span class="pipeline-num">${pipeline.byStatus.klant || 0}</span><span class="pipeline-label">Klanten</span></div>
+      <div class="pipeline-stat"><span class="pipeline-num warn">${pipeline.leadsThisWeek}</span><span class="pipeline-label">Nieuw deze week</span></div>
+      ${bronTop.length ? `<div class="pipeline-bron"><strong>Top bronnen:</strong> ${bronTop.map(([b, n]) => `${b} (${n})`).join(' · ')}</div>` : ''}
+    `;
+  } else if (pipelineCard) {
+    pipelineCard.style.display = 'none';
+  }
+
   const recentBody = document.getElementById('dashboardRecentBody');
   const recent = [...dezeMaandData.reservations].slice(0, 6);
   recentBody.innerHTML = recent.length
-    ? recent.map((r) => {
-        const c = berekenCommissieVoorReservering(r, regels);
-        return `<tr><td>${r.klantnaam}</td><td>${r.dienst}</td><td>${r.pakket}</td><td>${formatDatum(r.datum)}</td><td>${formatEuro(brutoOmzetVoorReservering(r))}</td><td class="money">${formatEuro(c.totaalCommissie)}</td></tr>`;
-      }).join('')
+    ? recent.map((r) => `<tr><td>${r.klantnaam}</td><td>${r.dienst}</td><td>${r.pakket}</td><td>${formatDatum(r.datum)}</td><td>${formatEuro(brutoOmzetVoorReservering(r))}</td><td class="money">${formatEuro(nettoVoorReservering(r))}</td></tr>`).join('')
     : '<tr><td colspan="6" class="text-muted">Nog geen reserveringen deze maand.</td></tr>';
 }

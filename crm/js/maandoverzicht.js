@@ -1,5 +1,5 @@
-import { fetchReservations, fetchAdvertentiekosten, fetchCommissieRegels, fetchInstellingen } from './data.js';
-import { berekenMaandoverzicht, berekenWinst, groepeerPerPakket } from './commissieEngine.js';
+import { fetchReservations, fetchAdvertentiekosten } from './data.js';
+import { berekenWinst, groepeerPerPakket } from './commissieEngine.js';
 import { formatEuro, huidigeMaand, maandBereik } from './utils.js';
 
 export function initMaandoverzichtPage() {
@@ -13,25 +13,22 @@ export async function renderMaandoverzicht() {
   const maand = picker.value || huidigeMaand();
   const { start, eind } = maandBereik(maand);
 
-  const [regels, instellingen, reservations, adkosten] = await Promise.all([
-    fetchCommissieRegels(),
-    fetchInstellingen(),
+  const [reservations, adkosten] = await Promise.all([
     fetchReservations({ start, eind }),
     fetchAdvertentiekosten({ start, eind }),
   ]);
 
-  const overzicht = berekenMaandoverzicht(reservations, regels, instellingen);
-  const winst = berekenWinst(reservations, adkosten, overzicht.uitbetaling);
+  const winst = berekenWinst(reservations, adkosten);
+  const groepen = groepeerPerPakket(reservations);
 
   const kpiEl = document.getElementById('overviewKpis');
   kpiEl.innerHTML = `
-    <div class="kpi-card"><span class="kpi-label">Bevestigde reserveringen</span><span class="kpi-value">${overzicht.aantalKlanten}</span></div>
-    <div class="kpi-card"><span class="kpi-label">Commissie (excl. bonus)</span><span class="kpi-value">${formatEuro(overzicht.totaalCommissie)}</span></div>
-    <div class="kpi-card"><span class="kpi-label">Volumebonus</span><span class="kpi-value">${formatEuro(overzicht.bonus)}</span></div>
-    <div class="kpi-card"><span class="kpi-label">Totaal te betalen</span><span class="kpi-value money">${formatEuro(overzicht.uitbetaling)}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Bevestigde reserveringen</span><span class="kpi-value">${winst.aantalBevestigd}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Bruto omzet</span><span class="kpi-value">${formatEuro(winst.brutoOmzet)}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Productiekosten</span><span class="kpi-value warn">${formatEuro(winst.productieTotaal)}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Winst (${winst.winstPercentage.toFixed(1)}%)</span><span class="kpi-value ${winst.winst >= 0 ? 'money' : 'warn'}">${formatEuro(winst.winst)}</span></div>
   `;
 
-  const groepen = groepeerPerPakket(overzicht.perReservering);
   const body = document.getElementById('overviewBreakdownBody');
   body.innerHTML = groepen.length
     ? groepen.map((g) => `<tr>
@@ -39,13 +36,13 @@ export async function renderMaandoverzicht() {
         <td>${g.pakket}</td>
         <td>${g.aantal}</td>
         <td>${formatEuro(g.brutoOmzet)}</td>
-        <td>${formatEuro(g.nettoBasis)}</td>
-        <td class="money">${formatEuro(g.commissie)}</td>
+        <td>${formatEuro(g.productieKosten)}</td>
+        <td class="money">${formatEuro(g.netto)}</td>
       </tr>`).join('')
     : '<tr><td colspan="6" class="text-muted">Geen bevestigde reserveringen in deze maand.</td></tr>';
 
   const formulaEl = document.getElementById('overviewFormula');
-  formulaEl.innerHTML = overzicht.minimumToegepast
-    ? `<strong>Minimumgarantie toegepast:</strong> commissie + bonus (${formatEuro(overzicht.totaalCommissie + overzicht.bonus)}) lag onder de minimumgarantie van ${formatEuro(overzicht.minimumGarantie)}, dus die minimumgarantie geldt. Winst deze maand: ${formatEuro(winst.winst)} (${winst.winstPercentage.toFixed(1)}%) na aftrek van productiekosten en advertentiekosten.`
-    : `Commissie (${formatEuro(overzicht.totaalCommissie)}) + volumebonus (${formatEuro(overzicht.bonus)}) = ${formatEuro(overzicht.uitbetaling)}, boven de minimumgarantie van ${formatEuro(overzicht.minimumGarantie)}. Winst deze maand: ${formatEuro(winst.winst)} (${winst.winstPercentage.toFixed(1)}%) na aftrek van productiekosten en advertentiekosten.`;
+  formulaEl.innerHTML = winst.aantalBevestigd
+    ? `Bruto omzet (${formatEuro(winst.brutoOmzet)}) minus productiekosten (${formatEuro(winst.productieTotaal)}) en advertentiekosten (${formatEuro(winst.advertentieTotaal)}) = winst ${formatEuro(winst.winst)} (${winst.winstPercentage.toFixed(1)}%).`
+    : 'Nog geen bevestigde reserveringen in deze maand.';
 }
