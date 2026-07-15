@@ -102,6 +102,7 @@ function buildReservationsFromMapping() {
       status: get('status') || 'bevestigd',
       extras: [],
       bron: 'calendly_import',
+      bekeken: true,
     };
   }).filter((r) => r.datum);
 }

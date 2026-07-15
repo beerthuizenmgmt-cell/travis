@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservering insturen · Beerthuizen Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/crm.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <style>
+    .invoer-wrapper { max-width: 640px; margin: 0 auto; padding: 40px 20px 60px; }
+    .invoer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .invoer-header img { height: 32px; width: auto; max-width: 200px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN ─────────────────────────────── -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-shell">
+      <img src="../../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen Management" class="login-logo">
+      <div class="login-card">
+        <p class="login-lead">Log in om een nieuwe boeking door te geven.</p>
+        <form class="login-form" id="loginForm">
+          <label>E-mailadres<input type="email" id="loginEmail" required autocomplete="username"></label>
+          <label>Wachtwoord<input type="password" id="loginPassword" required autocomplete="current-password"></label>
+          <label class="login-remember"><input type="checkbox" id="loginRemember" checked> Onthoud mij</label>
+          <p class="login-error" id="loginError"></p>
+          <button type="submit" class="btn btn-primary">Inloggen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── APP ───────────────────────────────── -->
+  <div class="invoer-wrapper" id="appLayout" style="display:none" data-layout-display="block">
+    <div class="invoer-header">
+      <a href="#"><img src="../../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen Management"></a>
+      <div class="user-profile user-profile--light">
+        <img src="../../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen Management" class="user-profile-logo">
+        <div class="user-profile-info">
+          <span class="user-profile-name" id="profileName">—</span>
+          <span class="user-profile-meta" id="profileMeta">Invoerportaal</span>
+        </div>
+        <button type="button" class="user-profile-logout" id="logoutBtn" title="Uitloggen" aria-label="Uitloggen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-bar" id="invoerTabs">
+      <button class="filter-chip active" data-tab="reservering">Reservering insturen</button>
+      <button class="filter-chip" data-tab="klanten">Klanten</button>
+    </div>
+
+    <div id="tab-reservering" class="tab-panel active">
+    <div class="card">
+      <div class="card-header"><h2>Nieuwe reservering</h2></div>
+      <form id="reservationForm">
+        <div class="form-grid">
+          <label class="client-picker">Klant
+            <input type="text" id="rKlant" required autocomplete="off" placeholder="Zoek bestaande klant of typ een naam">
+            <input type="hidden" id="rClientId">
+            <div class="client-suggest" id="rClientSuggest"></div>
+            <span class="text-muted" id="rClientHint"></span>
+          </label>
+          <label>Datum<input type="date" id="rDatum" required></label>
+          <label>Dienst
+            <select id="rDienst" required>
+              <option value="foto">Fotostudio</option>
+              <option value="podcast">Podcast</option>
+              <option value="influencer">Influencer</option>
+            </select>
+          </label>
+          <label>Pakket<input type="text" id="rPakket" placeholder="bv. Growth" required></label>
+          <label>Bruto prijs (€)<input type="number" id="rBruto" step="0.01" required></label>
+        </div>
+        <h3 style="font-size:13px;font-weight:700;margin:16px 0 6px">Extra's die de klant heeft bijgenomen</h3>
+        <div class="extras-list" id="extrasList"></div>
+        <button type="button" class="btn btn-secondary" id="addExtraBtn" style="margin-bottom:6px">+ Extra toevoegen</button>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Insturen</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card table-card">
+      <div class="card-header"><h2>Mijn ingestuurde reserveringen</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Datum</th><th>Status</th></tr></thead>
+          <tbody id="eigenReserveringenBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="eigenReserveringenEmpty" style="display:none">
+        <h3>Nog niets ingestuurd</h3>
+        <p>Zodra je een reservering invoert, verschijnt die hier.</p>
+      </div>
+    </div>
+    </div><!-- /tab-reservering -->
+
+    <div id="tab-klanten" class="tab-panel">
+      <div class="card">
+        <div class="card-header"><h2>Klanten</h2></div>
+        <input type="search" class="input-sm" id="klantZoek" placeholder="Zoek op naam…" style="min-width:240px;width:100%">
+      </div>
+      <div class="card table-card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Naam</th><th>Contact</th><th>Bedrijf</th></tr></thead>
+            <tbody id="klantenBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="klantenEmpty" style="display:none">
+          <h3>Geen klanten gevonden</h3>
+          <p>Er zijn nog geen klanten, of niets komt overeen met je zoekopdracht.</p>
+        </div>
+      </div>
+    </div><!-- /tab-klanten -->
+  </div>
+
+  <!-- ── Modal: klantdetail (alleen lezen + notities) ── -->
+  <div class="modal-backdrop" id="clientDetailBackdrop">
+    <div class="modal" style="max-width:640px">
+      <button type="button" class="modal-close" aria-label="Sluiten">✕</button>
+      <div class="client-detail-header">
+        <div>
+          <h2 id="cdNaam">Klant</h2>
+          <p class="sub" id="cdMeta"></p>
+        </div>
+      </div>
+      <div class="client-detail-grid" id="cdContact"></div>
+
+      <h3 class="cd-section-title">Boekingen</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Datum</th><th>Dienst</th><th>Pakket</th><th>Status</th></tr></thead>
+          <tbody id="cdBookingsBody"></tbody>
+        </table>
+      </div>
+      <p class="empty-state" id="cdBookingsEmpty" style="display:none;padding:16px">Nog geen boekingen voor deze klant.</p>
+
+      <h3 class="cd-section-title">Opvolgtaken</h3>
+      <form id="cdTaskForm" class="task-form">
+        <input type="text" id="cdTaskText" placeholder="bv. Bel klant na boeking" required>
+        <input type="date" id="cdTaskDeadline" title="Deadline">
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+      </form>
+      <div class="task-list" id="cdTasks"></div>
+
+      <h3 class="cd-section-title">Notities &amp; opvolging</h3>
+      <form id="cdNoteForm" class="note-form">
+        <textarea id="cdNoteText" rows="2" placeholder="Notitie of opvolging toevoegen…" required></textarea>
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+      </form>
+      <div class="note-timeline" id="cdNotes"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="js/invoer.js"></script>
+</body>
+</html>

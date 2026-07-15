@@ -1,3 +1,66 @@
+import { initAuth, onAuthChange, signOut } from '../../crm/js/auth.js';
+import { resolvePostLoginPortal, redirectToPortal, PORTALS } from '../../crm/js/authRedirect.js';
+import { supabaseConfigured } from '../../crm/js/supabaseClient.js';
+import { fetchOwnProfile } from '../../crm/js/data.js';
+
+const authGate = document.getElementById('authGate');
+const adminLayout = document.getElementById('adminLayout');
+
+function initialsFromProfile(profile, session) {
+  const name = profile?.naam?.trim() || session?.user?.email?.split('@')[0] || '?';
+  const parts = name.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  return name.slice(0, 2).toUpperCase();
+}
+
+function renderProfile(session, profile) {
+  const name = profile?.naam?.trim() || session?.user?.email?.split('@')[0] || 'Klant';
+  document.getElementById('profileName').textContent = name;
+  document.getElementById('profileMeta').textContent = session?.user?.email || 'Marketingportaal';
+  document.getElementById('profileAvatar').textContent = initialsFromProfile(profile, session);
+}
+
+function revealApp(session, profile) {
+  authGate.hidden = true;
+  adminLayout.hidden = false;
+  renderProfile(session, profile);
+  startApp();
+}
+
+onAuthChange(async (session) => {
+  if (!supabaseConfigured) {
+    authGate.innerHTML = '<p>Supabase is nog niet geconfigureerd.</p>';
+    return;
+  }
+  if (!session) {
+    redirectToPortal(`${PORTALS.LOGIN}?next=${encodeURIComponent('/admin/')}`);
+    return;
+  }
+  try {
+    const { portal, error } = await resolvePostLoginPortal(session.user.id);
+    if (portal !== PORTALS.MARKETING) {
+      redirectToPortal(portal);
+      return;
+    }
+    if (error) {
+      redirectToPortal(`${PORTALS.LOGIN}?error=${encodeURIComponent(error)}`);
+      return;
+    }
+    const profile = await fetchOwnProfile(session.user.id);
+    revealApp(session, profile);
+  } catch (err) {
+    authGate.innerHTML = `<p>Inloggen mislukt: ${err.message}</p>`;
+  }
+});
+
+document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+  await signOut();
+  redirectToPortal(PORTALS.LOGIN);
+});
+
+initAuth();
+
+function startApp() {
 // Navigation
 const navLinks = document.querySelectorAll('.nav-link[data-page]');
 const pages = document.querySelectorAll('.page');
@@ -211,3 +274,4 @@ function initCharts() {
 
 initCharts();
 window.addEventListener('resize', initCharts);
+}

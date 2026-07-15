@@ -1,4 +1,4 @@
-import { fetchReservations, fetchAdvertentiekosten, fetchCommissieRegels, fetchInstellingen } from './data.js';
+import { fetchReservations, fetchAdvertentiekosten, fetchCommissieRegels, fetchInstellingen, fetchClientsCount, fetchOpenTakenCount, fetchOpenTakenDezeWeek } from './data.js';
 import { berekenMaandoverzicht, berekenWinst, brutoOmzetVoorReservering, berekenCommissieVoorReservering } from './commissieEngine.js';
 import { formatEuro, formatDatum, huidigeMaand, maandBereik } from './utils.js';
 import { drawDualLineChart } from './chart.js';
@@ -14,7 +14,12 @@ function laatsteMaanden(n) {
 }
 
 export async function renderDashboard() {
-  const [regels, instellingen] = await Promise.all([fetchCommissieRegels(), fetchInstellingen()]);
+  const [regels, instellingen, klantenTotaal, openTaken] = await Promise.all([
+    fetchCommissieRegels(),
+    fetchInstellingen(),
+    fetchClientsCount().catch(() => 0),
+    fetchOpenTakenCount().catch(() => 0),
+  ]);
   const maanden = laatsteMaanden(6);
   const omzetSerie = [];
   const winstSerie = [];
@@ -52,12 +57,29 @@ export async function renderDashboard() {
 
   const { overzicht, winst } = dezeMaandData;
   const kpiEl = document.getElementById('dashboardKpis');
+  kpiEl.classList.add('cols-6');
   kpiEl.innerHTML = `
     <div class="kpi-card"><span class="kpi-label">Omzet deze maand</span><span class="kpi-value">${formatEuro(winst.brutoOmzet)}</span></div>
     <div class="kpi-card"><span class="kpi-label">Te betalen aan Nathanisya</span><span class="kpi-value money">${formatEuro(overzicht.uitbetaling)}</span>${overzicht.minimumToegepast ? '<div class="kpi-sub">Minimumgarantie toegepast</div>' : ''}</div>
     <div class="kpi-card"><span class="kpi-label">Advertentiekosten</span><span class="kpi-value warn">${formatEuro(winst.advertentieTotaal)}</span></div>
     <div class="kpi-card"><span class="kpi-label">Winst (${winst.winstPercentage.toFixed(1)}%)</span><span class="kpi-value ${winst.winst >= 0 ? 'money' : 'warn'}">${formatEuro(winst.winst)}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Totaal klanten</span><span class="kpi-value">${klantenTotaal}</span></div>
+    <div class="kpi-card"><span class="kpi-label">Openstaande taken</span><span class="kpi-value ${openTaken ? 'warn' : ''}">${openTaken}</span></div>
   `;
+
+  const taken = await fetchOpenTakenDezeWeek().catch(() => []);
+  const tasksCard = document.getElementById('dashboardTasksCard');
+  const tasksBody = document.getElementById('dashboardTasksBody');
+  if (taken.length) {
+    tasksCard.style.display = 'block';
+    tasksBody.innerHTML = taken.map((t) => `<tr>
+      <td>${t.tekst}</td>
+      <td>${t.clients?.naam || '—'}</td>
+      <td>${t.deadline ? formatDatum(t.deadline) : '—'}</td>
+    </tr>`).join('');
+  } else {
+    tasksCard.style.display = 'none';
+  }
 
   const recentBody = document.getElementById('dashboardRecentBody');
   const recent = [...dezeMaandData.reservations].slice(0, 6);

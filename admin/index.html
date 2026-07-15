@@ -11,7 +11,10 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <div class="admin-layout">
+  <div class="auth-gate" id="authGate">
+    <p>Sessie controleren…</p>
+  </div>
+  <div class="admin-layout" id="adminLayout" hidden>
     <aside class="sidebar" id="sidebar">
       <a href="/" class="sidebar-logo">klaviyo</a>
       <nav class="sidebar-nav">
@@ -46,6 +49,7 @@
         </a>
       </nav>
       <div class="sidebar-footer">
+        <button type="button" class="back-link logout-link" id="logoutBtn">Uitloggen</button>
         <a href="/" class="back-link">← Terug naar site</a>
       </div>
     </aside>
@@ -65,10 +69,10 @@
             <span class="badge">3</span>
           </button>
           <div class="profile">
-            <div class="avatar">DE</div>
+            <div class="avatar" id="profileAvatar">—</div>
             <div class="profile-info">
-              <strong>Davin</strong>
-              <span>Admin</span>
+              <strong id="profileName">—</strong>
+              <span id="profileMeta">Klant</span>
             </div>
           </div>
         </div>
@@ -409,6 +413,6 @@
   </div>
 
   <div class="toast" id="toast"></div>
-  <script src="js/admin.js"></script>
+  <script type="module" src="js/admin.js"></script>
 </body>
 </html>
