@@ -66,7 +66,7 @@ create index if not exists client_notes_client_idx on client_notes (client_id, c
 -- Koppeling reservering → klant. klantnaam blijft bestaan voor
 -- imports/backwards-compat; client_id is de nette relatie.
 -- ─────────────────────────────────────────────
-alter table reservations add column if not exists client_id uuid references clients(id);
+alter table reservations add column if not exists client_id uuid references clients(id) on delete set null;
 create index if not exists reservations_client_idx on reservations (client_id);
 
 -- ─────────────────────────────────────────────
