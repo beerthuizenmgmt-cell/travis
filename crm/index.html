@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM · Beerthuizen Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/crm.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ── LOGIN ─────────────────────────────── -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios">
+      <h1>CRM Dashboard</h1>
+      <p class="sub">Log in om reserveringen en commissies te beheren.</p>
+      <form class="login-form" id="loginForm">
+        <label>E-mailadres<input type="email" id="loginEmail" required autocomplete="username"></label>
+        <label>Wachtwoord<input type="password" id="loginPassword" required autocomplete="current-password"></label>
+        <p class="login-error" id="loginError"></p>
+        <button type="submit" class="btn btn-primary">Inloggen</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── APP ───────────────────────────────── -->
+  <div class="admin-layout" id="appLayout" style="display:none">
+    <aside class="sidebar" id="sidebar">
+      <a href="#dashboard" class="sidebar-logo"><img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Studios"></a>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a href="#reserveringen" class="nav-link" data-page="reserveringen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+          Reserveringen
+        </a>
+        <a href="#maandoverzicht" class="nav-link" data-page="maandoverzicht">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          Maandoverzicht
+        </a>
+        <a href="#advertentiekosten" class="nav-link" data-page="advertentiekosten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Advertentiekosten
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#instellingen" class="nav-link" data-page="instellingen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Instellingen
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-link" id="logoutBtn">Uitloggen</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        <span class="topbar-title" id="topbarTitle">Dashboard</span>
+      </header>
+
+      <main class="content">
+
+        <!-- Dashboard -->
+        <section class="page active" id="page-dashboard">
+          <div class="page-header">
+            <div>
+              <h1>Dashboard</h1>
+              <p>Overzicht van deze maand — omzet, commissie, advertentiekosten en winst.</p>
+            </div>
+          </div>
+          <div class="kpi-grid" id="dashboardKpis"></div>
+          <div class="card chart-card">
+            <div class="card-header">
+              <h2>Omzet &amp; winst per maand</h2>
+            </div>
+            <div class="chart-area"><canvas id="revenueChart" height="220"></canvas></div>
+          </div>
+          <div class="card table-card">
+            <div class="card-header"><h2>Laatste reserveringen</h2><a href="#reserveringen" class="nav-link" data-page="reserveringen" style="color:var(--brand);font-weight:600;font-size:13px">Alles bekijken →</a></div>
+            <div class="table-wrap"><table><thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Datum</th><th>Bedrag</th><th>Commissie</th></tr></thead><tbody id="dashboardRecentBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- Reserveringen -->
+        <section class="page" id="page-reserveringen">
+          <div class="page-header">
+            <div>
+              <h1>Reserveringen</h1>
+              <p>Alle boekingen, handmatig ingevoerd of geïmporteerd uit Calendly.</p>
+            </div>
+            <div class="page-header-actions">
+              <button class="btn btn-secondary" id="importCsvBtn">CSV importeren</button>
+              <button class="btn btn-primary" id="addReservationBtn">+ Reservering toevoegen</button>
+            </div>
+          </div>
+          <div class="filter-bar" id="reservationFilters">
+            <button class="filter-chip active" data-dienst="alle">Alle</button>
+            <button class="filter-chip" data-dienst="foto">Fotostudio</button>
+            <button class="filter-chip" data-dienst="podcast">Podcast</button>
+            <button class="filter-chip" data-dienst="influencer">Influencer</button>
+            <input type="month" class="input-sm" id="reservationMonthFilter" style="margin-left:auto">
+          </div>
+          <div class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Klant</th><th>Dienst</th><th>Pakket</th><th>Datum</th><th>Bruto</th><th>Netto</th><th>Commissie</th><th>Status</th><th></th></tr></thead>
+                <tbody id="reservationsBody"></tbody>
+              </table>
+            </div>
+            <div class="empty-state" id="reservationsEmpty" style="display:none">
+              <h3>Nog geen reserveringen</h3>
+              <p>Voeg een reservering handmatig toe of importeer een CSV-export uit Calendly.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Maandoverzicht -->
+        <section class="page" id="page-maandoverzicht">
+          <div class="page-header">
+            <div>
+              <h1>Maandoverzicht</h1>
+              <p>Wat je per maand aan Nathanisya moet betalen, per dienst en pakket.</p>
+            </div>
+            <input type="month" class="input-sm" id="overviewMonthPicker">
+          </div>
+          <div class="kpi-grid" id="overviewKpis"></div>
+          <div class="card table-card">
+            <div class="card-header"><h2>Commissie per pakket deze maand</h2></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Dienst</th><th>Pakket</th><th>Aantal</th><th>Bruto omzet</th><th>Netto basis</th><th>Commissie</th></tr></thead>
+                <tbody id="overviewBreakdownBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="callout" id="overviewFormula"></div>
+        </section>
+
+        <!-- Advertentiekosten -->
+        <section class="page" id="page-advertentiekosten">
+          <div class="page-header">
+            <div>
+              <h1>Advertentiekosten</h1>
+              <p>Handmatige invoer per maand. Live koppeling met Meta/Google Ads volgt zodra je daar API-toegang voor hebt.</p>
+            </div>
+            <button class="btn btn-primary" id="addAdCostBtn">+ Kosten toevoegen</button>
+          </div>
+          <div class="integrations-grid">
+            <article class="integration-card"><span class="int-logo">Meta Ads</span><span class="int-status">Binnenkort — nog geen API-toegang</span></article>
+            <article class="integration-card"><span class="int-logo">Google Ads</span><span class="int-status">Binnenkort — nog geen API-toegang</span></article>
+          </div>
+          <div class="card table-card">
+            <div class="card-header"><h2>Ingevoerde advertentiekosten</h2></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Maand</th><th>Bron</th><th>Bedrag</th><th>Notities</th><th></th></tr></thead>
+                <tbody id="adCostsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Instellingen -->
+        <section class="page" id="page-instellingen">
+          <div class="page-header">
+            <div>
+              <h1>Instellingen</h1>
+              <p>Commissiepercentages, minimumgarantie en volumebonus — pas dit aan als je afspraken herziet.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>Commissiepercentages</h2></div>
+            <div class="table-wrap">
+              <table class="settings-table">
+                <thead><tr><th>Regel</th><th>Basis</th><th>Percentage</th><th></th></tr></thead>
+                <tbody id="commissieRegelsBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h2>Minimumgarantie &amp; volumebonus</h2></div>
+            <div class="form-grid" id="instellingenForm">
+              <label>Minimumgarantie per maand (€)<input type="number" id="minimumGarantieInput" step="0.01"></label>
+            </div>
+            <h3 style="font-size:13px;font-weight:700;margin:18px 0 8px">Volumebonus-tiers</h3>
+            <div class="table-wrap">
+              <table class="settings-table">
+                <thead><tr><th>Vanaf aantal klanten</th><th>Bonus (€)</th><th></th></tr></thead>
+                <tbody id="bonusTiersBody"></tbody>
+              </table>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-secondary" id="addBonusTierBtn">+ Tier toevoegen</button>
+              <button class="btn btn-primary" id="saveInstellingenBtn">Opslaan</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ── Modal: reservering toevoegen ─────── -->
+  <div class="modal-backdrop" id="reservationModalBackdrop">
+    <div class="modal">
+      <h2>Reservering toevoegen</h2>
+      <p class="sub">Voer de gegevens van de boeking in.</p>
+      <form id="reservationForm">
+        <div class="form-grid">
+          <label>Klantnaam<input type="text" id="rKlant" required></label>
+          <label>Datum<input type="date" id="rDatum" required></label>
+          <label>Dienst
+            <select id="rDienst" required>
+              <option value="foto">Fotostudio</option>
+              <option value="podcast">Podcast</option>
+              <option value="influencer">Influencer</option>
+            </select>
+          </label>
+          <label>Pakket<input type="text" id="rPakket" placeholder="bv. Growth" required></label>
+          <label>Bruto prijs (€)<input type="number" id="rBruto" step="0.01" required></label>
+          <label>Productiekosten (€)<input type="number" id="rProductie" step="0.01" value="0"></label>
+          <label>Status
+            <select id="rStatus">
+              <option value="bevestigd">Bevestigd</option>
+              <option value="concept">Concept</option>
+              <option value="geannuleerd">Geannuleerd</option>
+            </select>
+          </label>
+        </div>
+        <h3 style="font-size:13px;font-weight:700;margin:16px 0 6px">Extra's</h3>
+        <div class="extras-list" id="extrasList"></div>
+        <button type="button" class="btn btn-secondary" id="addExtraBtn" style="margin-bottom:6px">+ Extra toevoegen</button>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelReservationBtn">Annuleren</button>
+          <button type="submit" class="btn btn-primary">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Modal: advertentiekosten toevoegen ── -->
+  <div class="modal-backdrop" id="adCostModalBackdrop">
+    <div class="modal">
+      <h2>Advertentiekosten toevoegen</h2>
+      <form id="adCostForm">
+        <div class="form-grid">
+          <label>Maand<input type="month" id="acPeriode" required></label>
+          <label>Bron
+            <select id="acBron">
+              <option value="handmatig">Handmatig</option>
+              <option value="meta">Meta Ads</option>
+              <option value="google">Google Ads</option>
+            </select>
+          </label>
+          <label>Bedrag (€)<input type="number" id="acBedrag" step="0.01" required></label>
+          <label>Notities<input type="text" id="acNotities"></label>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelAdCostBtn">Annuleren</button>
+          <button type="submit" class="btn btn-primary">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Modal: CSV import ───────────────────── -->
+  <div class="modal-backdrop" id="csvModalBackdrop">
+    <div class="modal" style="max-width:640px">
+      <h2>CSV importeren</h2>
+      <p class="sub">Upload een export uit Calendly (of een ander systeem) en koppel de kolommen.</p>
+      <div class="csv-steps">
+        <div class="csv-step active" id="csvStep1Label">1. Bestand kiezen</div>
+        <div class="csv-step" id="csvStep2Label">2. Kolommen koppelen</div>
+        <div class="csv-step" id="csvStep3Label">3. Bevestigen</div>
+      </div>
+      <div id="csvStep1">
+        <div class="dropzone" id="csvDropzone">Klik om een CSV-bestand te kiezen</div>
+        <input type="file" id="csvFileInput" accept=".csv" style="display:none">
+      </div>
+      <div id="csvStep2" style="display:none">
+        <div id="csvMappingRows"></div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="csvBackBtn">Terug</button>
+          <button type="button" class="btn btn-primary" id="csvNextBtn">Volgende</button>
+        </div>
+      </div>
+      <div id="csvStep3" style="display:none">
+        <p class="sub" id="csvSummary"></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="csvCancelBtn">Annuleren</button>
+          <button type="button" class="btn btn-primary" id="csvImportConfirmBtn">Importeren</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

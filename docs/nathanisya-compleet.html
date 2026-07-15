@@ -44,6 +44,14 @@
     .calc-b{padding:12px 14px}.calc-r{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border);font-size:11px}
     .calc-t{display:flex;justify-content:space-between;padding-top:10px;margin-top:6px;border-top:2px solid var(--brand);font-weight:800;font-size:14px}
     .calc-t span:last-child{color:var(--green)}
+    .calc-r.sub{padding-left:12px;color:var(--muted);font-size:10pt;font-style:italic}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .sum3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+    .sbox{border:2px solid var(--border);border-radius:var(--r);padding:14px;text-align:center}
+    .sbox.on{border-color:var(--green);background:#ecfdf5}
+    .sbox .l{font-size:9px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+    .sbox .v{font-size:24px;font-weight:800;color:var(--brand)}
+    .sbox.on .v{color:var(--green)}
     .sign{border:2px dashed var(--border);border-radius:var(--r);padding:16px;margin-top:20px}
     .sign h4{font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
     .line{border-bottom:1px solid var(--border);height:28px;margin-bottom:6px}
@@ -228,28 +236,112 @@
 <section class="page">
   <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 6 — Berekening</span></div>
   <div class="part">Deel 6</div>
-  <h2>Rekenvoorbeelden per maand</h2>
-  <div class="calc"><div class="calc-h">Rustige maand — 12 klanten</div><div class="calc-b">
-    <div class="calc-r"><span>10× Foto Growth (16%)</span><span>€560</span></div>
-    <div class="calc-r"><span>2× Foto Authority</span><span>€208</span></div>
-    <div class="calc-r"><span>1× Podcast Growth (28% netto)</span><span>€280</span></div>
-    <div class="calc-r"><span>Extras</span><span>€128</span></div>
-    <div class="calc-t"><span>Jij ontvangt (minimum)</span><span>€2.400</span></div>
-  </div></div>
-  <div class="calc"><div class="calc-h">Gemiddelde maand — 22 klanten</div><div class="calc-b">
-    <div class="calc-r"><span>18× Fotostudio (gem. 16%)</span><span>€1.094</span></div>
-    <div class="calc-r"><span>3× Podcast Growth + 1× Authority</span><span>€1.344</span></div>
-    <div class="calc-r"><span>2× Influencer Growth (32% netto)</span><span>€1.088</span></div>
-    <div class="calc-r"><span>Extras + bonus (+€300)</span><span>€545</span></div>
-    <div class="calc-t"><span>Jij ontvangt</span><span>€4.071</span></div>
-  </div></div>
-  <div class="calc"><div class="calc-h">Goede maand — 30+ klanten</div><div class="calc-b">
-    <div class="calc-r"><span>25× Fotostudio</span><span>€1.520</span></div>
-    <div class="calc-r"><span>4× Podcast Growth + 2× Authority</span><span>€2.128</span></div>
-    <div class="calc-r"><span>3× Influencer</span><span>€1.632</span></div>
-    <div class="calc-r"><span>Extras + bonus (+€500)</span><span>€920</span></div>
-    <div class="calc-t"><span>Jij ontvangt</span><span>€6.200</span></div>
-  </div></div>
+  <h2>Rekenregels & formules</h2>
+  <div class="formula">
+    <strong>FOTOSTUDIO</strong><br>
+    Commissie pakket = Prijs × 16% · Commissie extra = Prijs × 30%
+  </div>
+  <div class="formula">
+    <strong>PODCAST</strong><br>
+    Netto = Pakketprijs − Editing · Commissie = Netto × 28% · Extra short = €25 × 35% = €8,75
+  </div>
+  <div class="formula">
+    <strong>INFLUENCER</strong><br>
+    Netto = Pakketprijs − Productie · Commissie = Netto × 32%
+  </div>
+  <div class="formula">
+    <strong>MAANDTOTAAL</strong><br>
+    UITBETALING = MAX(Σ commissies + volume-bonus, €2.400 minimum)
+  </div>
+  <h3>Fotostudio — per pakket</h3>
+  <table>
+    <thead><tr><th>Pakket</th><th>Prijs</th><th>Berekening</th><th>Commissie</th></tr></thead>
+    <tbody>
+      <tr><td>Starter · 2 uur</td><td>€200</td><td>€200 × 16%</td><td class="money">€32</td></tr>
+      <tr><td>Growth · 4 uur</td><td>€350</td><td>€350 × 16%</td><td class="money">€56</td></tr>
+      <tr><td>Authority · 10 uur</td><td>€650</td><td>€650 × 16%</td><td class="money">€104</td></tr>
+    </tbody>
+  </table>
+  <div class="calc">
+    <div class="calc-h">Voorbeeld klant: Growth + visagie + fotograaf</div>
+    <div class="calc-b">
+      <div class="calc-r"><span>Pakket Growth</span><span>€350 × 16% = €56</span></div>
+      <div class="calc-r"><span>Visagie</span><span>€150 × 30% = €45</span></div>
+      <div class="calc-r"><span>Fotograaf</span><span>€300 × 30% = €90</span></div>
+      <div class="calc-t"><span>Totaal deze klant</span><span>€191</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Deel 6 — Berekening</span></div>
+  <h2>Podcast & influencer — uitgerekend</h2>
+  <div class="grid2">
+    <div class="calc">
+      <div class="calc-h">Podcast Growth €1.900</div>
+      <div class="calc-b">
+        <div class="calc-r"><span>Prijs</span><span>€1.900</span></div>
+        <div class="calc-r"><span>− Editing</span><span>€900</span></div>
+        <div class="calc-r"><span>= Netto × 28%</span><span>€280</span></div>
+      </div>
+    </div>
+    <div class="calc">
+      <div class="calc-h">Podcast Authority €3.600</div>
+      <div class="calc-b">
+        <div class="calc-r"><span>Prijs</span><span>€3.600</span></div>
+        <div class="calc-r"><span>− Editing</span><span>€1.800</span></div>
+        <div class="calc-r"><span>= Netto × 28%</span><span>€504</span></div>
+      </div>
+    </div>
+  </div>
+  <table>
+    <thead><tr><th>Influencer</th><th>Prijs</th><th>− Productie</th><th>Netto</th><th>× 32%</th></tr></thead>
+    <tbody>
+      <tr><td>Starter</td><td>€1.500</td><td>€500</td><td>€1.000</td><td class="money">€320</td></tr>
+      <tr><td>Growth</td><td>€2.500</td><td>€800</td><td>€1.700</td><td class="money">€544</td></tr>
+      <tr><td>Authority</td><td>€4.000</td><td>€1.200</td><td>€2.800</td><td class="money">€896</td></tr>
+    </tbody>
+  </table>
+  <h3>Maandscenario's — volledig uitgerekend</h3>
+  <div class="calc">
+    <div class="calc-h">Rustige maand — 12 klanten</div>
+    <div class="calc-b">
+      <div class="calc-r"><span>10× Foto Growth · €56/st</span><span>€560</span></div>
+      <div class="calc-r"><span>2× Foto Authority · €104/st</span><span>€208</span></div>
+      <div class="calc-r"><span>1× Podcast Growth</span><span>€280</span></div>
+      <div class="calc-r"><span>Extras</span><span>€128</span></div>
+      <div class="calc-r sub">Subtotaal €1.176 &lt; minimum → minimum geldt</div>
+      <div class="calc-t"><span>UITBETALING</span><span>€2.400</span></div>
+    </div>
+  </div>
+  <div class="calc">
+    <div class="calc-h">Gemiddelde maand — 22 klanten</div>
+    <div class="calc-b">
+      <div class="calc-r"><span>18× Fotostudio</span><span>€1.094</span></div>
+      <div class="calc-r"><span>3× Podcast Growth + 1× Authority</span><span>€1.344</span></div>
+      <div class="calc-r"><span>2× Influencer Growth</span><span>€1.088</span></div>
+      <div class="calc-r"><span>Extras + volume-bonus (+€300)</span><span>€545</span></div>
+      <div class="calc-r sub">Totaal: €3.771 + €300 = €4.071</div>
+      <div class="calc-t"><span>UITBETALING</span><span>€4.071</span></div>
+    </div>
+  </div>
+  <div class="calc">
+    <div class="calc-h">Goede maand — 30+ klanten</div>
+    <div class="calc-b">
+      <div class="calc-r"><span>25× Fotostudio</span><span>€1.520</span></div>
+      <div class="calc-r"><span>4× Podcast Growth + 2× Authority</span><span>€2.128</span></div>
+      <div class="calc-r"><span>3× Influencer</span><span>€1.632</span></div>
+      <div class="calc-r"><span>Extras + volume-bonus (+€500)</span><span>€920</span></div>
+      <div class="calc-r sub">Totaal: €5.700 + €500 = €6.200</div>
+      <div class="calc-t"><span>UITBETALING</span><span>€6.200</span></div>
+    </div>
+  </div>
+  <div class="sum3">
+    <div class="sbox"><div class="l">Rustig</div><div class="v">€2.400</div></div>
+    <div class="sbox"><div class="l">Gemiddeld</div><div class="v">€4.071</div></div>
+    <div class="sbox on"><div class="l">Goed</div><div class="v">€6.200</div></div>
+  </div>
+  <div class="callout">Jaarindicatie bij gemiddelde maanden: <strong class="money">€4.071 × 12 = ± €48.852 bruto per jaar</strong></div>
 </section>
 
 <!-- 7 SCRIPTS -->
