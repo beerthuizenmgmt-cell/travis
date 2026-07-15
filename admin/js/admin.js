@@ -33,7 +33,7 @@ onAuthChange(async (session) => {
     return;
   }
   if (!session) {
-    redirectToPortal(`${PORTALS.LOGIN}?next=${encodeURIComponent('/admin/')}`);
+    redirectToPortal(PORTALS.CRM);
     return;
   }
   try {

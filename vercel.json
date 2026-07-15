@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/crm", "destination": "/crm/index.html" },
+    { "source": "/crm/invoer", "destination": "/crm/invoer/index.html" },
+    { "source": "/login", "destination": "/crm/index.html" },
+    { "source": "/admin", "destination": "/admin/index.html" }
+  ]
+}

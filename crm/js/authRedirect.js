@@ -5,7 +5,7 @@ export const PORTALS = {
   CRM: '/crm/',
   INVOER: '/crm/invoer/',
   MARKETING: '/admin/',
-  LOGIN: '/login/',
+  LOGIN: '/crm/',
 };
 
 /** Bepaal welk portaal bij profiel + permissies hoort. */
