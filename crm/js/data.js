@@ -104,10 +104,10 @@ export async function fetchInstellingen() {
   return data;
 }
 
-export async function saveInstellingen(id, minimumGarantie, bonusTiers) {
+export async function saveInstellingen(id, fields) {
   const { error } = await supabase
     .from('instellingen')
-    .update({ minimum_garantie: minimumGarantie, bonus_tiers: bonusTiers, updated_at: new Date().toISOString() })
+    .update({ ...fields, updated_at: new Date().toISOString() })
     .eq('id', id);
   if (error) throw error;
 }

@@ -104,6 +104,15 @@
             <div class="card-header"><h2>Omzet per dienst</h2></div>
             <div class="dienst-grid" id="dashboardDiensten"></div>
           </div>
+          <div class="card table-card" style="margin-bottom:20px">
+            <div class="card-header"><h2>Winst per dienst</h2><span class="text-muted" style="font-size:13px">Deze maand · omzet − productie − advertenties</span></div>
+            <div class="table-wrap">
+              <table class="winst-table">
+                <thead><tr><th>Dienst</th><th class="num">Boekingen</th><th class="num">Bruto omzet</th><th class="num">Productie</th><th class="num">Ads</th><th class="num">Winst</th><th class="num">Winst %</th><th>Trend</th></tr></thead>
+                <tbody id="dashboardDienstWinstBody"></tbody>
+              </table>
+            </div>
+          </div>
           <div class="card" id="dashboardMetaCard" style="margin-bottom:20px">
             <div class="card-header"><h2>Meta Ads</h2><a href="#advertentiekosten" class="nav-link" data-page="advertentiekosten" style="color:var(--brand);font-weight:600;font-size:13px">Instellingen →</a></div>
             <div id="dashboardMetaAds" class="meta-dash-body"></div>
@@ -221,16 +230,29 @@
           <div class="page-header">
             <div>
               <h1>Maandoverzicht</h1>
-              <p>Omzet en kosten per maand, uitgesplitst per dienst en pakket.</p>
+              <p>Omzet, kosten en winst per dienst en pakket — plus BTW-export voor de Belastingdienst.</p>
             </div>
-            <input type="month" class="input-sm" id="overviewMonthPicker">
+            <div class="page-header-actions">
+              <button type="button" class="btn btn-secondary" id="btwExportBtn">↓ BTW-aangifte export</button>
+              <input type="month" class="input-sm" id="overviewMonthPicker">
+            </div>
           </div>
           <div class="kpi-grid" id="overviewKpis"></div>
+          <div class="callout warn-callout" id="overviewAdWarning" style="display:none;margin-bottom:16px"></div>
+          <div class="card table-card" style="margin-bottom:20px">
+            <div class="card-header"><h2>Winst per dienst</h2></div>
+            <div class="table-wrap">
+              <table class="winst-table">
+                <thead><tr><th>Dienst</th><th class="num">Boekingen</th><th class="num">Bruto omzet</th><th class="num">Productie</th><th class="num">Ads</th><th class="num">Winst</th><th class="num">Winst %</th><th></th></tr></thead>
+                <tbody id="overviewDienstBody"></tbody>
+              </table>
+            </div>
+          </div>
           <div class="card table-card">
-            <div class="card-header"><h2>Omzet per pakket deze maand</h2></div>
+            <div class="card-header"><h2>Omzet per pakket</h2><span class="text-muted" style="font-size:13px">Marge % = vóór advertentiekosten</span></div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>Dienst</th><th>Pakket</th><th>Aantal</th><th>Bruto omzet</th><th>Productiekosten</th><th>Netto</th></tr></thead>
+                <thead><tr><th>Dienst</th><th>Pakket</th><th class="num">Aantal</th><th class="num">Bruto omzet</th><th class="num">Productiekosten</th><th class="num">Marge %</th><th class="num">Marge (netto)</th></tr></thead>
                 <tbody id="overviewBreakdownBody"></tbody>
               </table>
             </div>
@@ -305,8 +327,24 @@
           <div class="page-header">
             <div>
               <h1>Instellingen</h1>
-              <p>Standaard productiekosten per pakket — telt mee in je winstberekening.</p>
+              <p>Bedrijfsgegevens voor BTW-export en standaard productiekosten per pakket.</p>
             </div>
+          </div>
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-header"><h2>Bedrijfsgegevens &amp; BTW</h2></div>
+            <p class="text-muted" style="margin-bottom:14px">Deze gegevens verschijnen op je BTW-export voor de Belastingdienst. Controleer of je prijzen in reserveringen inclusief of exclusief BTW zijn.</p>
+            <form id="bedrijfForm" class="form-grid">
+              <label>Bedrijfsnaam<input type="text" id="bedrijfsnaam" placeholder="Beerthuizen Management"></label>
+              <label>KVK-nummer<input type="text" id="kvkNummer" placeholder="12345678"></label>
+              <label>BTW-identificatienummer<input type="text" id="btwNummer" placeholder="NL123456789B01"></label>
+              <label>BTW-tarief omzet (%)
+                <input type="number" id="btwTarief" value="21" min="0" max="100" step="0.01">
+              </label>
+              <label class="checkbox-label"><input type="checkbox" id="prijzenInclBtw" checked> Reserveringsprijzen zijn inclusief BTW</label>
+              <label class="checkbox-label"><input type="checkbox" id="kostenInclBtw"> Kosten (productie/ads) zijn inclusief BTW</label>
+              <label class="checkbox-label"><input type="checkbox" id="kostenBtwHerleidbaar" checked> BTW op kosten is aftrekbaar (voorbelasting)</label>
+              <div style="grid-column:1/-1"><button type="submit" class="btn btn-primary">Bedrijfsgegevens opslaan</button></div>
+            </form>
           </div>
           <div class="card">
             <div class="card-header"><h2>Standaard productiekosten per pakket</h2></div>
@@ -420,6 +458,37 @@
           <button type="submit" class="btn btn-primary">Opslaan</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ── Modal: BTW export ─────────────────── -->
+  <div class="modal-backdrop" id="btwExportModal">
+    <div class="modal">
+      <button type="button" class="modal-close" aria-label="Sluiten">✕</button>
+      <h2>BTW-aangifte export</h2>
+      <p class="sub">Download een compleet overzicht voor de Belastingdienst: BTW-rubrieken, omzet specificatie, kosten en winst per dienst. Je krijgt een HTML-rapport (printbaar als PDF) en een CSV voor Excel.</p>
+      <div class="btw-periode-type">
+        <label class="radio-card"><input type="radio" name="btwPeriodeType" value="kwartaal" checked> Kwartaal <span class="text-muted">(aanbevolen voor aangifte)</span></label>
+        <label class="radio-card"><input type="radio" name="btwPeriodeType" value="maand"> Enkele maand</label>
+      </div>
+      <div class="form-grid" id="btwKwartaalFields">
+        <label>Jaar<input type="number" id="btwExportJaar" min="2020" max="2099"></label>
+        <label>Kwartaal
+          <select id="btwExportKwartaal">
+            <option value="1">Q1 (jan–mrt)</option>
+            <option value="2">Q2 (apr–jun)</option>
+            <option value="3">Q3 (jul–sep)</option>
+            <option value="4">Q4 (okt–dec)</option>
+          </select>
+        </label>
+      </div>
+      <div id="btwMaandFields" style="display:none">
+        <label>Maand<input type="month" id="btwExportMaand"></label>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="btwExportCancelBtn">Annuleren</button>
+        <button type="button" class="btn btn-primary" id="btwExportConfirmBtn">↓ Download HTML + CSV</button>
+      </div>
     </div>
   </div>
 

@@ -80,6 +80,36 @@ export function maandBereik(maandStr) {
   return { start: start.toISOString().slice(0, 10), eind: eind.toISOString().slice(0, 10) };
 }
 
+export function kwartaalBereik(jaar, kwartaal) {
+  const q = Number(kwartaal);
+  const j = Number(jaar);
+  const startMonth = (q - 1) * 3;
+  const start = new Date(Date.UTC(j, startMonth, 1));
+  const eind = new Date(Date.UTC(j, startMonth + 3, 1));
+  return { start: start.toISOString().slice(0, 10), eind: eind.toISOString().slice(0, 10) };
+}
+
+export function kwartaalLabel(jaar, kwartaal) {
+  return `Q${kwartaal} ${jaar}`;
+}
+
+export function maandLabel(maandStr) {
+  const [j, m] = maandStr.split('-').map(Number);
+  return new Intl.DateTimeFormat('nl-NL', { month: 'long', year: 'numeric' }).format(new Date(j, m - 1, 1));
+}
+
+export function huidigKwartaal() {
+  const d = new Date();
+  const q = Math.floor(d.getMonth() / 3) + 1;
+  return { jaar: d.getFullYear(), kwartaal: q };
+}
+
+export function periodeEindLabel(eindIso) {
+  const d = new Date(eindIso);
+  d.setUTCDate(d.getUTCDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
 export function toast(msg, isError = false) {
   const el = document.getElementById('toast');
   if (!el) return;

@@ -34,6 +34,50 @@ export function boekingenPerDienst(reservations) {
   return totals;
 }
 
+export function productieKostenPerDienst(reservations) {
+  const totals = { foto: 0, podcast: 0, influencer: 0 };
+  for (const r of reservations.filter((x) => x.status === 'bevestigd')) {
+    if (totals[r.dienst] !== undefined) totals[r.dienst] += Number(r.productie_kosten || 0);
+  }
+  return totals;
+}
+
+export function ongekoppeldeAdSpend(adkosten) {
+  return (adkosten || []).reduce((sum, a) => {
+    if (a.dienst && totalsKey(a.dienst)) return sum;
+    return sum + Number(a.bedrag || 0);
+  }, 0);
+}
+
+function totalsKey(dienst) {
+  return ['foto', 'podcast', 'influencer'].includes(dienst);
+}
+
+export function winstPerDienst(reservations, adkosten) {
+  const omzet = omzetPerDienst(reservations);
+  const productie = productieKostenPerDienst(reservations);
+  const spend = adSpendPerDienst(adkosten);
+  const boekingen = boekingenPerDienst(reservations);
+
+  return ['foto', 'podcast', 'influencer'].map((d) => {
+    const brutoOmzet = omzet[d] || 0;
+    const productieKosten = productie[d] || 0;
+    const advertentieKosten = spend[d] || 0;
+    const winst = brutoOmzet - productieKosten - advertentieKosten;
+    const winstPercentage = brutoOmzet > 0 ? (winst / brutoOmzet) * 100 : null;
+    return {
+      dienst: d,
+      label: DIENST_LABELS[d],
+      boekingen: boekingen[d] || 0,
+      brutoOmzet,
+      productieKosten,
+      advertentieKosten,
+      winst,
+      winstPercentage,
+    };
+  });
+}
+
 export function adSpendPerDienst(adkosten) {
   const totals = { foto: 0, podcast: 0, influencer: 0, overig: 0 };
   for (const a of adkosten || []) {

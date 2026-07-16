@@ -1,5 +1,6 @@
 import {
   fetchProductieKostenRegels, createProductieKostenRegel, updateProductieKostenRegel, deleteProductieKostenRegel,
+  fetchInstellingen, saveInstellingen,
 } from './data.js';
 import { toast } from './utils.js';
 
@@ -19,7 +20,46 @@ async function renderProductieKostenRegels() {
     : '<tr><td colspan="4" class="text-muted">Nog geen standaardbedragen ingesteld.</td></tr>';
 }
 
+async function renderBedrijfsgegevens() {
+  const inst = await fetchInstellingen();
+  if (!inst) return;
+
+  document.getElementById('bedrijfsnaam').value = inst.bedrijfsnaam || '';
+  document.getElementById('kvkNummer').value = inst.kvk_nummer || '';
+  document.getElementById('btwNummer').value = inst.btw_nummer || '';
+  document.getElementById('btwTarief').value = inst.btw_tarief ?? 21;
+  document.getElementById('prijzenInclBtw').checked = inst.prijzen_incl_btw !== false;
+  document.getElementById('kostenInclBtw').checked = Boolean(inst.kosten_incl_btw);
+  document.getElementById('kostenBtwHerleidbaar').checked = inst.kosten_btw_herleidbaar !== false;
+
+  const form = document.getElementById('bedrijfForm');
+  form.dataset.instellingenId = inst.id;
+}
+
 export function initInstellingenPage() {
+  document.getElementById('bedrijfForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = e.target.dataset.instellingenId;
+    if (!id) {
+      toast('Instellingen konden niet worden geladen.', true);
+      return;
+    }
+    try {
+      await saveInstellingen(id, {
+        bedrijfsnaam: document.getElementById('bedrijfsnaam').value.trim() || 'Beerthuizen Management',
+        kvk_nummer: document.getElementById('kvkNummer').value.trim() || null,
+        btw_nummer: document.getElementById('btwNummer').value.trim() || null,
+        btw_tarief: Number(document.getElementById('btwTarief').value || 21),
+        prijzen_incl_btw: document.getElementById('prijzenInclBtw').checked,
+        kosten_incl_btw: document.getElementById('kostenInclBtw').checked,
+        kosten_btw_herleidbaar: document.getElementById('kostenBtwHerleidbaar').checked,
+      });
+      toast('Bedrijfsgegevens opgeslagen.');
+    } catch (err) {
+      toast(`Opslaan mislukt: ${err.message}`, true);
+    }
+  });
+
   document.getElementById('addProductieRegelBtn')?.addEventListener('click', async () => {
     const dienst = document.getElementById('newProductieDienst').value;
     const pakket = document.getElementById('newProductiePakket').value.trim();
@@ -63,5 +103,5 @@ export function initInstellingenPage() {
 }
 
 export async function renderInstellingen() {
-  await renderProductieKostenRegels();
+  await Promise.all([renderProductieKostenRegels(), renderBedrijfsgegevens()]);
 }

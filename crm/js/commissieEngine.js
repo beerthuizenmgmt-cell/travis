@@ -100,5 +100,8 @@ export function groepeerPerPakket(reservations) {
     g.productieKosten += Number(r.productie_kosten || 0);
     g.netto += nettoVoorReservering(r);
   }
-  return [...groepen.values()];
+  return [...groepen.values()].map((g) => ({
+    ...g,
+    winstPercentage: g.brutoOmzet > 0 ? (g.netto / g.brutoOmzet) * 100 : null,
+  }));
 }

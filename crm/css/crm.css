@@ -606,6 +606,26 @@ body.modal-open { overflow: hidden; }
 .dienst-badge.dienst-podcast { background: #ede9fe; color: #7c3aed; }
 .dienst-badge.dienst-influencer { background: var(--green-bg); color: var(--green); }
 
+.winst-table td.num, .winst-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.winst-table td.money { color: var(--green); font-weight: 700; }
+.winst-table td.warn { color: var(--amber); }
+.dienst-trend { font-size: 11px; font-weight: 600; }
+.dienst-trend.up { color: var(--green); }
+.dienst-trend.down { color: var(--red); }
+.warn-callout { background: var(--amber-bg); border-color: var(--amber); color: #92400e; }
+
+.checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.checkbox-label input { width: auto; }
+
+.btw-periode-type { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+.radio-card {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1px solid var(--gray-200); border-radius: var(--radius);
+  cursor: pointer; font-size: 14px;
+}
+.radio-card:has(input:checked) { border-color: var(--brand); background: var(--brand-light); }
+.radio-card input { width: auto; }
+
 .meta-dash-body { padding: 4px 4px 8px; font-size: 13px; }
 .meta-dash-connected, .meta-dash-empty { display: flex; flex-direction: column; gap: 10px; }
 .meta-dash-stats { display: flex; flex-wrap: wrap; gap: 16px; color: var(--gray-600); }

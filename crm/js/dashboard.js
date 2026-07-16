@@ -5,7 +5,7 @@ import {
 import { berekenWinst, brutoOmzetVoorReservering, nettoVoorReservering } from './commissieEngine.js';
 import {
   dashboardSnapshot, trendPct, formatTrend, begroeting,
-  DIENST_LABELS,
+  DIENST_LABELS, winstPerDienst,
 } from './statsEngine.js';
 import { fetchMetaStatus } from './metaAds.js';
 import { formatEuro, formatDatum, huidigeMaand, maandBereik } from './utils.js';
@@ -137,6 +137,31 @@ export async function renderDashboard() {
           <span class="dienst-roas">ROAS ${roasLabel(roas)}</span>
         </div>
       </article>`;
+    }).join('');
+  }
+
+  const dienstWinstEl = document.getElementById('dashboardDienstWinstBody');
+  if (dienstWinstEl) {
+    const dienstRows = winstPerDienst(dezeMaandData.reservations, dezeMaandData.adkosten);
+    const vorigRows = winstPerDienst(vorigeMaandData.reservations, vorigeMaandData.adkosten);
+    const vorigMap = new Map(vorigRows.map((r) => [r.dienst, r]));
+
+    dienstWinstEl.innerHTML = dienstRows.map((d) => {
+      const vorig = vorigMap.get(d.dienst);
+      const pctLabel = d.winstPercentage !== null ? `${d.winstPercentage.toFixed(1)}%` : '—';
+      const trend = vorig && (vorig.brutoOmzet || d.brutoOmzet)
+        ? formatTrend(trendPct(d.winst, vorig.winst))
+        : { cls: '', text: '' };
+      return `<tr>
+        <td><span class="dienst-badge dienst-${d.dienst}">${d.label}</span></td>
+        <td class="num">${d.boekingen}</td>
+        <td class="num">${formatEuro(d.brutoOmzet)}</td>
+        <td class="num warn">${formatEuro(d.productieKosten)}</td>
+        <td class="num">${formatEuro(d.advertentieKosten)}</td>
+        <td class="num ${d.winst >= 0 ? 'money' : 'warn'}">${formatEuro(d.winst)}</td>
+        <td class="num">${pctLabel}</td>
+        <td><span class="kpi-trend ${trend.cls}">${trend.text}</span></td>
+      </tr>`;
     }).join('');
   }
 
