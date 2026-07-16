@@ -375,3 +375,12 @@ export async function deleteAdvertentiekosten(id) {
   const { error } = await supabase.from('advertentiekosten').delete().eq('id', id);
   if (error) throw error;
 }
+
+export async function fetchMetaCampaignsLocal() {
+  const { data, error } = await supabase
+    .from('meta_campaigns')
+    .select('campaign_id, campaign_name, dienst, status')
+    .order('campaign_name');
+  if (error) throw error;
+  return data || [];
+}

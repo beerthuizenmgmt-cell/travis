@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "crm-dev",
+      "runtimeExecutable": "/Users/davinioenriqueo/Projects/travis/.tools/bin/node",
+      "runtimeArgs": ["/Users/davinioenriqueo/Projects/travis/node_modules/vite/bin/vite.js"],
+      "port": 5173,
+      "autoPort": true
+    }
+  ]
+}

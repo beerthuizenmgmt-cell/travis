@@ -91,11 +91,23 @@
         <section class="page active" id="page-dashboard">
           <div class="page-header">
             <div>
-              <h1>Dashboard</h1>
-              <p>Overzicht van deze maand — omzet, kosten en winst.</p>
+              <h1 id="dashboardGreeting">Dashboard</h1>
+              <p id="dashboardSub">Overzicht van deze maand — omzet, kosten en winst.</p>
+            </div>
+            <div class="page-header-actions">
+              <button type="button" class="btn btn-secondary" id="dashAddClient">+ Klant</button>
+              <button type="button" class="btn btn-primary" id="dashAddReservation">+ Reservering</button>
             </div>
           </div>
           <div class="kpi-grid" id="dashboardKpis"></div>
+          <div class="card" id="dashboardDienstenCard" style="margin-bottom:20px">
+            <div class="card-header"><h2>Omzet per dienst</h2></div>
+            <div class="dienst-grid" id="dashboardDiensten"></div>
+          </div>
+          <div class="card" id="dashboardMetaCard" style="margin-bottom:20px">
+            <div class="card-header"><h2>Meta Ads</h2><a href="#advertentiekosten" class="nav-link" data-page="advertentiekosten" style="color:var(--brand);font-weight:600;font-size:13px">Instellingen →</a></div>
+            <div id="dashboardMetaAds" class="meta-dash-body"></div>
+          </div>
           <div class="card" id="dashboardPipelineCard" style="display:none;margin-bottom:20px">
             <div class="card-header"><h2>Klanten-pipeline</h2><a href="#klanten" class="nav-link" data-page="klanten" style="color:var(--brand);font-weight:600;font-size:13px">Naar klanten →</a></div>
             <div class="pipeline-stats" id="dashboardPipeline"></div>
@@ -231,19 +243,35 @@
           <div class="page-header">
             <div>
               <h1>Advertentiekosten</h1>
-              <p>Handmatige invoer per maand. Live koppeling met Meta/Google Ads volgt zodra je daar API-toegang voor hebt.</p>
+              <p>Koppel Meta Ads voor automatische spend-sync, of voer kosten handmatig in.</p>
             </div>
             <button class="btn btn-primary" id="addAdCostBtn">+ Kosten toevoegen</button>
           </div>
+          <div class="card" id="metaIntegrationCard" style="margin-bottom:20px">
+            <div class="card-header"><h2>Meta Ads Manager</h2></div>
+            <div class="meta-integration-body">
+              <div class="meta-status-row" id="metaStatus"></div>
+              <div class="meta-actions-row" id="metaActions"></div>
+            </div>
+          </div>
+          <div class="card table-card" id="metaCampaignsCard" style="display:none;margin-bottom:20px">
+            <div class="card-header"><h2>Campagnes koppelen aan dienst</h2></div>
+            <p class="text-muted" style="padding:0 20px 12px">Kies per campagne welke dienst (foto, podcast, influencer) — zo berekent je dashboard ROAS per dienst.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Campagne</th><th>Status</th><th>Dienst</th></tr></thead>
+                <tbody id="metaCampaignsBody"></tbody>
+              </table>
+            </div>
+          </div>
           <div class="integrations-grid">
-            <article class="integration-card"><span class="int-logo">Meta Ads</span><span class="int-status">Binnenkort — nog geen API-toegang</span></article>
-            <article class="integration-card"><span class="int-logo">Google Ads</span><span class="int-status">Binnenkort — nog geen API-toegang</span></article>
+            <article class="integration-card"><span class="int-logo">Google Ads</span><span class="int-status">Binnenkort</span></article>
           </div>
           <div class="card table-card">
             <div class="card-header"><h2>Ingevoerde advertentiekosten</h2></div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>Maand</th><th>Bron</th><th>Bedrag</th><th>Notities</th><th></th></tr></thead>
+                <thead><tr><th>Maand</th><th>Bron</th><th>Dienst</th><th>Bedrag</th><th>Notities</th><th></th></tr></thead>
                 <tbody id="adCostsBody"></tbody>
               </table>
             </div>
@@ -377,6 +405,14 @@
             </select>
           </label>
           <label>Bedrag (€)<input type="number" id="acBedrag" step="0.01" required></label>
+          <label>Dienst (optioneel)
+            <select id="acDienst">
+              <option value="">— geen —</option>
+              <option value="foto">Fotostudio</option>
+              <option value="podcast">Podcast</option>
+              <option value="influencer">Influencer</option>
+            </select>
+          </label>
           <label>Notities<input type="text" id="acNotities"></label>
         </div>
         <div class="form-actions">

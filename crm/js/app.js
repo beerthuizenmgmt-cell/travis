@@ -6,7 +6,7 @@ import {
   loadUserPermissions, applySidebarPermissions, firstAllowedPage, can, PAGE_PERMISSIONS,
 } from './permissions.js';
 import { resolvePortal, redirectToPortal, PORTALS } from './authRedirect.js';
-import { renderDashboard } from './dashboard.js';
+import { renderDashboard, initDashboardPage } from './dashboard.js';
 import { initReserveringenPage, renderReserveringen, updateNewCountBadges } from './reserveringen.js';
 import { initKlantenPage, renderKlanten } from './klanten.js';
 import { initCsvImport } from './csvImport.js';
@@ -224,6 +224,7 @@ onAuthChange(async (session) => {
 
 initReserveringenPage();
 initKlantenPage();
+initDashboardPage();
 initCsvImport();
 initMaandoverzichtPage();
 initAdvertentiekostenPage();

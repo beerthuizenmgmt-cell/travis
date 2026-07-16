@@ -571,6 +571,53 @@ body.modal-open { overflow: hidden; }
 .integration-card { background: var(--white); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; border: 2px solid transparent; }
 .int-logo { font-size: 15px; font-weight: 700; }
 .int-status { font-size: 12px; color: var(--amber); font-weight: 600; }
+.int-status.connected { color: var(--green); }
+.int-status.warn { color: var(--amber); }
+
+.kpi-trend { font-size: 11px; font-weight: 600; margin-top: 6px; }
+.kpi-trend.up { color: var(--green); }
+.kpi-trend.down { color: var(--red); }
+.kpi-trend.flat { color: var(--gray-600); }
+.kpi-sub { font-size: 11px; color: var(--gray-600); margin-top: 4px; }
+
+.dienst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 4px 4px 8px; }
+.dienst-card {
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--gray-100);
+}
+.dienst-card-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gray-600); margin-bottom: 6px; }
+.dienst-card-omzet { display: block; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.dienst-card-meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--gray-600); }
+.dienst-roas { font-weight: 700; color: var(--brand); }
+.dienst-card.dienst-foto { border-top: 3px solid #0048ff; }
+.dienst-card.dienst-podcast { border-top: 3px solid #7c3aed; }
+.dienst-card.dienst-influencer { border-top: 3px solid #059669; }
+
+.dienst-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.dienst-badge.dienst-foto { background: var(--brand-light); color: var(--brand); }
+.dienst-badge.dienst-podcast { background: #ede9fe; color: #7c3aed; }
+.dienst-badge.dienst-influencer { background: var(--green-bg); color: var(--green); }
+
+.meta-dash-body { padding: 4px 4px 8px; font-size: 13px; }
+.meta-dash-connected, .meta-dash-empty { display: flex; flex-direction: column; gap: 10px; }
+.meta-dash-stats { display: flex; flex-wrap: wrap; gap: 16px; color: var(--gray-600); }
+.meta-integration-body { display: flex; flex-direction: column; gap: 14px; padding: 4px 4px 8px; }
+.meta-status-row, .meta-actions-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.sync-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; background: var(--brand-light); color: var(--brand); padding: 2px 6px; border-radius: 4px; }
+.btn-sm { font-size: 12px; padding: 8px 14px; }
+
+@media (max-width: 900px) {
+  .dienst-grid { grid-template-columns: 1fr; }
+  .kpi-grid.cols-6 { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* ── CSV import stepper ──────────────────── */
 .csv-steps { display: flex; gap: 8px; margin-bottom: 20px; }
