@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoofdsponsor Voorstel — De Alliantie × Almere PoortRun 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0f;
+      --soft: #3d3d4a;
+      --muted: #6b6b7b;
+      --bg: #f4f7ff;
+      --border: #dce4f5;
+      --brand: #0048ff;
+      --brand-dark: #0036cc;
+      --green: #059669;
+      --green-bg: #ecfdf5;
+      --amber: #d97706;
+      --r: 10px;
+      --f: 'DM Sans', system-ui, sans-serif;
+      --fb: 'Montserrat', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 0; }
+    body { font-family: var(--f); color: var(--ink); background: #c8d4ef; font-size: 10pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc { max-width: 210mm; margin: 0 auto; background: #fff; }
+
+    /* Cover */
+    .cover {
+      min-height: 297mm;
+      padding: 0;
+      background: linear-gradient(145deg, var(--brand-dark) 0%, var(--brand) 45%, #1a5cff 100%);
+      color: #fff;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .cover-inner { padding: 48px 52px; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .cover img { max-width: 280px; margin-bottom: 48px; filter: brightness(0) invert(1); }
+    .cover .eyebrow { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; opacity: .7; margin-bottom: 12px; }
+    .cover h1 { font-family: var(--fb); font-size: 38px; font-weight: 800; font-style: italic; text-transform: uppercase; line-height: 1.05; margin-bottom: 16px; max-width: 520px; }
+    .cover .subtitle { font-size: 16px; opacity: .85; max-width: 460px; line-height: 1.6; margin-bottom: 40px; }
+    .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: auto; }
+    .cover-card { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: var(--r); padding: 18px 20px; backdrop-filter: blur(4px); }
+    .cover-card .label { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; opacity: .65; margin-bottom: 6px; }
+    .cover-card .value { font-size: 15px; font-weight: 700; }
+    .cover-card.highlight { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.35); }
+    .cover-card.highlight .value { font-size: 22px; }
+    .cover-partners { display: flex; align-items: center; gap: 20px; margin-top: 36px; }
+    .cover-partners img.alliantie { height: 28px; width: auto; }
+    .cover-partners .x { font-size: 18px; opacity: .5; font-weight: 300; }
+    .cover-contact { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); font-size: 10pt; line-height: 1.7; opacity: .85; }
+    .cover-contact strong { opacity: 1; }
+
+    /* Pages */
+    .page { padding: 0 48px 32px; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    .bar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--brand); margin: 0 -48px 28px; padding: 11px 48px;
+    }
+    .bar img { height: 20px; filter: brightness(0) invert(1); }
+    .bar span { font-size: 8px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+
+    .part { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); margin-bottom: 4px; }
+    h2 { font-family: var(--fb); font-size: 22px; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 8px; line-height: 1.15; }
+    .lead { color: var(--soft); margin-bottom: 20px; font-size: 11pt; max-width: 620px; }
+    h3 { font-size: 12pt; font-weight: 700; margin: 20px 0 8px; color: var(--ink); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0 22px; }
+    .stat { border: 2px solid var(--border); border-radius: var(--r); padding: 14px 12px; text-align: center; }
+    .stat .num { font-family: var(--fb); font-size: 26px; font-weight: 800; color: var(--brand); line-height: 1; margin-bottom: 4px; }
+    .stat .lbl { font-size: 8px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); line-height: 1.35; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 10pt; margin: 12px 0 18px; }
+    th { text-align: left; font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 9px 12px; background: var(--bg); border-bottom: 2px solid var(--border); }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--soft); vertical-align: top; }
+    td:first-child { font-weight: 600; color: var(--ink); }
+    tr:last-child td { border-bottom: none; }
+    .check { color: var(--green); font-weight: 700; }
+
+    .callout { background: var(--bg); border-left: 4px solid var(--brand); padding: 14px 18px; margin: 16px 0; font-size: 10.5pt; color: var(--soft); border-radius: 0 var(--r) var(--r) 0; }
+    .callout strong { color: var(--ink); }
+    .callout.green { background: var(--green-bg); border-color: var(--green); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+    .box { border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
+    .box h4 { font-size: 11pt; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .box p, .box li { font-size: 10pt; color: var(--soft); }
+    .box ul { padding-left: 16px; margin-top: 6px; }
+    .box ul li { margin-bottom: 4px; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+    .pill { background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 9pt; font-weight: 600; color: var(--soft); }
+
+    .package { border: 2px solid var(--brand); border-radius: var(--r); overflow: hidden; margin: 16px 0; }
+    .package-head { background: var(--brand); color: #fff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+    .package-head h3 { color: #fff; margin: 0; font-size: 14pt; }
+    .package-head .price { font-family: var(--fb); font-size: 24px; font-weight: 800; font-style: italic; }
+    .package-body { padding: 4px 0; }
+    .package-row { display: flex; gap: 12px; padding: 10px 18px; border-bottom: 1px solid var(--border); font-size: 10pt; color: var(--soft); align-items: flex-start; }
+    .package-row:last-child { border-bottom: none; }
+    .package-row .icon { width: 22px; height: 22px; background: var(--green-bg); color: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+    .package-row strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+    .timeline { margin: 14px 0; }
+    .timeline-item { display: grid; grid-template-columns: 90px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px dashed var(--border); }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-item .when { font-size: 9pt; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: .04em; }
+    .timeline-item .what { font-size: 10pt; color: var(--soft); }
+    .timeline-item .what strong { color: var(--ink); }
+
+    .quote { font-family: var(--fb); font-size: 15pt; font-weight: 800; font-style: italic; color: var(--brand); line-height: 1.35; margin: 20px 0; padding: 20px 24px; background: var(--bg); border-radius: var(--r); text-align: center; }
+
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+    .sign { border: 2px dashed var(--border); border-radius: var(--r); padding: 18px; }
+    .sign h4 { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 12px; }
+    .sign .line { border-bottom: 1px solid var(--border); height: 32px; margin-bottom: 8px; }
+    .sign .hint { font-size: 9pt; color: var(--muted); }
+
+    .foot { text-align: center; font-size: 9pt; color: var(--muted); margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+    .partners { display: flex; gap: 12px; margin: 16px 0; }
+    .partner { flex: 1; text-align: center; padding: 14px; background: var(--bg); border-radius: var(--r); border: 1px solid var(--border); }
+    .partner .name { font-weight: 700; font-size: 11pt; color: var(--ink); }
+    .partner .role { font-size: 8pt; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-top: 4px; }
+    .partner.featured { border-color: var(--brand); background: #e6eeff; }
+    .partner img { height: 22px; width: auto; margin-bottom: 6px; }
+    .partner.featured img { height: 26px; }
+
+    .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .contact-card .card { border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; background: var(--bg); }
+    .contact-card .card h4 { font-size: 9pt; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
+    .contact-card .card p { font-size: 10pt; color: var(--soft); line-height: 1.65; margin: 0; }
+    .contact-card .card img { height: 24px; margin-bottom: 10px; }
+    .contact-card .card img.beerthuizen { filter: none; }
+
+    @media print {
+      body { background: #fff; }
+      .doc { box-shadow: none; }
+      .page { padding: 0 44px 28px; }
+      .bar { margin: 0 -44px 24px; padding: 10px 44px; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-inner">
+      <div class="cover-partners">
+        <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Management" style="max-width:200px;filter:brightness(0) invert(1);margin-bottom:0">
+        <span class="x">×</span>
+        <img src="../assets/de-alliantie-logo.svg" alt="De Alliantie" class="alliantie" style="filter:brightness(0) invert(1)">
+      </div>
+      <div class="eyebrow">Strategisch partnerschapsvoorstel · Vertrouwelijk</div>
+      <h1>De Alliantie × Almere PoortRun 2026</h1>
+      <p class="subtitle">Hoofdsponsor-voorstel voor het grootste buurt- en hardloopevenement van Almere Poort — waar sport, verbinding en leefbaarheid samenkomen.</p>
+
+      <div class="cover-meta">
+        <div class="cover-card">
+          <div class="label">Datum evenement</div>
+          <div class="value">Zondag 6 september 2026</div>
+        </div>
+        <div class="cover-card">
+          <div class="label">Locatie</div>
+          <div class="value">Cascadepark · Het Klokhuis<br>Almere Poort</div>
+        </div>
+        <div class="cover-card">
+          <div class="label">Verwacht bereik</div>
+          <div class="value">3.000 – 4.000 bezoekers<br>± 2.200 hardlopers</div>
+        </div>
+        <div class="cover-card highlight">
+          <div class="label">Investering hoofdsponsor</div>
+          <div class="value">€ 15.000</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <strong>Beerthuizen Management B.V.</strong> · Europalaan 501, 1362 JV Almere Poort · KVK 99892332 · info@almerepoortrun.nl · Juli 2026
+    </div>
+  </section>
+
+  <!-- PAGE 1: Executive summary -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen">
+      <span>De Alliantie · Hoofdsponsor Voorstel</span>
+    </div>
+    <div class="part">01 · Samenvatting</div>
+    <h2>Waarom De Alliantie hier thuishoort</h2>
+    <p class="lead">De Almere PoortRun groeit explosief. Na een uitverkochte eerste editie in 2025 verwachten we dit jaar het dubbele aantal deelnemers — en een festivalterrein vol gezinnen, buurtbewoners en sportievelingen. Precies in de wijk waar De Alliantie bouwt, verhuurt en investeert in leefbaarheid.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2.200</div><div class="lbl">Verwachte hardlopers</div></div>
+      <div class="stat"><div class="num">4.000</div><div class="lbl">Bezoekers op terrein</div></div>
+      <div class="stat"><div class="num">8 uur</div><div class="lbl">Live exposure</div></div>
+      <div class="stat"><div class="num">78%</div><div class="lbl">Deelnemers uit Almere (2025)</div></div>
+    </div>
+
+    <div class="callout">
+      <strong>Ons voorstel:</strong> De Alliantie wordt één van de <strong>hoofdsponsors</strong> van de Almere PoortRun 2026 — niet alleen zichtbaar via logo's en banners, maar <strong>persoonlijk betrokken</strong> met een eigen stand op het eventplein waar bezoekers terechtkunnen voor vragen over woonzaken.
+    </div>
+
+    <h3>Huidige partnerschap</h3>
+    <div class="partners">
+      <div class="partner"><div class="name">Rabobank</div><div class="role">Hoofdsponsor</div></div>
+      <div class="partner"><div class="name">Plus</div><div class="role">Hoofdsponsor</div></div>
+      <div class="partner featured"><img src="../assets/de-alliantie-logo.svg" alt="De Alliantie"><div class="name">De Alliantie</div><div class="role">Voorgesteld · Hoofdsponsor</div></div>
+    </div>
+
+    <h3>Strategische match</h3>
+    <table>
+      <thead><tr><th>Alliantie-doel</th><th>PoortRun-bijdrage</th></tr></thead>
+      <tbody>
+        <tr><td>Zichtbaar zijn in de buurt</td><td>3.000–4.000 bezoekers op uw thuislocatie in Almere Poort</td></tr>
+        <tr><td>Vertrouwen &amp; bereikbaarheid</td><td>Persoonlijk contact via stand — geen formulier, een gesprek</td></tr>
+        <tr><td>Leefbaarheid &amp; gemeenschap</td><td>Buurtinitiatief met 80+ vrijwilligers uit de regio</td></tr>
+        <tr><td>Diverse doelgroepen</td><td>Gezinnen, starters, senioren, sportievelingen (4–74 jaar in 2025)</td></tr>
+        <tr><td>Woningbouw in Almere Poort</td><td>Timing naadloos: Olympiakwartier, New Brooklyn, Xylino</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PAGE 2: About PoortRun -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen">
+      <span>De Alliantie · Hoofdsponsor Voorstel</span>
+    </div>
+    <div class="part">02 · Het evenement</div>
+    <h2>Wat is de PoortRun?</h2>
+    <p class="lead">De PoortRun is een initiatief dat mensen samenbrengt. Meer dan hardlopen: het is een buurtfeest waar sport, entertainment, food en families samenkomen in een levendige, inclusieve sfeer.</p>
+
+    <div class="quote">"Hardlopen, verbinden &amp; beleving"<br><span style="font-size:10pt;font-style:normal;font-weight:600;opacity:.7">— poortrun.nl</span></div>
+
+    <p style="color:var(--soft);font-size:10.5pt;margin-bottom:16px">Op zondag <strong style="color:var(--ink)">6 september 2026</strong> (11:00 – 19:00 uur) wordt het Cascadepark bij Het Klokhuis omgetoverd tot een festivalterrein. De missie: sport, plezier en verbinding samenbrengen voor alle leeftijden en niveaus.</p>
+
+    <div class="pill-row">
+      <span class="pill">DJ's &amp; live optredens</span>
+      <span class="pill">Foodtrucks</span>
+      <span class="pill">Marktkraampjes</span>
+      <span class="pill">Kinderpark</span>
+      <span class="pill">Cheerzones</span>
+      <span class="pill">Professionele tijdregistratie</span>
+    </div>
+
+    <div class="two">
+      <div class="box">
+        <h4>Hardloopafstanden</h4>
+        <ul>
+          <li>Riant KidsRun — 1 km (4–12 jaar)</li>
+          <li>5 km PoortWalk — toegankelijk wandelen</li>
+          <li>5 km &amp; 10 km PoortRun</li>
+          <li>5 km &amp; 10 km Business Run</li>
+          <li>16,1 km PoortRun (10 Engelse Mijl)</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Editie 2025 — bewezen succes</h4>
+        <ul>
+          <li>Volledig uitverkocht (~1.000 lopers)</li>
+          <li>78% deelnemers uit Almere</li>
+          <li>Leeftijd 4 tot 74 jaar</li>
+          <li>80+ vrijwilligers uit de buurt</li>
+          <li>Startsein burgemeester Hein van der Loo</li>
+          <li>Medaille ontworpen door 10-jarige Gwen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <strong>2026 wordt vele malen groter.</strong> We verwachten ruim 3.000–4.000 bezoekers op het terrein en gemiddeld 2.200 hardlopers — een verdubbeling ten opzichte van vorig jaar. Dit is hét moment voor De Alliantie om zichtbaar en betrokken te zijn in de eigen wijk.
+    </div>
+
+    <p class="foot">Meer info: almerepoortrun.nl · depoortrun.nl · Terugblik editie 2025 op almerepoortrun.nl</p>
+  </section>
+
+  <!-- PAGE 3: Alliantie connection -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen">
+      <span>De Alliantie · Hoofdsponsor Voorstel</span>
+    </div>
+    <div class="part">03 · Lokale verankering</div>
+    <h2>Almere Poort is uw woonregio</h2>
+    <p class="lead">De Alliantie is geen toevallige sponsor. U bent actief aanwezig in precies de wijk waar dit evenement plaatsvindt — met nieuwbouw, verhuur en een duidelijke ambitie om gemeenschap te bouwen.</p>
+
+    <table>
+      <thead><tr><th>Alliantie in Almere Poort</th><th>Relevantie voor PoortRun</th></tr></thead>
+      <tbody>
+        <tr><td>9.000+ woningen in regio Almere</td><td>Enorm bereik onder eigen huurders en doelgroep</td></tr>
+        <tr><td>Olympiakwartier Oost — 3.600 woningen gepland</td><td>Hardloop- en beweegplekken in de wijk</td></tr>
+        <tr><td>New Brooklyn — ~400 sociale huurwoningen</td><td>Station Almere Poort op loopafstand</td></tr>
+        <tr><td>Xylino — 103 houten duurzame woningen</td><td>Innovatie &amp; duurzaamheid als gespreksthema</td></tr>
+        <tr><td>~400 nieuwe woningen in 2025 alleen al</td><td>Actuele woonvragen van bewoners op het terrein</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ons voorstel: betrokkenheid die men voelt</h3>
+    <div class="two">
+      <div class="box">
+        <h4>Alliantie Stand — Eventplein</h4>
+        <p>Een eigen stand op het drukste punt van het festivalterrein. Bezoekers kunnen terecht voor:</p>
+        <ul>
+          <li>Vragen over huurwoningen &amp; doorstroming</li>
+          <li>Informatie over nieuwbouwprojecten in Almere Poort</li>
+          <li>Persoonlijk advies over woonzaken</li>
+          <li>Wooncarrière: starters, gezinnen, senioren</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Alliantie op de lijn</h4>
+        <ul>
+          <li><strong>10× gratis startbewijzen</strong> voor medewerkers, huurders of relaties</li>
+          <li>Optioneel: team "Alliantie PoortRun"</li>
+          <li>Mogelijkheid tot cheerzone langs parcours</li>
+          <li>VIP-ontvangst op het terrein</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote">"We bouwen niet alleen woningen — we bouwen aan een sterke gemeenschap."</div>
+  </section>
+
+  <!-- PAGE 4: Package -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen">
+      <span>De Alliantie · Hoofdsponsor Voorstel</span>
+    </div>
+    <div class="part">04 · Sponsorpakket</div>
+    <h2>Hoofdsponsor — € 15.000</h2>
+    <p class="lead">Met deze investering positioneert De Alliantie zich als één van de grote partners — naast Rabobank en Plus — met maximale zichtbaarheid én persoonlijk contact met duizenden bezoekers.</p>
+
+    <div class="package">
+      <div class="package-head">
+        <h3>Pakket Hoofdsponsor De Alliantie</h3>
+        <div class="price">€ 15.000</div>
+      </div>
+      <div class="package-body">
+        <div class="package-row"><div class="icon">✓</div><div><strong>Hoofdsponsor-status</strong>Eén van de grote partners van de Almere PoortRun 2026</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Logo op het officiële hardloopshirt</strong>Zichtbaar op ~2.200 lopers + duizenden foto's en social media posts</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Finish Arch branding</strong>Het iconische finish-moment — elke finisher, elke foto, elke livestream</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Flags langs parcours &amp; terrein</strong>Continue zichtbaarheid gedurende het hele evenement (8 uur)</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Prints &amp; drukwerk</strong>Flyers, programma, signage en overige printuitingen</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Eigen banners op eventplein</strong>Grote branded aanwezigheid op het festivalterrein</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Stand op het eventplein</strong>Eigen stand voor persoonlijk contact over woonzaken</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Naam in alle publicatie-uitingen</strong>Website, social media, persberichten, aftermovie</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>10× gratis deelname</strong>Startbewijzen voor medewerkers, huurders of relaties</div></div>
+        <div class="package-row"><div class="icon">✓</div><div><strong>Logo op website &amp; inschrijfpagina</strong>Jaarrond zichtbaarheid tot en na het evenement</div></div>
+      </div>
+    </div>
+
+    <h3>Indicatief bereik &amp; ROI</h3>
+    <table>
+      <thead><tr><th>Touchpoint</th><th>Geschat bereik</th></tr></thead>
+      <tbody>
+        <tr><td>Hardloopshirts</td><td>~2.200 lopers × gemiddeld 3 social shares = 6.600+ impressies</td></tr>
+        <tr><td>Finish Arch</td><td>Elke finisher + publiek — hoogste emotionele moment</td></tr>
+        <tr><td>Stand eventplein</td><td>500–800 persoonlijke gesprekken verwacht</td></tr>
+        <tr><td>Terrein &amp; flags</td><td>3.000–4.000 bezoekers × 8 uur exposure</td></tr>
+        <tr><td>Online uitingen</td><td>Website, socials, pers — maanden zichtbaarheid</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PAGE 5: Timeline & close -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen">
+      <span>De Alliantie · Hoofdsponsor Voorstel</span>
+    </div>
+    <div class="part">05 · Planning &amp; vervolgstappen</div>
+    <h2>Samenwerking in vijf fases</h2>
+
+    <div class="timeline">
+      <div class="timeline-item"><div class="when">Aug 2026</div><div class="what"><strong>Akkoord &amp; kick-off</strong> — Sponsorshop akkoord, logo-aanlevering, standindeling en bemanning bespreken.</div></div>
+      <div class="timeline-item"><div class="when">Aug 2026</div><div class="what"><strong>Branding &amp; productie</strong> — Shirtdesign, banners, flags, finish arch en drukwerk in productie.</div></div>
+      <div class="timeline-item"><div class="when">Aug – Sep</div><div class="what"><strong>Gezamenlijke promotie</strong> — Social campagne, nieuwsbrief naar huurders, team-inschrijvingen.</div></div>
+      <div class="timeline-item"><div class="when">6 Sep 2026</div><div class="what"><strong>Eventdag</strong> — Stand, team op de lijn, cheerzone, VIP-ontvangst. 11:00 – 19:00 uur Cascadepark.</div></div>
+      <div class="timeline-item"><div class="when">Sep 2026</div><div class="what"><strong>Aftermath</strong> — Fotoreportage, bereik-rapport, evaluatie en vooruitblik editie 2027.</div></div>
+    </div>
+
+    <h3>Waarom € 15.000 strategisch klopt</h3>
+    <div class="two">
+      <div class="box">
+        <ul>
+          <li><strong>Lokaal marktleiderschap</strong> — dé woningcorporatie op hét buurtfeest</li>
+          <li><strong>Relatie vóór transactie</strong> — wonen bespreekbaar in ontspannen setting</li>
+          <li><strong>Employer branding</strong> — investeren in leefomgeving medewerkers</li>
+        </ul>
+      </div>
+      <div class="box">
+        <ul>
+          <li><strong>Perfecte timing</strong> — september 2026 = oplevering nieuwe projecten</li>
+          <li><strong>Complementair</strong> — naast Rabobank (financieel) en Plus (lokaal)</li>
+          <li><strong>Meetbaar bereik</strong> — stand, shirts, arch, flags, publicaties</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Conclusie:</strong> De Almere PoortRun is meer dan hardlopen. Het is het buurtfeest van Almere Poort — en De Alliantie hoort daar als hoofdsponsor bij. Zichtbaar. Betrokken. Persoonlijk.
+    </div>
+
+    <div class="sign-grid">
+      <div class="sign">
+        <h4>Namens Beerthuizen Management B.V.</h4>
+        <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen" style="height:22px;margin-bottom:12px">
+        <p style="font-size:10pt;color:var(--soft);margin-bottom:12px;line-height:1.6">
+          <strong style="color:var(--ink)">Beerthuizen Management B.V.</strong><br>
+          Strategisch partner Almere PoortRun<br>
+          Europalaan 501, 1362 JV Almere Poort<br>
+          KVK 99892332 · info@almerepoortrun.nl
+        </p>
+        <div class="line"></div>
+        <div class="hint">Naam · Functie · Datum · Handtekening</div>
+      </div>
+      <div class="sign">
+        <h4>Namens De Alliantie — Akkoord</h4>
+        <img src="../assets/de-alliantie-logo.svg" alt="De Alliantie" style="height:24px;margin-bottom:12px">
+        <p style="font-size:10pt;color:var(--soft);margin-bottom:12px;line-height:1.6">
+          <strong style="color:var(--ink)">Stichting de Alliantie</strong><br>
+          Regio Almere · Almere Poort<br>
+          de-alliantie.nl
+        </p>
+        <div class="line"></div>
+        <div class="hint">Naam · Functie · Datum · Handtekening</div>
+      </div>
+    </div>
+
+    <div class="part">06 · Contact</div>
+    <h2>Vervolgstappen</h2>
+    <div class="contact-card">
+      <div class="card">
+        <h4>Contact opdrachtgever</h4>
+        <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen" class="beerthuizen">
+        <p>
+          <strong>Beerthuizen Management B.V.</strong><br>
+          Strategisch partner Almere PoortRun<br>
+          Europalaan 501, 1362 JV Almere Poort<br>
+          KVK 99892332<br>
+          E-mail: info@almerepoortrun.nl<br>
+          Web: almerepoortrun.nl
+        </p>
+      </div>
+      <div class="card">
+        <h4>Voorgestelde partner</h4>
+        <img src="../assets/de-alliantie-logo.svg" alt="De Alliantie">
+        <p>
+          <strong>Stichting de Alliantie</strong><br>
+          Woningcorporatie · Regio Almere<br>
+          Actief in Almere Poort<br>
+          Web: de-alliantie.nl
+        </p>
+      </div>
+    </div>
+
+    <p class="foot">Beerthuizen Management B.V. · KVK 99892332 · info@almerepoortrun.nl · Voorstel juli 2026 · Vertrouwelijk</p>
+  </section>
+
+</div>
+</body>
+</html>
