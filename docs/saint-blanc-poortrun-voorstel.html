@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Partnerschapsvoorstel — Saint Blanc × Almere PoortRun 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sb: #0a0a0f; --sb-mid: #1a1a22; --sb-light: #2a2a32;
+      --sb-accent: #c8b896; --sb-accent-dim: rgba(200,184,150,.12);
+      --text: #fff; --text-soft: rgba(255,255,255,.72); --text-muted: rgba(255,255,255,.5);
+      --surface: rgba(255,255,255,.06); --surface-border: rgba(255,255,255,.12);
+      --surface-accent: rgba(200,184,150,.12); --surface-accent-border: rgba(200,184,150,.25);
+      --r: 10px;
+      --f: 'DM Sans', system-ui, sans-serif; --fb: 'Montserrat', system-ui, sans-serif;
+      --page-h: 297mm; --page-pad-x: 44px; --bar-h: 44px;
+      --page-bg: linear-gradient(160deg, var(--sb) 0%, var(--sb-mid) 55%, var(--sb-light) 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 0; }
+    body { font-family: var(--f); color: var(--text); background: var(--sb); font-size: 9.5pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc { width: 210mm; margin: 0 auto; }
+
+    .cover, .page {
+      height: var(--page-h); min-height: var(--page-h); max-height: var(--page-h);
+      page-break-after: always; break-after: page; page-break-inside: avoid; break-inside: avoid;
+      background: var(--page-bg); color: var(--text);
+      position: relative; overflow: hidden;
+    }
+    .cover:last-child, .page:last-child { page-break-after: auto; break-after: auto; }
+    .cover::after, .page::after {
+      content: ''; position: absolute; bottom: 0; right: 0; width: 55%; height: 40%;
+      background: linear-gradient(135deg, transparent, rgba(200,184,150,.08)); pointer-events: none;
+    }
+
+    .cover { display: flex; flex-direction: column; }
+    .cover-inner { padding: 44px 52px 24px; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .cover-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
+    .cover-top img { max-width: 160px; filter: brightness(0) invert(1); opacity: .9; }
+    .cover-sb { text-align: right; }
+    .cover-sb .sb-name { font-family: var(--fb); font-size: 22px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; line-height: 1; }
+    .cover-sb .sb-tag { font-size: 8px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-top: 6px; }
+    .cover .eyebrow { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .55; margin-bottom: 10px; }
+    .cover h1 { font-family: var(--fb); font-size: 32px; font-weight: 800; font-style: italic; text-transform: uppercase; line-height: 1.06; margin-bottom: 14px; max-width: 520px; }
+    .cover h1 em { font-style: italic; color: var(--sb-accent); }
+    .cover .subtitle { font-size: 13.5px; opacity: .78; max-width: 460px; line-height: 1.6; margin-bottom: 32px; }
+    .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: auto; }
+    .cover-card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--r); padding: 14px 16px; }
+    .cover-card .label { font-size: 8px; letter-spacing: .12em; text-transform: uppercase; opacity: .55; margin-bottom: 4px; }
+    .cover-card .value { font-size: 14px; font-weight: 700; }
+    .cover-card.highlight { background: var(--surface-accent); border-color: var(--surface-accent-border); }
+    .cover-footer { padding: 14px 52px; background: rgba(0,0,0,.35); font-size: 9pt; opacity: .75; position: relative; z-index: 1; }
+
+    .page { display: flex; flex-direction: column; padding: 0 var(--page-pad-x) 20px; }
+    .page-body { flex: 1; display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .bar {
+      flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,.35); border-bottom: 1px solid var(--surface-accent-border);
+      margin: 0 calc(-1 * var(--page-pad-x)) 20px; padding: 0 var(--page-pad-x); height: var(--bar-h);
+      position: relative; z-index: 1;
+    }
+    .bar img { height: 18px; filter: brightness(0) invert(1); opacity: .85; }
+    .bar span { font-size: 7.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+
+    .part { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sb-accent); margin-bottom: 3px; }
+    h2 { font-family: var(--fb); font-size: 19px; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 6px; line-height: 1.12; color: var(--text); }
+    .lead { color: var(--text-soft); margin-bottom: 14px; font-size: 10pt; line-height: 1.55; }
+    h3 { font-size: 11pt; font-weight: 700; margin: 14px 0 6px; color: var(--text); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+    .stat { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--r); padding: 12px 8px; text-align: center; }
+    .stat .num { font-family: var(--fb); font-size: 22px; font-weight: 800; color: var(--sb-accent); line-height: 1; margin-bottom: 3px; }
+    .stat .lbl { font-size: 7px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); line-height: 1.3; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 8px 0 12px; }
+    th { text-align: left; font-size: 7px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); padding: 7px 10px; background: var(--surface); border-bottom: 2px solid var(--surface-border); }
+    td { padding: 7px 10px; border-bottom: 1px solid rgba(255,255,255,.08); color: var(--text-soft); vertical-align: top; }
+    td:first-child { font-weight: 600; color: var(--text); width: 36%; }
+    tr:last-child td { border-bottom: none; }
+
+    .callout { background: var(--surface); border-left: 4px solid var(--sb-accent); padding: 11px 14px; margin: 10px 0; font-size: 9.5pt; color: var(--text-soft); border-radius: 0 var(--r) var(--r) 0; }
+    .callout strong { color: var(--text); }
+    .callout.accent { background: var(--surface-accent); border-color: var(--sb-accent); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+    .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 10px 0; }
+    .box { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--r); padding: 12px; }
+    .box.featured { background: var(--surface-accent); border-color: var(--surface-accent-border); }
+    .box.accent { background: var(--surface-accent); border-color: var(--surface-accent-border); }
+    .box h4 { font-size: 10pt; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .box ul { padding-left: 14px; }
+    .box li { font-size: 9pt; color: var(--text-soft); margin-bottom: 3px; }
+    .box .sub { font-size: 9pt; color: var(--text-soft); margin-bottom: 8px; }
+    .box .sub strong { color: var(--text); }
+
+    .option-card { border: 1px solid var(--surface-border); border-radius: var(--r); padding: 14px; background: var(--surface); }
+    .option-card.featured { border-color: var(--surface-accent-border); background: var(--surface-accent); }
+    .option-card .opt-tag { font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sb-accent); margin-bottom: 4px; }
+    .option-card h4 { font-family: var(--fb); font-size: 11pt; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 6px; color: var(--text); }
+    .option-card p { font-size: 9pt; color: var(--text-soft); line-height: 1.5; }
+    .option-card p strong { color: var(--text); }
+
+    .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .module { display: flex; gap: 8px; padding: 8px 10px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--r); font-size: 8.5pt; color: var(--text-soft); align-items: flex-start; }
+    .module .icon { width: 18px; height: 18px; background: var(--sb-accent); color: var(--sb); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; }
+    .module strong { color: var(--text); display: block; font-size: 8.5pt; }
+
+    .quote { font-family: var(--fb); font-size: 12.5pt; font-weight: 800; font-style: italic; color: var(--sb-accent); line-height: 1.3; margin: 12px 0; padding: 14px 18px; background: var(--surface-accent); border: 1px solid var(--surface-accent-border); border-radius: var(--r); text-align: center; }
+
+    .timeline { margin: 8px 0; }
+    .timeline-item { display: grid; grid-template-columns: 78px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,.12); font-size: 9pt; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-item .when { font-weight: 700; color: var(--sb-accent); text-transform: uppercase; font-size: 8pt; }
+    .timeline-item .what { color: var(--text-soft); }
+    .timeline-item .what strong { color: var(--text); }
+
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .sign { background: var(--surface); border: 2px dashed rgba(255,255,255,.15); border-radius: var(--r); padding: 14px; }
+    .sign h4 { font-size: 8px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin-bottom: 8px; }
+    .sign .sb-sign { font-family: var(--fb); font-size: 14px; font-weight: 800; letter-spacing: .14em; margin-bottom: 8px; color: var(--sb-accent); }
+    .sign p { font-size: 9pt; color: var(--text-soft); line-height: 1.55; margin-bottom: 10px; }
+    .sign p strong { color: var(--text); }
+    .sign img { filter: brightness(0) invert(1); opacity: .85; }
+    .sign .line { border-bottom: 1px solid rgba(255,255,255,.2); height: 28px; margin-bottom: 4px; }
+    .sign .hint { font-size: 8pt; color: var(--text-muted); }
+
+    .foot { margin-top: auto; padding-top: 10px; text-align: center; font-size: 8pt; color: var(--text-muted); border-top: 1px solid var(--surface-border); }
+    .spacer { flex: 1; }
+    .body-text { color: var(--text-soft); font-size: 9.5pt; margin-bottom: 10px; line-height: 1.55; }
+    .body-text strong { color: var(--text); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .pill { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 999px; padding: 4px 11px; font-size: 8pt; font-weight: 600; color: var(--text-soft); }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- PAGINA 1 · COVER -->
+  <section class="cover">
+    <div class="cover-inner">
+      <div class="cover-top">
+        <img src="../assets/beerthuizen-logo.png" alt="Beerthuizen Management">
+        <div class="cover-sb">
+          <div class="sb-name">Saint Blanc</div>
+          <div class="sb-tag">Luxury Streetwear · Amsterdam</div>
+        </div>
+      </div>
+      <div class="eyebrow">Partnerschapsvoorstel · Vertrouwelijk</div>
+      <h1>Saint Blanc × <em>Almere PoortRun</em> 2026</h1>
+      <p class="subtitle">Brand partnership voor het grootste buurt- en lifestyle-evenement van Almere Poort — waar sport, cultuur, community en fashion samenkomen.</p>
+      <div class="cover-meta">
+        <div class="cover-card"><div class="label">Datum evenement</div><div class="value">Zondag 6 september 2026</div></div>
+        <div class="cover-card"><div class="label">Locatie</div><div class="value">Cascadepark · Het Klokhuis<br>Almere Poort</div></div>
+        <div class="cover-card"><div class="label">Verwacht bereik</div><div class="value">3.000 – 4.000 bezoekers<br>± 2.200 hardlopers</div></div>
+        <div class="cover-card highlight"><div class="label">Format</div><div class="value">Hoofdsponsor<br>Brand Activation</div></div>
+      </div>
+    </div>
+    <div class="cover-footer"><strong>Beerthuizen Management B.V.</strong> · Deltazijde 2B-2, 1261 ZM Blaricum · info@bhmanagement.nl · Juli 2026</div>
+  </section>
+
+  <!-- PAGINA 2 · WAAROM -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 02/08</span></div>
+    <div class="page-body">
+      <div class="part">01 · Samenvatting</div>
+      <h2>Waarom Saint Blanc &amp; PoortRun</h2>
+      <p class="lead">Saint Blanc staat voor community, lifestyle en minimalistische luxe — precies de sfeer die de Almere PoortRun uitstraalt. Geen saai hardloopevent, maar een festivalterrein vol energie, jongeren, gezinnen en een publiek dat mode en merken waardeert.</p>
+      <div class="stats">
+        <div class="stat"><div class="num">2.200</div><div class="lbl">Hardlopers op de lijn</div></div>
+        <div class="stat"><div class="num">4.000</div><div class="lbl">Bezoekers terrein</div></div>
+        <div class="stat"><div class="num">8 uur</div><div class="lbl">Live brand exposure</div></div>
+        <div class="stat"><div class="num">16–35</div><div class="lbl">Kern-doelgroep leeftijd</div></div>
+      </div>
+      <div class="callout accent"><strong>Het verschil:</strong> dit is geen logo op een banner alleen. Saint Blanc krijgt een <strong>fysieke plek op het terrein</strong> — om te verkopen, te activeren, te laten zien en te verbinden met duizenden mensen in één dag.</div>
+      <h3>Strategische match</h3>
+      <table>
+        <thead><tr><th>Saint Blanc-doel</th><th>PoortRun-kans</th></tr></thead>
+        <tbody>
+          <tr><td>Community &amp; lifestyle</td><td>Festivalterrein met DJ's, food, entertainment en sport</td></tr>
+          <tr><td>Directe verkoop / outlet</td><td>Eigen stand op het drukste punt van het eventplein</td></tr>
+          <tr><td>Brand visibility</td><td>~2.200 lopers + shirts, arch, flags, social content</td></tr>
+          <tr><td>Amsterdam → regio</td><td>78% deelnemers uit Almere — nieuwe markt, lokaal bereik</td></tr>
+          <tr><td>Content &amp; UGC</td><td>Runners, finish-momenten, stand activations — organische posts</td></tr>
+        </tbody>
+      </table>
+      <div class="spacer"></div>
+      <div class="quote">"From Amsterdam with love — nu ook op de lijn in Almere Poort."</div>
+    </div>
+  </section>
+
+  <!-- PAGINA 3 · HET EVENEMENT -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 03/08</span></div>
+    <div class="page-body">
+      <div class="part">02 · Het evenement</div>
+      <h2>Meer dan hardlopen</h2>
+      <p class="lead">De PoortRun is een initiatief dat mensen samenbrengt. Sport, entertainment, food en families — een hele dag feest in Cascadepark, Almere Poort.</p>
+      <div class="pill-row">
+        <span class="pill">DJ's &amp; optredens</span><span class="pill">Foodtrucks</span><span class="pill">Marktkraampjes</span>
+        <span class="pill">Kinderpark</span><span class="pill">Cheerzones</span><span class="pill">Festivalterrein</span>
+      </div>
+      <div class="two">
+        <div class="box"><h4>Programma</h4><ul>
+          <li>11:00 – 19:00 uur open terrein</li>
+          <li>16,1 km · 10 km · 5 km runs</li>
+          <li>Business runs &amp; KidsRun</li>
+          <li>PoortWalk — toegankelijk voor iedereen</li>
+          <li>Professionele tijdregistratie</li>
+        </ul></div>
+        <div class="box"><h4>Editie 2025</h4><ul>
+          <li>Volledig uitverkocht (~1.000 lopers)</li>
+          <li>2026: verdubbeling naar ~2.200 lopers</li>
+          <li>3.000 – 4.000 bezoekers verwacht</li>
+          <li>80+ vrijwilligers uit de buurt</li>
+          <li>Leeftijd 4 tot 74 jaar</li>
+        </ul></div>
+      </div>
+      <h3>Waar Saint Blanc staat</h3>
+      <p class="body-text">Als hoofdsponsor krijgt Saint Blanc een <strong>prominente positie op het eventplein</strong> — het hart van het festivalterrein waar alle bezoekers langs lopen: vóór en na hun run, tussen acts door, en de hele middag.</p>
+      <div class="three">
+        <div class="box accent"><h4>Pre-run</h4><ul><li>Opwarmen bij stand</li><li>Last-minute outfit check</li><li>Outlet scores vóór start</li></ul></div>
+        <div class="box accent"><h4>During</h4><ul><li>Cheerzone branding</li><li>Shirts op 2.200 lopers</li><li>Finish arch moment</li></ul></div>
+        <div class="box accent"><h4>Post-run</h4><ul><li>Finish → stand flow</li><li>Verkoop &amp; content</li><li>Social sharing peak</li></ul></div>
+      </div>
+      <div class="spacer"></div>
+      <p class="foot">almerepoortrun.nl · poortrun.nl</p>
+    </div>
+  </section>
+
+  <!-- PAGINA 4 · ACTIVATIE OPTIES -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 04/08</span></div>
+    <div class="page-body">
+      <div class="part">03 · Brand activatie</div>
+      <h2>Jouw plek op het terrein</h2>
+      <p class="lead">Dit zijn de activatie-opties die het meest relevant zijn voor een kledingmerk als Saint Blanc. Alles is bespreekbaar en combineren is mogelijk.</p>
+
+      <div class="two" style="margin-top:12px">
+        <div class="option-card featured">
+          <div class="opt-tag">Meest gevraagd · Directe omzet</div>
+          <h4>Outlet &amp; Pop-up Stand</h4>
+          <p>Eigen stand op het eventplein waar Saint Blanc <strong>outlet, restcollectie of exclusieve event-pieces</strong> verkoopt. Bezoekers shoppen direct — geen tussenstap via online. Inclusief kassa-setup, branding en prime locatie op het drukste punt van het terrein.</p>
+        </div>
+        <div class="option-card">
+          <div class="opt-tag">Brand experience</div>
+          <h4>Brand Activation Stand</h4>
+          <p>Styling-advies, try-on moment, QR naar webshop en exclusieve kortingscode voor event-bezoekers. Minder verkoop-gedreven, meer merkbeleving en data capture via nieuwsbrief/sign-up.</p>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="option-card">
+          <div class="opt-tag">Exclusief · Hype</div>
+          <h4>PoortRun × Saint Blanc Capsule</h4>
+          <p>Limitated drop: exclusief shirt, hoodie of accessory alleen verkrijgbaar op het event of via pre-order. Scarcity + event-koppeling = organische social buzz.</p>
+        </div>
+        <div class="option-card">
+          <div class="opt-tag">Content &amp; PR</div>
+          <h4>Photo Moment &amp; Step-and-Repeat</h4>
+          <p>Branded foto-wall bij de stand. Bezoekers maken content → Saint Blanc op hun feed. Ideaal voor Instagram/TikTok reach zonder extra ad spend.</p>
+        </div>
+      </div>
+
+      <div class="callout"><strong>Outlet-stand scenario:</strong> Saint Blanc richt een stijlvolle pop-up in op het eventplein — racks met outlet items, crew in uniform, snelle checkout. Bezoekers die komen rennen voor hun PR, blijven shoppen na de finish. Omzet + merkbereik in één dag.</div>
+    </div>
+  </section>
+
+  <!-- PAGINA 5 · ZICHTBAARHEID -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 05/08</span></div>
+    <div class="page-body">
+      <div class="part">04 · Zichtbaarheid &amp; exposure</div>
+      <h2>Merkbereik op &amp; naast het terrein</h2>
+      <p class="lead">Naast de stand krijgt Saint Blanc als hoofdsponsor zichtbaarheid op alle key touchpoints van het evenement — fysiek én digitaal.</p>
+
+      <div class="module-grid" style="margin-top:12px">
+        <div class="module"><div class="icon">✓</div><div><strong>Logo op hardloopshirt</strong>~2.200 lopers dragen Saint Blanc op de lijn</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Finish Arch branding</strong>Elke finisher loopt door jouw merk — foto's gegarandeerd</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Flags &amp; banners terrein</strong>Continue zichtbaarheid gedurende 8 uur</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Prints &amp; drukwerk</strong>Flyers, programma, signage op het terrein</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Website &amp; inschrijfpagina</strong>Logo zichtbaar voor alle deelnemers pre-event</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Social media &amp; aftermovie</strong>Naam en content in alle uitingen</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>Cheerzone branding</strong>Branded supporters-zone langs parcours</div></div>
+        <div class="module"><div class="icon">✓</div><div><strong>10× gratis startbewijzen</strong>Voor team, influencers of VIP-gasten</div></div>
+      </div>
+
+      <h3>Extra opties (optioneel)</h3>
+      <table>
+        <thead><tr><th>Optie</th><th>Wat het oplevert</th></tr></thead>
+        <tbody>
+          <tr><td>Goodie bag / finisher gift</td><td>Saint Blanc item in elke finisher bag — thuis mee, lang zichtbaar</td></tr>
+          <tr><td>Dress the crew</td><td>Vrijwilligers &amp; staff in Saint Blanc — walking billboards</td></tr>
+          <tr><td>Runner seeding</td><td>Outfit sturen naar influencers / top runners pre-event</td></tr>
+          <tr><td>Co-branded DJ zone</td><td>Entertainment area met Saint Blanc branding — nightlife DNA</td></tr>
+          <tr><td>Title sponsor cheerzone</td><td>"Saint Blanc Cheerzone" langs het parcours</td></tr>
+        </tbody>
+      </table>
+      <div class="spacer"></div>
+      <div class="callout accent"><strong>Content-potentieel:</strong> finish-arch foto's, stand activations, runner fit-checks, outlet hauls — allemaal UGC die Saint Blanc organisch verspreidt zonder media-budget.</div>
+    </div>
+  </section>
+
+  <!-- PAGINA 6 · SAMENWERKING -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 06/08</span></div>
+    <div class="page-body">
+      <div class="part">05 · Samenwerking</div>
+      <h2>Flexibel partnerschap</h2>
+      <p class="lead">We stellen geen vast pakket voor — we bouwen samen een partnership dat past bij Saint Blanc. Hieronder drie richtingen; jullie kiezen wat past, wij stemmen af.</p>
+
+      <div class="three" style="margin:14px 0">
+        <div class="box">
+          <h4>Richting A</h4>
+          <p class="sub"><strong>Sales-first</strong></p>
+          <ul>
+            <li>Outlet / pop-up stand</li>
+            <li>Prime locatie eventplein</li>
+            <li>Kassa &amp; crew support</li>
+            <li>Event-only korting</li>
+            <li>Basis zichtbaarheid</li>
+          </ul>
+        </div>
+        <div class="box featured">
+          <h4>Richting B · Aanbevolen</h4>
+          <p class="sub"><strong>Full brand activation</strong></p>
+          <ul>
+            <li>Outlet stand + brand experience</li>
+            <li>Logo op shirts &amp; finish arch</li>
+            <li>Flags, banners, prints</li>
+            <li>Social &amp; website exposure</li>
+            <li>10× gratis startbewijzen</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Richting C</h4>
+          <p class="sub"><strong>Maximum impact</strong></p>
+          <ul>
+            <li>Alles uit richting B</li>
+            <li>Capsule drop exclusief event</li>
+            <li>Goodie bag partnership</li>
+            <li>Cheerzone title branding</li>
+            <li>Runner seeding &amp; content</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Wat wij regelen</h3>
+      <div class="two">
+        <div class="box"><ul>
+          <li>Stand-locatie &amp; stroom op terrein</li>
+          <li>Branding productie (flags, arch, shirts)</li>
+          <li>Promotie via event-kanalen</li>
+          <li>Logistieke afstemming met organisatie</li>
+        </ul></div>
+        <div class="box"><ul>
+          <li>Voorbereiding &amp; kick-off meeting</li>
+          <li>Eventdag coördinatie</li>
+          <li>Aftermovie &amp; bereik-rapportage</li>
+          <li>Evaluatie &amp; vervolg 2027</li>
+        </ul></div>
+      </div>
+      <div class="spacer"></div>
+      <div class="quote">Outlet op het terrein. Shirts op de lijn. Content in de feed. Eén dag, maximaal bereik.</div>
+    </div>
+  </section>
+
+  <!-- PAGINA 7 · ROI -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 07/08</span></div>
+    <div class="page-body">
+      <div class="part">06 · Waarde voor Saint Blanc</div>
+      <h2>Wat het oplevert</h2>
+      <p class="lead">Een fashion brand partnership bij de PoortRun levert meer op dan traditionele sponsoring — het combineert verkoop, visibility en community in één dag.</p>
+      <table style="margin-top:14px">
+        <thead><tr><th>Kanaal</th><th>Impact</th><th>Type waarde</th></tr></thead>
+        <tbody>
+          <tr><td>Outlet stand</td><td>Directe omzet op de dag</td><td>Sales + nieuwe klanten</td></tr>
+          <tr><td>Hardloopshirts</td><td>~2.200 lopers × social shares</td><td>Organische reach</td></tr>
+          <tr><td>Finish Arch</td><td>Elke finisher + publiek</td><td>Emotioneel merkmoment</td></tr>
+          <tr><td>Eventplein traffic</td><td>3.000–4.000 bezoekers × 8 uur</td><td>Brand awareness</td></tr>
+          <tr><td>Capsule / exclusief</td><td>Scarcity &amp; hype</td><td>PR &amp; social buzz</td></tr>
+          <tr><td>Almere markt</td><td>78% lokaal publiek</td><td>Nieuwe regio naast Amsterdam</td></tr>
+        </tbody>
+      </table>
+      <h3 style="margin-top:20px">Doelgroep overlap</h3>
+      <div class="two">
+        <div class="box"><h4>Saint Blanc publiek</h4><ul>
+          <li>16–35 jaar, fashion-forward</li>
+          <li>Lifestyle &amp; streetwear</li>
+          <li>Community-driven merk</li>
+          <li>Social-first generatie</li>
+        </ul></div>
+        <div class="box"><h4>PoortRun publiek</h4><ul>
+          <li>Sportief &amp; lifestyle-minded</li>
+          <li>Gezinnen + jong volwassenen</li>
+          <li>Festival-sfeer, niet alleen runners</li>
+          <li>Amsterdam &amp; Almere regio</li>
+        </ul></div>
+      </div>
+      <div class="spacer"></div>
+      <div class="callout"><strong>Bottom line:</strong> Saint Blanc verlaat het event met omzet (outlet), content (social), bereik (shirts &amp; arch) en nieuwe klanten in een markt buiten Amsterdam — alles in één zondag.</div>
+    </div>
+  </section>
+
+  <!-- PAGINA 8 · AFSLUITING -->
+  <section class="page">
+    <div class="bar"><img src="../assets/beerthuizen-logo.png" alt=""><span>Saint Blanc · Partnerschapsvoorstel · 08/08</span></div>
+    <div class="page-body">
+      <div class="part">07 · Planning &amp; vervolgstappen</div>
+      <h2>Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item"><div class="when">Aug 2026</div><div class="what"><strong>Kick-off &amp; afstemming</strong> — Stand-indeling, outlet-assortiment, branding assets en crew planning.</div></div>
+        <div class="timeline-item"><div class="when">Aug 2026</div><div class="what"><strong>Branding productie</strong> — Shirts, finish arch, flags, banners, stand decoratie.</div></div>
+        <div class="timeline-item"><div class="when">Aug – Sep</div><div class="what"><strong>Gezamenlijke promotie</strong> — Social campagne, capsule announce (optioneel), team-inschrijvingen.</div></div>
+        <div class="timeline-item"><div class="when">6 Sep 2026</div><div class="what"><strong>Eventdag</strong> — Stand live, outlet open, team op de lijn. 11:00 – 19:00 Cascadepark.</div></div>
+        <div class="timeline-item"><div class="when">Sep 2026</div><div class="what"><strong>Aftermath</strong> — Omzet-rapport stand, content deliverables, evaluatie partnership.</div></div>
+      </div>
+      <div class="callout accent"><strong>Volgende stap:</strong> kort gesprek om richting (A/B/C) te kiezen, stand-wensen door te nemen en een maatwerk-voorstel op te stellen — zonder verplichtingen.</div>
+      <div class="sign-grid">
+        <div class="sign">
+          <h4>Namens Beerthuizen Management B.V.</h4>
+          <img src="../assets/beerthuizen-logo.png" alt="" style="height:20px;margin-bottom:8px">
+          <p><strong>Beerthuizen Management B.V.</strong><br>Strategisch partner Almere PoortRun<br>Deltazijde 2B-2, 1261 ZM Blaricum<br>info@bhmanagement.nl</p>
+          <div class="line"></div><div class="hint">Naam · Functie · Datum · Handtekening</div>
+        </div>
+        <div class="sign">
+          <h4>Namens Saint Blanc — Akkoord</h4>
+          <div class="sb-sign">SAINT BLANC</div>
+          <p><strong>Saint Blanc</strong><br>Luxury Streetwear · Amsterdam<br>saintblanc.com</p>
+          <div class="line"></div><div class="hint">Naam · Functie · Datum · Handtekening</div>
+        </div>
+      </div>
+      <p class="foot">Beerthuizen Management B.V. · info@bhmanagement.nl · Voorstel juli 2026 · Vertrouwelijk</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

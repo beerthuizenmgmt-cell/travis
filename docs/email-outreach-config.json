@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "version": "1.0",
+    "updated": "2026-07-18",
+    "owner": "Beerthuizen Management B.V.",
+    "target_volume": 20000,
+    "playbook": "docs/email-outreach-playbook.md"
+  },
+  "sender": {
+    "name": "Nicole van Zanten",
+    "title": "Assistent Manager",
+    "company": "Beerthuizen Management B.V.",
+    "from_display": "Nicole van Zanten | Beerthuizen Management",
+    "email": "TE_VULLEN",
+    "phone": "+31 6 45661048",
+    "reply_to": "info@bhmanagement.nl",
+    "website": "bhmanagement.nl",
+    "signature_image": "TE_VULLEN_DOOR_NICOLE"
+  },
+  "rules": {
+    "max_words_touch_1": 150,
+    "max_links_touch_1": 0,
+    "cta_style": "interest_not_sale",
+    "mention_prices_before_touch": 3,
+    "require_observatie": true,
+    "forbidden_phrases": [
+      "Ik hoop dat alles goed met u gaat",
+      "Ik wilde even contact opnemen",
+      "In de huidige digitale wereld",
+      "Wij zijn gepassioneerd",
+      "unieke kans",
+      "game-changer",
+      "naadloos"
+    ],
+    "send_windows_cet": ["09:30-11:30", "14:00-16:00"],
+    "send_days": ["tuesday", "wednesday", "thursday"]
+  },
+  "services": {
+    "foto": {
+      "label": "Fotostudio",
+      "volume_share": 0.35,
+      "positioning": "Content-, product-, team- en campagnebeelden in eigen studio",
+      "cta_goal": "follow_up_call",
+      "branches": ["ecommerce", "fashion", "beauty", "horeca", "vastgoed", "coaching", "spreker", "bureau", "overig_mkb"]
+    },
+    "podcast": {
+      "label": "Podcaststudio",
+      "volume_share": 0.25,
+      "positioning": "Strategische podcast-begeleiding voor zichtbaarheid, niet alleen opnameruimte",
+      "cta_goal": "intake_call",
+      "branches": ["coaching", "spreker", "ecommerce", "fashion", "beauty", "bureau", "overig_mkb", "enterprise"]
+    },
+    "influencer": {
+      "label": "Influencer management",
+      "volume_share": 0.4,
+      "positioning": "Campagne-partner: strategie, creators, contractuele borging",
+      "cta_goal": "strategy_meeting",
+      "case_brands": ["HelloFresh", "Videoland", "NYX Cosmetics", "Got2Be"],
+      "branches": ["ecommerce", "fashion", "beauty", "horeca", "cpg", "media", "retail"]
+    }
+  },
+  "segments": {
+    "bedrijfsgrootte": ["zzp", "mkb", "enterprise", "particulier"],
+    "tone": {
+      "enterprise": { "address": "u", "style": "formal_short" },
+      "mkb": { "address": "u", "style": "direct_practical" },
+      "zzp": { "address": "je", "style": "personal_collegial" },
+      "particulier": { "address": "je", "style": "warm_low_threshold" }
+    }
+  },
+  "sequences": {
+    "default": {
+      "touches": [
+        { "id": 1, "day": 0, "goal": "personal_observation_plus_soft_question" },
+        { "id": 2, "day": 5, "goal": "add_value_no_pitch" },
+        { "id": 3, "day": 12, "goal": "social_proof_or_phone_cta" },
+        { "id": 4, "day": 21, "goal": "breakup_no_pressure" }
+      ]
+    }
+  },
+  "personalization_fields": [
+    "voornaam",
+    "bedrijfsnaam",
+    "dienst",
+    "branch",
+    "bedrijfsgrootte",
+    "observatie",
+    "content_gap",
+    "case_ref"
+  ],
+  "reply_routing": {
+    "positive": { "action": "schedule_call", "sla_hours": 4 },
+    "price_question": { "action": "redirect_to_call", "sla_hours": 4 },
+    "send_info": { "action": "send_one_pager_plus_call_offer", "sla_hours": 24 },
+    "negative": { "action": "stop_sequence_tag_unsub", "sla_hours": 0 }
+  },
+  "ab_tests": {
+    "primary_metric": "reply_rate",
+    "secondary_metric": "positive_reply_rate",
+    "min_sends_per_variant": 200,
+    "active_tests": ["subject_line", "cta_question", "opener_style"]
+  },
+  "volume_ramp": [
+    { "month": 1, "sends": 2000, "note": "warm-up and QA" },
+    { "month": 2, "sends": 4000, "note": "scale winners" },
+    { "month": 3, "sends": 6000, "note": "new branches" },
+    { "month": 4, "sends": 8000, "note": "steady state" }
+  ]
+}
