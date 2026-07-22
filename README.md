@@ -1,31 +1,30 @@
-# Klaviyo Homepage Replica
+# Toettie Crew Entertainment
 
-A static 1:1 recreation of the [Klaviyo](https://www.klaviyo.com) marketing homepage.
+Marketing-homepage voor **Toettie Crew Entertainment** — Amsterdamse feestexperts met dienstenselectie en WhatsApp-boekingsflow.
 
 ## Structure
 
 ```
 travis/
-├── index.html          # Main homepage
+├── index.html          # Toettie Crew homepage
 ├── css/
-│   └── styles.css      # Full styling
+│   └── styles.css      # Vrolijk feestpalet (coral / geel / turquoise)
 ├── js/
-│   └── main.js         # Interactions (tabs, carousel, cookies)
+│   └── main.js         # Hero slider, dienst-selectie, WhatsApp deep-link
 ├── assets/
-│   └── favicon.svg     # Site favicon
+│   ├── toettie-logo-white.svg
+│   └── hero-*.jpg
 └── README.md
 ```
 
 ## Features
 
-- Sticky header with navigation
-- Hero section with customer profile card and ribbon graphic
-- Social proof brand banner
-- AI Agents section (Composer & Customer Agent)
-- Platform tabs (Marketing, AI, Service, Analytics, CDP)
-- Stats, case studies carousel, integrations grid
-- FAQ accordion, footer, cookie consent banner
-- Fully responsive design
+- Sticky header met wit logo en WhatsApp-knop
+- Full-bleed hero carousel
+- Intro + “Waarom Toettie Crew” USP’s
+- Selecteerbare diensten → WhatsApp-bericht naar `+31 6 55585299`
+- “Zo werkt het”, contact en footer
+- Responsive (desktop + mobile)
 
 ## Run locally
 

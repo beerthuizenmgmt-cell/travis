@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#232426"/>
-  <text x="16" y="22" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">k</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="32" fill="#E6395A"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Montserrat, Arial Black, sans-serif" font-size="26" font-weight="800" fill="#ffffff" letter-spacing="-1">TC</text>
 </svg>
