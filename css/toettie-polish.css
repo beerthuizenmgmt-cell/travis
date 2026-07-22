@@ -25,16 +25,16 @@ body.elementor-page {
 /* Toettie logo in Elementor header — groter + goed leesbaar */
 .elementor-1628 .elementor-widget-image,
 .elementor-element-b776a1e {
-  min-width: 300px;
+  min-width: 220px;
 }
 
 .elementor-1628 .elementor-widget-image img,
 .elementor-element-b776a1e img,
 .elementor-element-b776a1e a img {
-  max-height: 88px !important;
+  max-height: 64px !important;
   width: auto !important;
-  height: 88px !important;
-  max-width: 320px !important;
+  height: 64px !important;
+  max-width: 240px !important;
   object-fit: contain !important;
   display: block !important;
   opacity: 1 !important;
