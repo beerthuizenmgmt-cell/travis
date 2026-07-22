@@ -1,4 +1,4 @@
-/* Small polish layer on top of the literal poofevents Elementor clone */
+/* Small polish layer on top of the Toettie Crew homepage */
 
 :root {
   --poof-purple: #460D80;
@@ -8,7 +8,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Exact paars van poofevents.nl */
+/* Merkpaars */
 body,
 .elementor-location-header,
 .elementor-1628,
@@ -431,4 +431,14 @@ footer#site-footer {
 
 @media (max-width: 800px) {
   .tc-steps { grid-template-columns: 1fr; }
+}
+
+
+/* Verberg restanten externe platform-CTA’s */
+a[href*="poofparty"],
+a[href*="poofevents.nl/onze"],
+a[href*="poofevents.nl/activiteiten"],
+a[href*="poofevents.nl/home-poofevent"],
+a[href*="poofevents.nl/contact"] {
+  pointer-events: none;
 }

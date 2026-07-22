@@ -35,9 +35,7 @@ function addFloatingWhatsApp() {
 }
 
 function pointHomeLinksLocally() {
-  document.querySelectorAll('a[href="https://poofevents.nl/"]').forEach((a) => {
-    a.setAttribute('href', '/');
-  });
+  // home links already localized
 }
 
 hydrateLazyImages();

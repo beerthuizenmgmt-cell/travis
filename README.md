@@ -1,6 +1,6 @@
 # Toettie Crew Entertainment
 
-Letterlijke homepage-clone van [poofevents.nl](https://poofevents.nl/) (Elementor HTML/CSS/JS), met Toettie-logo en WhatsApp (`+31 6 55585299`) en e-mail (`info@toettiecrew.nl`).
+Homepage voor Toettie Crew Entertainment, met WhatsApp (`+31 6 55585299`) en e-mail (`info@toettiecrew.nl`).
 
 ## Run
 
@@ -11,7 +11,7 @@ npm run dev
 - Homepage: http://localhost:5173/
 - Admin: http://localhost:5173/admin/
 
-De pagina laadt de originele Poof-styles/scripts; lokale polish zit in `css/toettie-polish.css` en `js/toettie-polish.js`.
+Lokale polish zit in `css/toettie-polish.css` en `js/toettie-polish.js`.
 
 
 ## Admin Dashboard
