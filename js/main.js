@@ -1,96 +1,73 @@
-// Platform tabs
-document.querySelectorAll('.platform-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.platform-panel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(target)?.classList.add('active');
-  });
-});
+function initMobileNav() {
+  const toggle = document.getElementById('mobile-toggle');
+  const nav = document.getElementById('nav-main');
+  if (!toggle || !nav) return;
 
-// Case studies carousel
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
-
-if (track && prevBtn && nextBtn) {
-  const scrollAmount = 300;
-  prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-  nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
   });
 
-  // Auto-scroll carousel
-  let autoScroll = setInterval(() => {
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  }, 4000);
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 
-  track.addEventListener('mouseenter', () => clearInterval(autoScroll));
-  track.addEventListener('mouseleave', () => {
-    autoScroll = setInterval(() => {
-      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  nav.querySelectorAll('.nav-dropdown > .nav-link').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      if (window.matchMedia('(max-width: 820px)').matches) {
+        event.preventDefault();
+        const parent = btn.parentElement;
+        parent?.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(parent?.classList.contains('is-open')));
       }
-    }, 4000);
+    });
   });
 }
 
-// Cookie banner
-const cookieBanner = document.getElementById('cookieBanner');
-const cookieAccept = document.getElementById('cookieAccept');
-const cookieReject = document.getElementById('cookieReject');
+function initHeroSlider() {
+  const root = document.querySelector('[data-slider]');
+  if (!root) return;
 
-function hideCookieBanner() {
-  cookieBanner?.classList.add('hidden');
-  localStorage.setItem('cookiesAccepted', 'true');
-}
+  const slides = [...root.querySelectorAll('.hero-slide')];
+  const dotsWrap = document.querySelector('[data-slider-dots]');
+  const prev = document.querySelector('[data-slider-prev]');
+  const next = document.querySelector('[data-slider-next]');
+  let index = 0;
+  let timer;
 
-if (localStorage.getItem('cookiesAccepted')) {
-  cookieBanner?.classList.add('hidden');
-}
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    if (i === 0) dot.classList.add('is-active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap?.appendChild(dot);
+  });
 
-cookieAccept?.addEventListener('click', hideCookieBanner);
-cookieReject?.addEventListener('click', hideCookieBanner);
+  const dots = [...(dotsWrap?.querySelectorAll('button') || [])];
 
-// Mobile menu toggle
-const mobileBtn = document.querySelector('.mobile-menu-btn');
-const navMain = document.querySelector('.nav-main');
-
-mobileBtn?.addEventListener('click', () => {
-  navMain?.classList.toggle('mobile-open');
-  mobileBtn.classList.toggle('active');
-});
-
-// Header scroll effect
-const header = document.querySelector('.header');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > 100) {
-    header?.classList.add('scrolled');
-  } else {
-    header?.classList.remove('scrolled');
+  function goTo(nextIndex) {
+    slides[index].classList.remove('is-active');
+    dots[index]?.classList.remove('is-active');
+    index = (nextIndex + slides.length) % slides.length;
+    slides[index].classList.add('is-active');
+    dots[index]?.classList.add('is-active');
+    restart();
   }
-  lastScroll = currentScroll;
-});
 
-// FAQ - only one open at a time
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('toggle', () => {
-    if (item.open) {
-      document.querySelectorAll('.faq-item').forEach(other => {
-        if (other !== item) other.open = false;
-      });
-    }
-  });
-});
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(index + 1), 5000);
+  }
+
+  prev?.addEventListener('click', () => goTo(index - 1));
+  next?.addEventListener('click', () => goTo(index + 1));
+  restart();
+}
+
+initMobileNav();
+initHeroSlider();

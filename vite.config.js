@@ -2,9 +2,19 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  // Relative asset paths so GitHub CDN / preview hosts work
+  base: './',
   server: {
     port: Number(process.env.PORT) || 5173,
     strictPort: true,
+    host: true,
+    allowedHosts: true,
+  },
+  preview: {
+    host: true,
+    port: 4173,
+    strictPort: true,
+    allowedHosts: true,
   },
   build: {
     rollupOptions: {

@@ -1,40 +1,18 @@
-# Klaviyo Homepage Replica
+# Toettie Crew Entertainment
 
-A static 1:1 recreation of the [Klaviyo](https://www.klaviyo.com) marketing homepage.
+Homepage voor Toettie Crew Entertainment, met WhatsApp (`+31 6 55585299`) en e-mail (`info@toettiecrew.nl`).
 
-## Structure
-
-```
-travis/
-├── index.html          # Main homepage
-├── css/
-│   └── styles.css      # Full styling
-├── js/
-│   └── main.js         # Interactions (tabs, carousel, cookies)
-├── assets/
-│   └── favicon.svg     # Site favicon
-└── README.md
-```
-
-## Features
-
-- Sticky header with navigation
-- Hero section with customer profile card and ribbon graphic
-- Social proof brand banner
-- AI Agents section (Composer & Customer Agent)
-- Platform tabs (Marketing, AI, Service, Analytics, CDP)
-- Stats, case studies carousel, integrations grid
-- FAQ accordion, footer, cookie consent banner
-- Fully responsive design
-
-## Run locally
+## Run
 
 ```bash
 npm run dev
 ```
 
-- **Homepage:** http://localhost:5173/
-- **Admin dashboard:** http://localhost:5173/admin/
+- Homepage: http://localhost:5173/
+- Admin: http://localhost:5173/admin/
+
+Lokale polish zit in `css/toettie-polish.css` en `js/toettie-polish.js`.
+
 
 ## Admin Dashboard
 

@@ -1,0 +1,444 @@
+/* Small polish layer on top of the Toettie Crew homepage */
+
+:root {
+  --poof-purple: #460D80;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Merkpaars */
+body,
+.elementor-location-header,
+.elementor-1628,
+.elementor-1628 .e-con,
+.elementor-292 .e-con {
+  --e-global-color-primary: #460D80;
+}
+
+body.elementor-page-292,
+body.elementor-page {
+  background-color: #460D80 !important;
+}
+
+/* Toettie logo in Elementor header — groter + goed leesbaar */
+.elementor-1628 .elementor-widget-image,
+.elementor-element-b776a1e {
+  min-width: 220px;
+}
+
+.elementor-1628 .elementor-widget-image img,
+.elementor-element-b776a1e img,
+.elementor-element-b776a1e a img {
+  max-height: 64px !important;
+  width: auto !important;
+  height: 64px !important;
+  max-width: 240px !important;
+  object-fit: contain !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Wolkjes-achtergrond volledig weg — solid paars */
+.elementor-292 .elementor-element.elementor-element-5337c68d:not(.elementor-motion-effects-element-type-background),
+.elementor-292 .elementor-element.elementor-element-5337c68d > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-color: #460D80 !important;
+  background-image: none !important;
+}
+
+.elementor-kit-282,
+body.elementor-page-292,
+body.elementor-page,
+.elementor-292 {
+  background-image: none !important;
+  background-color: #460D80 !important;
+}
+
+.elementor-element-5337c68d,
+.elementor-element-5337c68d .elementor-heading-title,
+.elementor-element-5337c68d .elementor-widget-text-editor,
+.elementor-element-5337c68d .elementor-widget-text-editor p,
+.elementor-element-5337c68d .elementor-button,
+.elementor-element-5337c68d a {
+  color: #ffffff !important;
+}
+
+.elementor-element-5337c68d .elementor-element-288b07f3 .elementor-heading-title,
+.elementor-element-5337c68d .elementor-element-6ef55e3e .elementor-heading-title {
+  color: #ffffff !important;
+}
+
+/* Footerblok bij cloud-illustratie ook wit op paars */
+.elementor-element-c2b0069,
+.elementor-element-c2b0069 .elementor-heading-title,
+.elementor-element-c2b0069 .elementor-image-box-description,
+.elementor-element-c2b0069 .elementor-icon-list-text,
+.elementor-element-c2b0069 a,
+.elementor-element-0de49ca .elementor-heading-title,
+.elementor-element-399dbb7a .elementor-heading-title,
+.elementor-element-3eca02c3 .elementor-heading-title {
+  color: #ffffff !important;
+}
+
+.elementor-element-c2b0069 .elementor-social-icon i,
+.elementor-element-c2b0069 .elementor-social-icon svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Make WhatsApp CTAs open cleanly and feel clickable */
+a[href*="wa.me/31655585299"] {
+  cursor: pointer;
+}
+
+/* Floating WhatsApp button */
+.tc-whatsapp-float {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #25D366;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-family: Poppins, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tc-whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+}
+
+.tc-whatsapp-float svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Hide default theme footer branding block under Elementor footer (duplicate) */
+footer#site-footer {
+  display: none !important;
+}
+
+/* Soften Elementor invisible animation flash before JS init */
+.elementor-invisible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+@media (max-width: 640px) {
+  .tc-whatsapp-float span {
+    display: none;
+  }
+  .tc-whatsapp-float {
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
+/* —— Samenwerkingen / bekende gezichten —— */
+.tc-collabs-wrap {
+  background: #460D80 !important;
+  padding: 0 0 3.5rem !important;
+}
+
+.tc-collabs {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 1rem 0 0;
+  color: #fff;
+}
+
+.tc-collabs__head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tc-collabs__eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F0C93D;
+}
+
+.tc-collabs__title {
+  margin: 0 0 0.55rem;
+  font-family: Staatliches, Poppins, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.tc-collabs__sub {
+  margin: 0 auto;
+  max-width: 34rem;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  opacity: 0.92;
+}
+
+.tc-collabs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.tc-collab-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tc-collab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.tc-collab-card__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tc-collab-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.tc-collab-card__meta {
+  padding: 1rem 1.05rem 1.15rem;
+  text-align: center;
+}
+
+.tc-collab-card__meta h3 {
+  margin: 0 0 0.25rem;
+  font-family: Poppins, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tc-collab-card__meta p {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 900px) {
+  .tc-collabs__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+/* —— Diensten + WhatsApp flow —— */
+.tc-services-wrap {
+  background: #460D80 !important;
+  padding: 1rem 0 3.5rem !important;
+}
+.tc-services {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  color: #fff;
+  font-family: Poppins, sans-serif;
+}
+.tc-services__head { text-align: center; margin-bottom: 1.75rem; }
+.tc-services__eyebrow {
+  margin: 0 0 0.35rem;
+  color: #F0C93D;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tc-services__title {
+  margin: 0 0 0.55rem;
+  font-family: Staatliches, Poppins, sans-serif;
+  font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.tc-services__sub {
+  margin: 0 auto;
+  max-width: 40rem;
+  opacity: 0.92;
+}
+.tc-services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+.tc-service {
+  position: relative;
+  text-align: left;
+  border: 2px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.15rem 1.1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font: inherit;
+}
+.tc-service:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+.tc-service.is-selected {
+  border-color: #F0C93D;
+  background: rgba(240,201,61,0.18);
+  box-shadow: 0 10px 24px rgba(240,201,61,0.18);
+}
+.tc-service__check {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+}
+.tc-service.is-selected .tc-service__check {
+  background: #F0C93D;
+  border-color: #F0C93D;
+}
+.tc-service.is-selected .tc-service__check::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #460D80;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.tc-service h3 {
+  margin: 0 1.6rem 0.45rem 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+.tc-service p { margin: 0; font-size: 0.92rem; opacity: 0.92; }
+.tc-services__cta {
+  margin-top: 1.5rem;
+  text-align: center;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+.tc-services__status { margin: 0; color: #F0C93D; font-weight: 700; }
+.tc-services__btn {
+  border: 0;
+  border-radius: 999px;
+  background: #F0C93D;
+  color: #2A1F2E;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.95rem 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(240,201,61,0.28);
+}
+.tc-services__btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.tc-services__btn:not(:disabled):hover { filter: brightness(1.05); }
+
+.tc-steps {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+.tc-steps li {
+  display: flex;
+  gap: 0.8rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem;
+}
+.tc-steps span {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #F0C93D;
+  color: #460D80;
+  font-weight: 800;
+}
+.tc-steps h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.tc-steps p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+
+.tc-contact-strip {
+  margin-top: 2rem;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 16px;
+  padding: 1.4rem 1.2rem;
+}
+.tc-contact-strip h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
+.tc-contact-strip p { margin: 0 0 0.9rem; opacity: 0.9; }
+.tc-contact-strip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+.tc-contact-strip__actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: #F0C93D;
+  color: #2A1F2E !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.tc-contact-strip__actions a[href^="mailto"] {
+  background: transparent;
+  color: #fff !important;
+  border: 2px solid rgba(255,255,255,0.75);
+}
+
+@media (max-width: 800px) {
+  .tc-steps { grid-template-columns: 1fr; }
+}
+
+
+/* Verberg restanten externe platform-CTA’s */
+a[href*="poofparty"],
+a[href*="poofevents.nl/onze"],
+a[href*="poofevents.nl/activiteiten"],
+a[href*="poofevents.nl/home-poofevent"],
+a[href*="poofevents.nl/contact"] {
+  pointer-events: none;
+}
