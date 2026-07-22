@@ -3,28 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toettie Crew Entertainment | Dé feestexperts van Amsterdam</title>
-  <meta name="description" content="Al ruim 15 jaar dé feestexperts van Amsterdam. Compleet entertainment, DJ, aankleding en Surinaams schaafijs — van verjaardag tot bedrijfsfeest.">
+  <title>Home - Toettie Crew Entertainment</title>
+  <meta name="description" content="Professionele kinderhoeken en kinderentertainment op grootschalige bedrijfsfeesten en evenementen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Staatliches&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <a href="#main" class="skip-link">Ga naar inhoud</a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="header-inner">
-      <a href="#top" class="logo" aria-label="Toettie Crew Entertainment home">
-        <img src="assets/toettie-logo-white.svg" alt="Toettie Crew Entertainment" width="220" height="51">
+      <a href="/" class="logo" aria-label="Home">
+        <img src="assets/toettie-logo-white.svg" alt="Toettie Crew Entertainment" width="210" height="48">
       </a>
-      <nav class="nav-main" id="nav-main" aria-label="Hoofdmenu">
-        <a href="#top" class="nav-link is-active">Home</a>
-        <a href="#diensten" class="nav-link">Diensten</a>
-        <a href="#zo-werkt-het" class="nav-link">Zo werkt het</a>
+      <nav class="nav-main" id="nav-main" aria-label="Menu">
+        <a href="/" class="nav-link is-active">Home</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link has-caret" aria-expanded="false">Onze feesten</button>
+          <div class="dropdown-panel">
+            <a href="#feesten">Ontdek al onze feesten</a>
+            <a href="#feesten">Bedrijfsjubilea en relatie-evenementen</a>
+            <a href="#feesten">Paasweekend</a>
+            <a href="#feesten">Sinterklaasfeest</a>
+            <a href="#feesten">Kerst- en Winterwonderland</a>
+            <a href="#feesten">Koningsdag en Koningsspelen</a>
+            <a href="#feesten">Winkel- en tuincentra promotie</a>
+            <a href="#feesten">Leefbaarheidsinitiatieven</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link has-caret" aria-expanded="false">Activiteiten</button>
+          <div class="dropdown-panel">
+            <a href="#activiteiten">Bekijk alle activiteiten</a>
+            <a href="#activiteiten">Knutselhoek</a>
+            <a href="#activiteiten">Speelplein</a>
+            <a href="#activiteiten">Softplay zone</a>
+            <a href="#activiteiten">Schmink, glitters, haar en ballonfiguren</a>
+            <a href="#activiteiten">Entertainment</a>
+            <a href="#activiteiten">Fun Food</a>
+            <a href="#activiteiten">Aankleding</a>
+            <a href="#activiteiten">Arcade en speelmachines</a>
+            <a href="#activiteiten">Workshops</a>
+          </div>
+        </div>
+        <a href="#over-ons" class="nav-link">Over ons</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="https://wa.me/31655585299" class="btn btn-accent btn-sm" target="_blank" rel="noopener noreferrer">Via WhatsApp</a>
+        <a href="https://wa.me/31655585299" class="btn btn-cta" target="_blank" rel="noopener noreferrer">Offerte aanvragen</a>
       </nav>
       <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-main">
         <span></span><span></span><span></span>
@@ -33,207 +60,302 @@
   </header>
 
   <main id="main">
-    <!-- Hero slider -->
-    <section class="hero" aria-label="Introductie">
+    <section class="hero" aria-label="Slides">
       <div class="hero-slider" data-slider>
-        <article class="hero-slide is-active" style="--slide-image: url('assets/hero-1.jpg')">
+        <article class="hero-slide is-active" style="--slide-image: url('assets/poof/hero-1.jpg')">
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <p class="hero-brand">Toettie Crew Entertainment</p>
-            <h1>Al ruim 15 jaar dé feestexperts van Amsterdam</h1>
-            <a href="#diensten" class="btn btn-ghost">Bekijk onze diensten</a>
+            <h1 class="hero-title">Speelhoek inrichting op locatie</h1>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
           </div>
         </article>
-        <article class="hero-slide" style="--slide-image: url('assets/hero-2.jpg')">
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-2.webp')">
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <p class="hero-brand">Toettie Crew Entertainment</p>
-            <h2 class="hero-title">Surinaams schaafijs &amp; pure feestsfeer</h2>
-            <a href="#diensten" class="btn btn-ghost">Selecteer je diensten</a>
+            <h2 class="hero-title">Professionele begeleiding voor de kinderen</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
           </div>
         </article>
-        <article class="hero-slide" style="--slide-image: url('assets/hero-3.jpg')">
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-3.webp')">
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <p class="hero-brand">Toettie Crew Entertainment</p>
-            <h2 class="hero-title">Eigen DJ, LED-aankleding &amp; live entertainment</h2>
-            <a href="#diensten" class="btn btn-ghost">Plan jouw feest</a>
+            <h2 class="hero-title">Creatieve workshops &amp; speelactiviteiten</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
+          </div>
+        </article>
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-4.webp')">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-title">Flexibele kinderzones voor grote evenementen</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
+          </div>
+        </article>
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-5.jpeg')">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-title">Speelhoeken op maat voor zakelijke events</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
+          </div>
+        </article>
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-6.webp')">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-title">Attracties voor zakelijke events &amp; festivals</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
+          </div>
+        </article>
+        <article class="hero-slide" style="--slide-image: url('assets/poof/hero-7.webp')">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-title">Meet &amp; Greet en kindershows die indruk maken</h2>
+            <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
           </div>
         </article>
       </div>
-      <button class="hero-nav hero-prev" data-slider-prev aria-label="Vorige slide">‹</button>
-      <button class="hero-nav hero-next" data-slider-next aria-label="Volgende slide">›</button>
+      <button class="hero-nav hero-prev" data-slider-prev aria-label="Previous slide">‹</button>
+      <button class="hero-nav hero-next" data-slider-next aria-label="Next slide">›</button>
       <div class="hero-dots" data-slider-dots role="tablist" aria-label="Slides"></div>
     </section>
 
-    <!-- Intro -->
-    <section class="intro section-brand reveal" id="intro">
+    <section class="intro section-brand" id="intro">
       <div class="container intro-grid">
         <div class="intro-copy">
-          <p class="eyebrow">Toettie Crew Entertainment</p>
-          <h2>Onvergetelijke momenten, van begin tot eind</h2>
-          <p>Bij Toettie Crew Entertainment draait alles om onvergetelijke momenten. Al meer dan vijftien jaar zijn wij hét creatieve entertainment- en evenementenbedrijf van Amsterdam, gespecialiseerd in het organiseren van feesten, partijen en evenementen van begin tot eind. Of het nu gaat om een intieme verjaardag, een groots evenement of een bedrijfsfeest — wij zorgen ervoor dat jouw dag precies wordt zoals je hem voor ogen hebt.</p>
-          <p>Wat ons uniek maakt? Wij regelen het complete plaatje. Van de aankleding en sfeervolle personaliseerde LED-verlichting met namen, tot onze eigen DJ en live entertainment die de dansvloer laten knallen. En natuurlijk mag onze befaamde Surinaamse schaafijs niet ontbreken — een echte publiekstrekker die van elk feest een feestje maakt.</p>
-          <p>Bij ons geen losse eindjes en gedoe met verschillende partijen. Eén crew, één aanspreekpunt, en een team dat met passie en ervaring jouw evenement tot een succes maakt.</p>
-          <p class="intro-cta-text">Klaar om jouw feest te plannen? Bekijk hieronder onze diensten, selecteer wat je nodig hebt, en bevestig je afspraak direct via WhatsApp.</p>
+          <h2>Kinderbeleving die waarde toevoegt</h2>
+          <p>Poofevents is dé partner voor professionele kinderhoeken en kinderentertainment op grootschalige bedrijfsfeesten en evenementen.</p>
+          <p>Organiseer je een kinderevent, bedrijfsjubileum, relatie-event, seizoensfeest of een ander evenement waar kinderen welkom zijn? Wij creëren een veilige, creatieve en stijlvolle kinderhoek op jouw locatie, volledig afgestemd op het hoofdevent.</p>
+          <p>Met ons complete kinderconcept, inclusief activiteiten en begeleiding, genieten kinderen van een onvergetelijke ervaring, terwijl jij zorgeloos je event laat verlopen.</p>
+          <p>Wij werken samen met organisaties die hun gasten een totaalervaring willen bieden, inclusief een goed georganiseerde omgeving voor kinderen.</p>
+          <ul class="checklist">
+            <li>Professioneel &amp; schaalbaar</li>
+            <li>Van concept tot uitvoering</li>
+            <li>Veilig &amp; met plezier</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
         </div>
         <figure class="intro-media">
-          <img src="assets/intro-party.jpg" alt="Feestelijke sfeer met aankleding van Toettie Crew" width="800" height="600" loading="lazy">
+          <img src="assets/poof/caae18da-eec4-4cad-97c2-ee05e2baca6e-909x1024.webp" alt="Kinderen op een feest" width="909" height="1024" loading="lazy">
         </figure>
       </div>
     </section>
 
-    <!-- Waarom -->
-    <section class="why section-surface reveal" id="waarom">
+    <section class="partners section-brand" id="partners">
       <div class="container">
-        <header class="section-head">
-          <p class="eyebrow accent">Waarom Toettie Crew?</p>
-          <h2>Wat ons uniek maakt</h2>
-        </header>
-        <ul class="why-grid">
-          <li>
-            <span class="why-icon" aria-hidden="true">15+</span>
-            <h3>15+ jaar ervaring</h3>
-            <p>Een bewezen staat van dienst in Amsterdam en omstreken.</p>
-          </li>
-          <li>
-            <span class="why-icon" aria-hidden="true">1</span>
-            <h3>Alles onder één dak</h3>
-            <p>Van organisatie en catering tot DJ en entertainment.</p>
-          </li>
-          <li>
-            <span class="why-icon" aria-hidden="true">★</span>
-            <h3>Persoonlijk &amp; op maat</h3>
-            <p>Elk feest wordt afgestemd op jouw wensen.</p>
-          </li>
-          <li>
-            <span class="why-icon" aria-hidden="true">♪</span>
-            <h3>Eigen DJ &amp; entertainment</h3>
-            <p>Geen ingehuurde losse acts, maar onze eigen vertrouwde crew.</p>
-          </li>
-          <li>
-            <span class="why-icon" aria-hidden="true">♥</span>
-            <h3>Die typische Toettie-sfeer</h3>
-            <p>Gezelligheid, kwaliteit en dat beetje extra.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Diensten -->
-    <section class="services section-brand reveal" id="diensten">
-      <div class="container">
-        <header class="section-head on-brand">
-          <p class="eyebrow">Onze diensten</p>
-          <h2>Selecteer wat je nodig hebt</h2>
-          <p class="section-sub">Selecteer hieronder de diensten die je wilt afnemen. Na je selectie word je doorgestuurd naar WhatsApp, waar je jouw afspraak direct definitief kunt bevestigen.</p>
-        </header>
-
-        <div class="services-grid" id="services-grid" role="group" aria-label="Diensten selecteren">
-          <button type="button" class="service-card" data-service="Volledige verjaardagen & feesten" aria-pressed="false">
-            <span class="service-check" aria-hidden="true"></span>
-            <h3>Volledige verjaardagen &amp; feesten</h3>
-            <p>Van A tot Z geregeld: locatie-aankleding, catering, muziek en entertainment. Jij geniet, wij regelen de rest.</p>
-          </button>
-          <button type="button" class="service-card" data-service="Evenementenorganisatie" aria-pressed="false">
-            <span class="service-check" aria-hidden="true"></span>
-            <h3>Evenementenorganisatie</h3>
-            <p>Grote of kleine evenementen, bedrijfsfeesten of speciale gelegenheden — wij organiseren het compleet.</p>
-          </button>
-          <button type="button" class="service-card" data-service="DJ & Entertainment" aria-pressed="false">
-            <span class="service-check" aria-hidden="true"></span>
-            <h3>DJ &amp; Entertainment</h3>
-            <p>Onze eigen DJ zorgt voor de juiste vibe, aangevuld met live entertainment dat jouw gasten niet snel vergeten.</p>
-          </button>
-          <button type="button" class="service-card" data-service="Catering — Surinaams schaafijs" aria-pressed="false">
-            <span class="service-check" aria-hidden="true"></span>
-            <h3>Catering — Surinaams schaafijs</h3>
-            <p>De klassieker van Toettie Crew. Vers, kleurrijk en een gegarandeerde hit op elk feest.</p>
-          </button>
-          <button type="button" class="service-card" data-service="Aankleding & personalisatie" aria-pressed="false">
-            <span class="service-check" aria-hidden="true"></span>
-            <h3>Aankleding &amp; personalisatie</h3>
-            <p>Sfeervolle decoratie en gepersonaliseerde LED-verlichting met namen — perfect voor verjaardagen en speciale momenten.</p>
-          </button>
-        </div>
-
-        <div class="services-cta">
-          <p class="selection-status" id="selection-status" aria-live="polite">Selecteer minstens één dienst om door te gaan.</p>
-          <button type="button" class="btn btn-accent btn-lg" id="whatsapp-confirm" disabled>
-            Selectie afronden &amp; bevestigen via WhatsApp →
-          </button>
+        <h2 class="section-title center">Samenwerkingen waar we trots op zijn</h2>
+        <div class="logo-marquee" aria-label="Partners">
+          <div class="logo-track">
+            <img src="assets/poof/partners/Euro-Caps-naar-de-cloud-Photoroom.png" alt="Euro Caps">
+            <img src="assets/poof/partners/logo-kids-at-the-park_800x600xm-Photoroom.png" alt="Kids at the Park">
+            <img src="assets/poof/partners/Eneco_logo.svg-Photoroom.png" alt="Eneco">
+            <img src="assets/poof/partners/Logo_Kleur_Blauw-scaled.png" alt="Partner">
+            <img src="assets/poof/partners/BDM_logo_links-Photoroom.png" alt="BDM">
+            <img src="assets/poof/partners/gemeente-den-haag-Photoroom.png" alt="Gemeente Den Haag">
+            <img src="assets/poof/partners/de-nederlandsche-bank-Photoroom.png" alt="De Nederlandsche Bank">
+            <img src="assets/poof/partners/aramco-Photoroom.png" alt="Aramco">
+            <img src="assets/poof/partners/stedin.jpeg" alt="Stedin">
+            <img src="assets/poof/partners/PressPlay-Logos-.webp" alt="PressPlay">
+            <img src="assets/poof/partners/engie-logo-trans-Photoroom.png" alt="Engie">
+            <img src="assets/poof/partners/hard-rock-cafe-amsterdam-Photoroom.png" alt="Hard Rock Cafe Amsterdam">
+            <img src="assets/poof/partners/klm-Photoroom.png" alt="KLM">
+            <img src="assets/poof/partners/gemeente-rotterdam-Photoroom.png" alt="Gemeente Rotterdam">
+            <!-- duplicate for seamless loop -->
+            <img src="assets/poof/partners/Euro-Caps-naar-de-cloud-Photoroom.png" alt="">
+            <img src="assets/poof/partners/logo-kids-at-the-park_800x600xm-Photoroom.png" alt="">
+            <img src="assets/poof/partners/Eneco_logo.svg-Photoroom.png" alt="">
+            <img src="assets/poof/partners/Logo_Kleur_Blauw-scaled.png" alt="">
+            <img src="assets/poof/partners/BDM_logo_links-Photoroom.png" alt="">
+            <img src="assets/poof/partners/gemeente-den-haag-Photoroom.png" alt="">
+            <img src="assets/poof/partners/de-nederlandsche-bank-Photoroom.png" alt="">
+            <img src="assets/poof/partners/aramco-Photoroom.png" alt="">
+            <img src="assets/poof/partners/stedin.jpeg" alt="">
+            <img src="assets/poof/partners/PressPlay-Logos-.webp" alt="">
+            <img src="assets/poof/partners/engie-logo-trans-Photoroom.png" alt="">
+            <img src="assets/poof/partners/hard-rock-cafe-amsterdam-Photoroom.png" alt="">
+            <img src="assets/poof/partners/klm-Photoroom.png" alt="">
+            <img src="assets/poof/partners/gemeente-rotterdam-Photoroom.png" alt="">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Zo werkt het -->
-    <section class="steps section-surface reveal" id="zo-werkt-het">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow accent">Zo werkt het</p>
-          <h2>In drie stappen naar jouw feest</h2>
-        </header>
-        <ol class="steps-grid">
-          <li>
-            <span class="step-num">1</span>
-            <h3>Selecteer je diensten</h3>
-            <p>Kies hierboven de diensten die passen bij jouw feest of evenement.</p>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <h3>Ga door naar WhatsApp</h3>
-            <p>Met één klik word je doorgekoppeld naar onze WhatsApp.</p>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <h3>Bevestig je afspraak</h3>
-            <p>We stemmen de laatste details af en maken jouw afspraak direct definitief.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact section-brand reveal" id="contact">
-      <div class="container contact-inner">
+    <section class="concept section-brand" id="over-ons">
+      <div class="container concept-grid">
         <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Toettie Crew Entertainment — Amsterdam</h2>
-          <p>Vragen of direct boeken? Neem contact op via WhatsApp, dan helpen we je persoonlijk verder.</p>
+          <h3>Eén concept volledig ontzorgd</h3>
+          <p>Poofevents levert een totaalconcept waarin de kinderhoek naadloos aansluit op de sfeer, stijl en logistiek van jou evenement. Wij verzorgen conceptontwikkeling, planning, opbouw, begeleiding en aankleding, inclusief kinderentertainment, speelplein, creatieve knutselhoek en funfood, volledig uitgevoerd door ons eigen team.</p>
         </div>
-        <div class="contact-actions">
-          <a class="btn btn-accent btn-lg" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">WhatsApp: 06 55585299</a>
-          <a class="btn btn-ghost" href="#diensten">Eerst diensten selecteren</a>
+        <div>
+          <h3>Onze partners &amp; opdrachtgevers</h3>
+          <p>Poofevents werkt samen met organisaties die streven naar beleving op hoog niveau:</p>
+          <ul>
+            <li>Event- en organisatiebureaus</li>
+            <li>Cateringbedrijven en eventlocaties</li>
+            <li>Grote organisaties en bedrijven</li>
+            <li>Stichtingen en verenigingen</li>
+            <li>BSO en scholen</li>
+          </ul>
+          <p>We denken mee als onderdeel van het totaalconcept, professioneel, representatief en volledig afgestemd op jullie merk, doelgroep en thema.</p>
+          <a class="btn btn-ghost" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag</a>
         </div>
+      </div>
+    </section>
+
+    <section class="feature-cards section-brand" id="feesten">
+      <div class="container cards-grid">
+        <a class="feature-card" href="#feesten" style="--card-image: url('assets/poof/FAMILIEDAG-EC-171-scaled.jpg')">
+          <div class="feature-card-overlay"></div>
+          <div class="feature-card-body">
+            <h4>Seizoensfeesten &amp; Speciale Events</h4>
+            <span class="btn btn-ghost btn-sm">Ontdek onze feesten</span>
+          </div>
+        </a>
+        <a class="feature-card" href="#activiteiten" style="--card-image: url('assets/poof/Speelplein-1-scaled.jpg')">
+          <div class="feature-card-overlay"></div>
+          <div class="feature-card-body">
+            <h4>Ontdek de mogelijkheden</h4>
+            <span class="btn btn-ghost btn-sm">Bekijk alle activiteiten</span>
+          </div>
+        </a>
+        <a class="feature-card" href="#over-ons" style="--card-image: url('assets/poof/IMG_2950-scaled.jpeg')">
+          <div class="feature-card-overlay"></div>
+          <div class="feature-card-body">
+            <h5>Kinderfeest binnen het bedrijfsfeest</h5>
+            <span class="btn btn-ghost btn-sm">Bekijk de case</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="activities section-brand" id="activiteiten">
+      <div class="container activities-grid">
+        <article class="activity-card">
+          <img src="assets/poof/Speelplein-1-scaled.jpg" alt="Voetbal terrein" loading="lazy">
+          <div>
+            <h3>Voetbal terrein</h3>
+            <p>Perfect voor wilde jongens</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/backdrop-huren.jpg" alt="Backdrop" loading="lazy">
+          <div>
+            <h3>Backdrop</h3>
+            <p>Voor een spectacilair entree</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/Ironman.png" alt="Uniek entertainment" loading="lazy">
+          <div>
+            <h3>Uniek entertainment</h3>
+            <p>Voor een unieke onvergetelijke ervaring</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/IMG_4181.jpeg" alt="Funfood" loading="lazy">
+          <div>
+            <h3>Funfood</h3>
+            <p>Niet alleen lekker maar ook fun!</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/IMG_2184-e1769181465558.jpeg" alt="Game verhuur" loading="lazy">
+          <div>
+            <h3>Game verhuur</h3>
+            <p>Maakt het spannender</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/IMG_0375-1-scaled.jpeg" alt="Lego hoek" loading="lazy">
+          <div>
+            <h3>Lego hoek</h3>
+            <p>Vrij spelen maakt</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/IMG_2085-scaled.jpeg" alt="Workshops" loading="lazy">
+          <div>
+            <h3>Workshops</h3>
+            <p>van werkplek naar workshop voor kinderen</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/DSC0151.jpg" alt="Knutseltafel" loading="lazy">
+          <div>
+            <h3>Knutseltafel</h3>
+            <p>Oneindig keuze om creatief bezig te blijven</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/Partyplanner.webp" alt="Softplay speelhoek" loading="lazy">
+          <div>
+            <h3>Softplay speelhoek</h3>
+            <p>Veilig voor de aller kleinste</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/poof/Goochelaar.webp" alt="Samen spelen" loading="lazy">
+          <div>
+            <h3>Samen spelen</h3>
+            <p>Maakt het spannender</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="passion section-brand">
+      <div class="container passion-grid">
+        <figure class="passion-media">
+          <img src="assets/poof/IMG_2950-scaled.jpeg" alt="Ons team tijdens een event" loading="lazy">
+        </figure>
+        <div class="passion-copy">
+          <p class="eyebrow">Onze passie</p>
+          <h3>Kinderentertainment dat jouw event onvergetelijk maakt</h3>
+          <p>Ons eigen team van ervaren en enthousiaste eventprofessionals realiseert speelzones en kinderactiviteiten op maat. Samen met zorgvuldig geselecteerde partners zorgen wij dat elk onderdeel van het kinderprogramma soepel verloopt. Met meer dan 15 jaar ervaring verzorgen wij thema’s, workshops en spelzones die naadloos aansluiten bij het concept van jouw bedrijfsfeest of evenement.</p>
+          <a class="btn btn-ghost" href="#over-ons">Lees meer over ons</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-brand" id="contact">
+      <div class="container contact-inner">
+        <p>We hopen dat je een prettige ervaring heb op onze website!</p>
+        <a class="btn btn-accent" href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Stel een vraag via WhatsApp</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <div class="container footer-top">
+      <a class="platform-banner" href="https://www.poofparty.nl" target="_blank" rel="noopener noreferrer">
+        Check ook ons platform www.poofparty.nl
+      </a>
+    </div>
     <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="assets/toettie-logo-white.svg" alt="Toettie Crew Entertainment" width="200" height="46">
-        <p>Al ruim 15 jaar dé feestexperts van Amsterdam.</p>
+      <div>
+        <img src="assets/toettie-logo-white.svg" alt="Toettie Crew Entertainment" width="180" height="42">
+        <p>Poofevent voor bedrijfsfeesten en events met kinderen</p>
       </div>
       <div>
-        <h3>Quick links</h3>
+        <h6>Quick Links</h6>
         <ul>
-          <li><a href="#top">Home</a></li>
-          <li><a href="#diensten">Diensten</a></li>
-          <li><a href="#zo-werkt-het">Zo werkt het</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="#feesten">Onze feesten</a></li>
+          <li><a href="#activiteiten">Activiteiten</a></li>
+          <li><a href="#over-ons">Over ons</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div>
-        <h3>Contact</h3>
+        <h6>Get In Touch</h6>
         <ul>
-          <li>Amsterdam</li>
-          <li><a href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">WhatsApp 06 55585299</a></li>
+          <li><a href="https://wa.me/31655585299" target="_blank" rel="noopener noreferrer">WhatsApp: 06 55585299</a></li>
+          <li>Telefoon: 070 22 10 660</li>
+          <li>Email: contact@poofevents.nl</li>
+          <li>Spoed: 06 353 135 50</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Toettie Crew Entertainment. Alle rechten voorbehouden.</p>
+      <p>© 2026 All Rights Reserved.</p>
     </div>
   </footer>
 

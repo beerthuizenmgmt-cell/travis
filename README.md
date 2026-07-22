@@ -1,30 +1,27 @@
 # Toettie Crew Entertainment
 
-Marketing-homepage voor **Toettie Crew Entertainment** — Amsterdamse feestexperts met dienstenselectie en WhatsApp-boekingsflow.
+Marketing-homepage gebaseerd op de layout en content van [poofevents.nl](https://poofevents.nl/), met Toettie-logo en WhatsApp-CTA (`+31 6 55585299`).
 
 ## Structure
 
 ```
 travis/
-├── index.html          # Toettie Crew homepage
-├── css/
-│   └── styles.css      # Vrolijk feestpalet (coral / geel / turquoise)
-├── js/
-│   └── main.js         # Hero slider, dienst-selectie, WhatsApp deep-link
+├── index.html          # Homepage (Poof-structuur + content)
+├── css/styles.css
+├── js/main.js          # Hero slider + mobile nav
 ├── assets/
 │   ├── toettie-logo-white.svg
-│   └── hero-*.jpg
+│   └── poof/           # Beelden & partnerlogo's van de referentiesite
 └── README.md
 ```
 
 ## Features
 
-- Sticky header met wit logo en WhatsApp-knop
-- Full-bleed hero carousel
-- Intro + “Waarom Toettie Crew” USP’s
-- Selecteerbare diensten → WhatsApp-bericht naar `+31 6 55585299`
-- “Zo werkt het”, contact en footer
-- Responsive (desktop + mobile)
+- Sticky header met dropdowns (Onze feesten / Activiteiten)
+- Hero carousel met 7 slides
+- Intro, partner-marquee, concept/partners, feature cards, activiteitengrid
+- Footer + WhatsApp offline/offerte-knoppen
+- Responsive
 
 ## Run locally
 
