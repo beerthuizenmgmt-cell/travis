@@ -1,7 +1,25 @@
 /* Small polish layer on top of the literal poofevents Elementor clone */
 
+:root {
+  --poof-purple: #460D80;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Exact paars van poofevents.nl */
+body,
+.elementor-location-header,
+.elementor-1628,
+.elementor-1628 .e-con,
+.elementor-292 .e-con {
+  --e-global-color-primary: #460D80;
+}
+
+body.elementor-page-292,
+body.elementor-page {
+  background-color: #460D80 !important;
 }
 
 /* Toettie logo in Elementor header */
