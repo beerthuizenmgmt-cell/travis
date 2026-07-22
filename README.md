@@ -1,36 +1,18 @@
 # Toettie Crew Entertainment
 
-Marketing-homepage gebaseerd op de layout en content van [poofevents.nl](https://poofevents.nl/), met Toettie-logo en WhatsApp-CTA (`+31 6 55585299`).
+Letterlijke homepage-clone van [poofevents.nl](https://poofevents.nl/) (Elementor HTML/CSS/JS), met Toettie-logo en WhatsApp (`+31 6 55585299`).
 
-## Structure
-
-```
-travis/
-├── index.html          # Homepage (Poof-structuur + content)
-├── css/styles.css
-├── js/main.js          # Hero slider + mobile nav
-├── assets/
-│   ├── toettie-logo-white.svg
-│   └── poof/           # Beelden & partnerlogo's van de referentiesite
-└── README.md
-```
-
-## Features
-
-- Sticky header met dropdowns (Onze feesten / Activiteiten)
-- Hero carousel met 7 slides
-- Intro, partner-marquee, concept/partners, feature cards, activiteitengrid
-- Footer + WhatsApp offline/offerte-knoppen
-- Responsive
-
-## Run locally
+## Run
 
 ```bash
 npm run dev
 ```
 
-- **Homepage:** http://localhost:5173/
-- **Admin dashboard:** http://localhost:5173/admin/
+- Homepage: http://localhost:5173/
+- Admin: http://localhost:5173/admin/
+
+De pagina laadt de originele Poof-styles/scripts; lokale polish zit in `css/toettie-polish.css` en `js/toettie-polish.js`.
+
 
 ## Admin Dashboard
 
