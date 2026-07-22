@@ -41,11 +41,19 @@ body.elementor-page {
   visibility: visible !important;
 }
 
-/* Wolkjes-sectie: paarse achtergrond + witte tekst */
+/* Wolkjes-achtergrond volledig weg — solid paars */
 .elementor-292 .elementor-element.elementor-element-5337c68d:not(.elementor-motion-effects-element-type-background),
 .elementor-292 .elementor-element.elementor-element-5337c68d > .elementor-motion-effects-container > .elementor-motion-effects-layer {
   background-color: #460D80 !important;
   background-image: none !important;
+}
+
+.elementor-kit-282,
+body.elementor-page-292,
+body.elementor-page,
+.elementor-292 {
+  background-image: none !important;
+  background-color: #460D80 !important;
 }
 
 .elementor-element-5337c68d,
@@ -62,7 +70,7 @@ body.elementor-page {
   color: #ffffff !important;
 }
 
-/* Footerblok bij wolkjes/cloud-illustratie ook wit op paars */
+/* Footerblok bij cloud-illustratie ook wit op paars */
 .elementor-element-c2b0069,
 .elementor-element-c2b0069 .elementor-heading-title,
 .elementor-element-c2b0069 .elementor-image-box-description,
