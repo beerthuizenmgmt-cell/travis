@@ -22,22 +22,62 @@ body.elementor-page {
   background-color: #460D80 !important;
 }
 
-/* Toettie logo in Elementor header */
+/* Toettie logo in Elementor header — groter + goed leesbaar */
 .elementor-1628 .elementor-widget-image,
 .elementor-element-b776a1e {
-  min-width: 180px;
+  min-width: 260px;
 }
 
 .elementor-1628 .elementor-widget-image img,
 .elementor-element-b776a1e img,
 .elementor-element-b776a1e a img {
-  max-height: 58px !important;
+  max-height: 78px !important;
   width: auto !important;
-  height: 58px !important;
+  height: 78px !important;
+  max-width: 280px !important;
   object-fit: contain !important;
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+/* Wolkjes-sectie: paarse achtergrond + witte tekst */
+.elementor-292 .elementor-element.elementor-element-5337c68d:not(.elementor-motion-effects-element-type-background),
+.elementor-292 .elementor-element.elementor-element-5337c68d > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-color: #460D80 !important;
+  background-image: none !important;
+}
+
+.elementor-element-5337c68d,
+.elementor-element-5337c68d .elementor-heading-title,
+.elementor-element-5337c68d .elementor-widget-text-editor,
+.elementor-element-5337c68d .elementor-widget-text-editor p,
+.elementor-element-5337c68d .elementor-button,
+.elementor-element-5337c68d a {
+  color: #ffffff !important;
+}
+
+.elementor-element-5337c68d .elementor-element-288b07f3 .elementor-heading-title,
+.elementor-element-5337c68d .elementor-element-6ef55e3e .elementor-heading-title {
+  color: #ffffff !important;
+}
+
+/* Footerblok bij wolkjes/cloud-illustratie ook wit op paars */
+.elementor-element-c2b0069,
+.elementor-element-c2b0069 .elementor-heading-title,
+.elementor-element-c2b0069 .elementor-image-box-description,
+.elementor-element-c2b0069 .elementor-icon-list-text,
+.elementor-element-c2b0069 a,
+.elementor-element-0de49ca .elementor-heading-title,
+.elementor-element-399dbb7a .elementor-heading-title,
+.elementor-element-3eca02c3 .elementor-heading-title {
+  color: #ffffff !important;
+}
+
+.elementor-element-c2b0069 .elementor-social-icon i,
+.elementor-element-c2b0069 .elementor-social-icon svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
 }
 
 /* Make WhatsApp CTAs open cleanly and feel clickable */
