@@ -1,6 +1,6 @@
 # Toettie Crew Entertainment
 
-Letterlijke homepage-clone van [poofevents.nl](https://poofevents.nl/) (Elementor HTML/CSS/JS), met Toettie-logo en WhatsApp (`+31 6 55585299`).
+Letterlijke homepage-clone van [poofevents.nl](https://poofevents.nl/) (Elementor HTML/CSS/JS), met Toettie-logo en WhatsApp (`+31 6 55585299`) en e-mail (`info@toettiecrew.nl`).
 
 ## Run
 

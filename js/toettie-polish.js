@@ -50,3 +50,46 @@ window.addEventListener('load', () => {
   hydrateLazyImages();
   enhanceWhatsAppLinks();
 });
+
+
+function initServiceSelection() {
+  const cards = [...document.querySelectorAll('.tc-service')];
+  const confirmBtn = document.getElementById('tc-whatsapp-confirm');
+  const status = document.getElementById('tc-selection-status');
+  if (!cards.length || !confirmBtn) return;
+
+  function selected() {
+    return cards
+      .filter((c) => c.classList.contains('is-selected'))
+      .map((c) => c.dataset.service);
+  }
+
+  function update() {
+    const items = selected();
+    confirmBtn.disabled = items.length === 0;
+    if (!status) return;
+    if (!items.length) status.textContent = 'Selecteer minstens één dienst om door te gaan.';
+    else if (items.length === 1) status.textContent = '1 dienst geselecteerd — klaar om te bevestigen.';
+    else status.textContent = `${items.length} diensten geselecteerd — klaar om te bevestigen.`;
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const on = card.classList.toggle('is-selected');
+      card.setAttribute('aria-pressed', String(on));
+      update();
+    });
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    const items = selected();
+    if (!items.length) return;
+    const list = items.map((i) => `• ${i}`).join('\n');
+    const message = `Hoi Toettie Crew! Ik wil graag een afspraak bevestigen voor:\n${list}\n\nKunnen jullie mij helpen met de details?`;
+    window.open(`${WA}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  });
+
+  update();
+}
+
+initServiceSelection();

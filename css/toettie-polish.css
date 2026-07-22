@@ -257,3 +257,178 @@ footer#site-footer {
     margin-inline: auto;
   }
 }
+
+/* —— Diensten + WhatsApp flow —— */
+.tc-services-wrap {
+  background: #460D80 !important;
+  padding: 1rem 0 3.5rem !important;
+}
+.tc-services {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  color: #fff;
+  font-family: Poppins, sans-serif;
+}
+.tc-services__head { text-align: center; margin-bottom: 1.75rem; }
+.tc-services__eyebrow {
+  margin: 0 0 0.35rem;
+  color: #F0C93D;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tc-services__title {
+  margin: 0 0 0.55rem;
+  font-family: Staatliches, Poppins, sans-serif;
+  font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.tc-services__sub {
+  margin: 0 auto;
+  max-width: 40rem;
+  opacity: 0.92;
+}
+.tc-services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+.tc-service {
+  position: relative;
+  text-align: left;
+  border: 2px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.15rem 1.1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font: inherit;
+}
+.tc-service:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+.tc-service.is-selected {
+  border-color: #F0C93D;
+  background: rgba(240,201,61,0.18);
+  box-shadow: 0 10px 24px rgba(240,201,61,0.18);
+}
+.tc-service__check {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+}
+.tc-service.is-selected .tc-service__check {
+  background: #F0C93D;
+  border-color: #F0C93D;
+}
+.tc-service.is-selected .tc-service__check::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #460D80;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.tc-service h3 {
+  margin: 0 1.6rem 0.45rem 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+.tc-service p { margin: 0; font-size: 0.92rem; opacity: 0.92; }
+.tc-services__cta {
+  margin-top: 1.5rem;
+  text-align: center;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+.tc-services__status { margin: 0; color: #F0C93D; font-weight: 700; }
+.tc-services__btn {
+  border: 0;
+  border-radius: 999px;
+  background: #F0C93D;
+  color: #2A1F2E;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.95rem 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(240,201,61,0.28);
+}
+.tc-services__btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.tc-services__btn:not(:disabled):hover { filter: brightness(1.05); }
+
+.tc-steps {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+.tc-steps li {
+  display: flex;
+  gap: 0.8rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem;
+}
+.tc-steps span {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #F0C93D;
+  color: #460D80;
+  font-weight: 800;
+}
+.tc-steps h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.tc-steps p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+
+.tc-contact-strip {
+  margin-top: 2rem;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 16px;
+  padding: 1.4rem 1.2rem;
+}
+.tc-contact-strip h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
+.tc-contact-strip p { margin: 0 0 0.9rem; opacity: 0.9; }
+.tc-contact-strip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+.tc-contact-strip__actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: #F0C93D;
+  color: #2A1F2E !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.tc-contact-strip__actions a[href^="mailto"] {
+  background: transparent;
+  color: #fff !important;
+  border: 2px solid rgba(255,255,255,0.75);
+}
+
+@media (max-width: 800px) {
+  .tc-steps { grid-template-columns: 1fr; }
+}
