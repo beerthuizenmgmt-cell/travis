@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in | Klaviyo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/favicon-Cp_obBOY.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="../assets/login-D5mTY4Yo.js"></script>
+  <link rel="modulepreload" crossorigin href="../assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="../assets/login-BGosD0k4.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="Go to the Klaviyo home page">
+        <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#232426">klaviyo</text>
+        </svg>
+      </a>
+      <nav class="nav-main" aria-label="Main navigation">
+        <button class="nav-item has-dropdown" type="button">Platform <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+        <button class="nav-item has-dropdown" type="button">Apps &amp; Integrations <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+        <button class="nav-item has-dropdown" type="button">Resources <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+        <a href="#" class="nav-item">What's new</a>
+        <a href="#" class="nav-item">Pricing</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" aria-label="Change language"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+        <a href="#" class="icon-btn" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></a>
+        <span class="link-login is-current" aria-current="page">Log in <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></span>
+        <a href="#" class="btn btn-dark btn-sm">Sign up</a>
+        <a href="#" class="btn btn-outline btn-sm">Get a demo</a>
+      </div>
+      <button class="mobile-menu-btn" type="button" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero login-hero">
+      <div class="container login-hero-grid">
+        <div class="login-hero-content">
+          <p class="eyebrow">LOG IN TO YOUR ACCOUNT</p>
+          <h1>Welcome back</h1>
+          <p class="hero-sub">Sign in to your account. Team members go to the CRM dashboard; customers access the marketing portal.</p>
+
+          <form class="login-form" id="loginForm">
+            <label class="login-field">
+              <span>Email address</span>
+              <input type="email" id="loginEmail" required autocomplete="username" placeholder="you@company.com">
+            </label>
+            <label class="login-field">
+              <span>Password</span>
+              <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Your password">
+            </label>
+            <label class="login-remember">
+              <input type="checkbox" id="loginRemember" checked>
+              <span>Remember me</span>
+            </label>
+            <p class="login-error" id="loginError"></p>
+            <button type="submit" class="btn btn-dark btn-lg login-submit">Log in</button>
+          </form>
+
+          <p class="login-footer">
+            Don't have an account yet? <a href="/">Sign up on the homepage</a>
+          </p>
+        </div>
+
+        <div class="hero-visual login-visual">
+          <div class="ribbon"></div>
+          <div class="customer-card">
+            <div class="card-header">
+              <div class="avatar"></div>
+              <div>
+                <strong>Ethan Mercer</strong>
+                <span>ethan.m@email.com</span>
+              </div>
+            </div>
+            <div class="card-metric">
+              <div class="metric-label">$345 Customer Lifetime Value (CLV)</div>
+              <div class="progress-bar">
+                <div class="progress historic" style="width: 55%"></div>
+                <div class="progress predicted" style="width: 45%"></div>
+              </div>
+              <div class="metric-legend">
+                <span><i class="dot blue"></i> Historic CLV</span>
+                <span><i class="dot pink"></i> Predicted CLV</span>
+              </div>
+            </div>
+            <div class="card-activity">
+              <h4>Customer activity</h4>
+              <ul>
+                <li><span class="activity-icon">✉</span> Opened welcome email</li>
+                <li><span class="activity-icon">🛒</span> Placed order #4821</li>
+                <li><span class="activity-icon">💬</span> Replied to SMS campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <svg width="100" height="24" viewBox="0 0 100 24"><text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#fff">klaviyo</text></svg>
+        <p>AI-powered marketing automation for growing brands.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="#">Marketing</a>
+        <a href="#">AI</a>
+        <a href="#">Service</a>
+        <a href="#">Analytics</a>
+        <a href="#">Data Platform</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Blog</a>
+        <a href="#">Help center</a>
+        <a href="#">Academy</a>
+        <a href="#">Developers</a>
+        <a href="#">Community</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Klaviyo. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-inner">
+      <p>We use cookies and similar technologies to improve your experience, analyze site traffic, and deliver personalized content. See our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
+      <div class="cookie-actions">
+        <button class="btn btn-outline btn-sm" type="button" id="cookieChoices">More Choices</button>
+        <button class="btn btn-outline btn-sm" type="button" id="cookieReject">Reject All</button>
+        <button class="btn btn-dark btn-sm" type="button" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

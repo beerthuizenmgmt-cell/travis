@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Klaviyo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/favicon-Cp_obBOY.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="../assets/admin-BE74CE6z.js"></script>
+  <link rel="modulepreload" crossorigin href="../assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="../assets/authRedirect-DQqmze_c.js">
+  <link rel="stylesheet" crossorigin href="../assets/admin-2UugINWI.css">
+</head>
+<body>
+  <div class="auth-gate" id="authGate">
+    <p>Sessie controleren…</p>
+  </div>
+  <div class="admin-layout" id="adminLayout" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a href="/" class="sidebar-logo">klaviyo</a>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a href="#campagnes" class="nav-link" data-page="campagnes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Campagnes
+        </a>
+        <a href="#contacten" class="nav-link" data-page="contacten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          Contacten
+        </a>
+        <a href="#flows" class="nav-link" data-page="flows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          Flows
+        </a>
+        <a href="#analytics" class="nav-link" data-page="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          Analytics
+        </a>
+        <a href="#integraties" class="nav-link" data-page="integraties">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>
+          Integraties
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#instellingen" class="nav-link" data-page="instellingen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Instellingen
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" class="back-link logout-link" id="logoutBtn">Uitloggen</button>
+        <a href="/" class="back-link">← Terug naar site</a>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" placeholder="Zoek campagnes, contacten..." aria-label="Zoeken">
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" aria-label="Meldingen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="badge">3</span>
+          </button>
+          <div class="profile">
+            <div class="avatar" id="profileAvatar">—</div>
+            <div class="profile-info">
+              <strong id="profileName">—</strong>
+              <span id="profileMeta">Klant</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- Dashboard -->
+        <section class="page active" id="page-dashboard">
+          <div class="page-header">
+            <div>
+              <h1>Dashboard</h1>
+              <p>Welkom terug. Hier is een overzicht van je marketingprestaties.</p>
+            </div>
+            <button class="btn btn-primary" id="newCampaignBtn">+ Nieuwe campagne</button>
+          </div>
+
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <div class="kpi-icon orange">✉</div>
+              <div class="kpi-data">
+                <span class="kpi-label">E-mail verzonden</span>
+                <span class="kpi-value">124.582</span>
+                <span class="kpi-change positive">+12,4% vs vorige maand</span>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon blue">👥</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Actieve contacten</span>
+                <span class="kpi-value">48.291</span>
+                <span class="kpi-change positive">+3,2% deze week</span>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon green">💰</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Omzet (attributed)</span>
+                <span class="kpi-value">€89.420</span>
+                <span class="kpi-change positive">+18,7% YoY</span>
+              </div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-icon purple">📊</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Gem. open rate</span>
+                <span class="kpi-value">42,8%</span>
+                <span class="kpi-change negative">-1,1% vs benchmark</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="card chart-card">
+              <div class="card-header">
+                <h2>Omzet over tijd</h2>
+                <select class="select-sm" aria-label="Periode">
+                  <option>Laatste 30 dagen</option>
+                  <option>Laatste 90 dagen</option>
+                  <option>Dit jaar</option>
+                </select>
+              </div>
+              <div class="chart-area">
+                <canvas id="revenueChart" height="220"></canvas>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <h2>Kanaalverdeling</h2>
+              </div>
+              <div class="channel-list">
+                <div class="channel-item">
+                  <span class="channel-name">E-mail</span>
+                  <div class="channel-bar"><div class="channel-fill" style="width: 62%"></div></div>
+                  <span class="channel-pct">62%</span>
+                </div>
+                <div class="channel-item">
+                  <span class="channel-name">SMS</span>
+                  <div class="channel-bar"><div class="channel-fill sms" style="width: 22%"></div></div>
+                  <span class="channel-pct">22%</span>
+                </div>
+                <div class="channel-item">
+                  <span class="channel-name">Push</span>
+                  <div class="channel-bar"><div class="channel-fill push" style="width: 10%"></div></div>
+                  <span class="channel-pct">10%</span>
+                </div>
+                <div class="channel-item">
+                  <span class="channel-name">WhatsApp</span>
+                  <div class="channel-bar"><div class="channel-fill wa" style="width: 6%"></div></div>
+                  <span class="channel-pct">6%</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <article class="card table-card">
+            <div class="card-header">
+              <h2>Recente campagnes</h2>
+              <a href="#campagnes" class="link-sm nav-link" data-page="campagnes">Alles bekijken →</a>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Campagne</th>
+                    <th>Status</th>
+                    <th>Verzonden</th>
+                    <th>Open rate</th>
+                    <th>Omzet</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="campaignTableBody">
+                  <tr>
+                    <td><strong>Herfst Sale 2026</strong><br><span class="text-muted">E-mail · 14 jul</span></td>
+                    <td><span class="status status-live">Live</span></td>
+                    <td>12.400</td>
+                    <td>38,2%</td>
+                    <td>€14.820</td>
+                    <td><button class="btn-icon" aria-label="Acties">⋯</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Welkom Flow</strong><br><span class="text-muted">Automatisering</span></td>
+                    <td><span class="status status-active">Actief</span></td>
+                    <td>3.891</td>
+                    <td>52,1%</td>
+                    <td>€6.240</td>
+                    <td><button class="btn-icon" aria-label="Acties">⋯</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Abandoned Cart SMS</strong><br><span class="text-muted">SMS · 12 jul</span></td>
+                    <td><span class="status status-live">Live</span></td>
+                    <td>892</td>
+                    <td>—</td>
+                    <td>€3.105</td>
+                    <td><button class="btn-icon" aria-label="Acties">⋯</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Product Launch</strong><br><span class="text-muted">E-mail · Concept</span></td>
+                    <td><span class="status status-draft">Concept</span></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><button class="btn-icon" aria-label="Acties">⋯</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Campagnes -->
+        <section class="page" id="page-campagnes">
+          <div class="page-header">
+            <div>
+              <h1>Campagnes</h1>
+              <p>Beheer al je e-mail, SMS en push campagnes.</p>
+            </div>
+            <button class="btn btn-primary">+ Nieuwe campagne</button>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-chip active">Alle</button>
+            <button class="filter-chip">Live</button>
+            <button class="filter-chip">Gepland</button>
+            <button class="filter-chip">Concept</button>
+            <button class="filter-chip">Afgerond</button>
+          </div>
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Naam</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Doelgroep</th>
+                    <th>Verzonden</th>
+                    <th>Omzet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Herfst Sale 2026</strong></td><td>E-mail</td><td><span class="status status-live">Live</span></td><td>Alle abonnees</td><td>12.400</td><td>€14.820</td></tr>
+                  <tr><td><strong>Summer Flash</strong></td><td>SMS</td><td><span class="status status-done">Afgerond</span></td><td>VIP segment</td><td>2.100</td><td>€8.400</td></tr>
+                  <tr><td><strong>Black Friday Preview</strong></td><td>E-mail</td><td><span class="status status-scheduled">Gepland</span></td><td>Engaged 90d</td><td>—</td><td>—</td></tr>
+                  <tr><td><strong>Re-engagement</strong></td><td>E-mail</td><td><span class="status status-draft">Concept</span></td><td>Inactief 60d</td><td>—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Contacten -->
+        <section class="page" id="page-contacten">
+          <div class="page-header">
+            <div>
+              <h1>Contacten</h1>
+              <p>48.291 contacten in je database.</p>
+            </div>
+            <button class="btn btn-primary">+ Contact toevoegen</button>
+          </div>
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Naam</th>
+                    <th>E-mail</th>
+                    <th>Segment</th>
+                    <th>CLV</th>
+                    <th>Laatste activiteit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Sophie van Dijk</strong></td><td>sophie@email.nl</td><td>VIP</td><td>€890</td><td>2 uur geleden</td></tr>
+                  <tr><td><strong>Mark Jansen</strong></td><td>mark.j@email.nl</td><td>Engaged</td><td>€420</td><td>Gisteren</td></tr>
+                  <tr><td><strong>Lisa de Boer</strong></td><td>lisa.b@email.nl</td><td>Nieuw</td><td>€65</td><td>3 dagen geleden</td></tr>
+                  <tr><td><strong>Tom Bakker</strong></td><td>tom@email.nl</td><td>At-risk</td><td>€1.240</td><td>2 weken geleden</td></tr>
+                  <tr><td><strong>Emma Visser</strong></td><td>emma.v@email.nl</td><td>VIP</td><td>€2.100</td><td>Vandaag</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Flows -->
+        <section class="page" id="page-flows">
+          <div class="page-header">
+            <div>
+              <h1>Flows</h1>
+              <p>Automatiseringen die op de achtergrond draaien.</p>
+            </div>
+            <button class="btn btn-primary">+ Nieuwe flow</button>
+          </div>
+          <div class="flows-grid">
+            <article class="flow-card">
+              <div class="flow-status on"></div>
+              <h3>Welkom serie</h3>
+              <p>3 e-mails · 2.891 actief</p>
+              <span class="flow-revenue">€6.240 omzet</span>
+            </article>
+            <article class="flow-card">
+              <div class="flow-status on"></div>
+              <h3>Abandoned Cart</h3>
+              <p>1 e-mail + 1 SMS · 412 vandaag</p>
+              <span class="flow-revenue">€3.105 omzet</span>
+            </article>
+            <article class="flow-card">
+              <div class="flow-status on"></div>
+              <h3>Post-purchase</h3>
+              <p>2 e-mails · 156 vandaag</p>
+              <span class="flow-revenue">€1.890 omzet</span>
+            </article>
+            <article class="flow-card">
+              <div class="flow-status off"></div>
+              <h3>Win-back</h3>
+              <p>4 e-mails · Gepauzeerd</p>
+              <span class="flow-revenue">—</span>
+            </article>
+          </div>
+        </section>
+
+        <!-- Analytics -->
+        <section class="page" id="page-analytics">
+          <div class="page-header">
+            <div>
+              <h1>Analytics</h1>
+              <p>Diepgaande inzichten in je marketingprestaties.</p>
+            </div>
+          </div>
+          <div class="kpi-grid kpi-grid-3">
+            <article class="kpi-card compact">
+              <span class="kpi-label">Click rate</span>
+              <span class="kpi-value">4,2%</span>
+            </article>
+            <article class="kpi-card compact">
+              <span class="kpi-label">Conversie rate</span>
+              <span class="kpi-value">2,8%</span>
+            </article>
+            <article class="kpi-card compact">
+              <span class="kpi-label">ROI</span>
+              <span class="kpi-value">38x</span>
+            </article>
+          </div>
+          <article class="card chart-card">
+            <div class="card-header"><h2>Prestaties per kanaal</h2></div>
+            <div class="chart-area"><canvas id="channelChart" height="240"></canvas></div>
+          </article>
+        </section>
+
+        <!-- Integraties -->
+        <section class="page" id="page-integraties">
+          <div class="page-header">
+            <div>
+              <h1>Integraties</h1>
+              <p>Koppel je tech stack aan Klaviyo.</p>
+            </div>
+          </div>
+          <div class="integrations-grid">
+            <article class="integration-card connected"><span class="int-logo">Shopify</span><span class="int-status">Verbonden</span></article>
+            <article class="integration-card connected"><span class="int-logo">Stripe</span><span class="int-status">Verbonden</span></article>
+            <article class="integration-card"><span class="int-logo">Meta</span><span class="int-status">Niet verbonden</span></article>
+            <article class="integration-card connected"><span class="int-logo">Google Analytics</span><span class="int-status">Verbonden</span></article>
+            <article class="integration-card"><span class="int-logo">Zendesk</span><span class="int-status">Niet verbonden</span></article>
+            <article class="integration-card"><span class="int-logo">Slack</span><span class="int-status">Niet verbonden</span></article>
+          </div>
+        </section>
+
+        <!-- Instellingen -->
+        <section class="page" id="page-instellingen">
+          <div class="page-header">
+            <div>
+              <h1>Instellingen</h1>
+              <p>Beheer je account en voorkeuren.</p>
+            </div>
+          </div>
+          <article class="card settings-card">
+            <h2>Account</h2>
+            <form class="settings-form" onsubmit="return false;">
+              <label>Bedrijfsnaam<input type="text" value="Travis Store"></label>
+              <label>E-mailadres<input type="email" value="admin@travis.nl"></label>
+              <label>Tijdzone
+                <select><option>Europe/Amsterdam (CET)</option></select>
+              </label>
+              <button type="submit" class="btn btn-primary">Opslaan</button>
+            </form>
+          </article>
+          <article class="card settings-card">
+            <h2>Notificaties</h2>
+            <div class="toggle-list">
+              <label class="toggle-row"><span>Campagne rapporten</span><input type="checkbox" checked></label>
+              <label class="toggle-row"><span>Flow waarschuwingen</span><input type="checkbox" checked></label>
+              <label class="toggle-row"><span>Wekelijkse samenvatting</span><input type="checkbox"></label>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</body>
+</html>

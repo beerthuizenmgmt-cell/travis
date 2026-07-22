@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verkoopgids Nathanisya — Productiehuis Beerthuizen Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/beerthuizen-logo-CI_SwKZ7.png" type="image/png">
+  <style>
+    :root {
+      --ink: #0a0a0f;
+      --ink-soft: #3d3d4a;
+      --ink-muted: #6b6b7b;
+      --surface: #ffffff;
+      --surface-alt: #f4f7ff;
+      --border: #dce4f5;
+      --brand: #0048ff;
+      --brand-dark: #0036cc;
+      --brand-light: #e6eeff;
+      --accent: #0048ff;
+      --accent-dark: #0036cc;
+      --accent-light: #e6eeff;
+      --photo: #0048ff;
+      --photo-bg: #e6eeff;
+      --podcast: #0048ff;
+      --podcast-bg: #eef2ff;
+      --success: #059669;
+      --radius: 12px;
+      --font: 'DM Sans', system-ui, sans-serif;
+      --font-brand: 'Montserrat', 'DM Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page {
+      size: A4;
+      margin: 18mm 16mm;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: #dde5f7;
+      line-height: 1.6;
+      font-size: 10.5pt;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .document {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: var(--surface);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+    }
+
+    /* Cover */
+    .cover {
+      min-height: 297mm;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--brand);
+      color: white;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -20%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.06) 100%);
+      pointer-events: none;
+    }
+    .cover-top { position: relative; z-index: 1; }
+    .cover-logo {
+      display: block;
+      max-width: 340px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 48px;
+    }
+    .cover-brand {
+      font-family: var(--font-brand);
+      font-size: 12px;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 12px;
+    }
+    .cover-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 32px;
+    }
+    .cover h1 {
+      font-family: var(--font-brand);
+      font-size: 48px;
+      font-weight: 800;
+      font-style: italic;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 480px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .cover-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      max-width: 420px;
+      line-height: 1.5;
+    }
+    .cover-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .cover-meta dt {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+    .cover-meta dd {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Content pages */
+    .page {
+      padding: 0 56px 44px;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    .page-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--brand);
+      margin: 0 -56px 36px;
+      padding: 14px 56px;
+    }
+    .page-header-bar img {
+      height: 28px;
+      width: auto;
+    }
+    .page-header-bar span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: var(--font-brand);
+      font-size: 26px;
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .section-intro {
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+      max-width: 620px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--ink);
+    }
+    h3:first-of-type { margin-top: 0; }
+
+    p { margin-bottom: 12px; color: var(--ink-soft); }
+
+    /* TOC */
+    .toc-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .toc-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .toc-list a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+      flex: 1;
+    }
+    .toc-list a:hover { color: var(--accent-dark); }
+
+    /* Role cards */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .role-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+    .role-card strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .role-card span {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    /* Flow */
+    .flow-box {
+      background: var(--brand);
+      color: white;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 20px 0;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .flow-box .tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+    }
+    .callout strong { color: var(--ink); }
+
+    /* Package cards */
+    .package-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0 28px;
+    }
+    .package-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .package-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .package-card.featured::before {
+      content: 'Populair';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .pkg-service {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .pkg-service.photo { color: var(--photo); }
+    .pkg-service.podcast { color: var(--podcast); }
+    .package-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pkg-price {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 12px 0;
+    }
+    .pkg-price small {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-muted);
+    }
+    .pkg-details {
+      list-style: none;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .pkg-details li {
+      padding: 5px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pkg-details li::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 16px 0 24px;
+    }
+    thead th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding: 10px 14px;
+      background: var(--surface-alt);
+      border-bottom: 2px solid var(--border);
+    }
+    tbody td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--ink-soft);
+    }
+    tbody td:first-child { font-weight: 600; color: var(--ink); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .pitch {
+      font-style: italic;
+      color: var(--ink-muted);
+      font-size: 11.5px;
+    }
+
+    /* Included list */
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+      list-style: none;
+      margin: 16px 0;
+    }
+    .included-grid li {
+      font-size: 12px;
+      color: var(--ink-soft);
+      padding-left: 18px;
+      position: relative;
+    }
+    .included-grid li::before {
+      content: '●';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 8px;
+      top: 4px;
+    }
+
+    /* Checklists */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .checklist-block {
+      background: var(--surface-alt);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+    }
+    .checklist-block h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .checklist {
+      list-style: none;
+    }
+    .checklist li {
+      font-size: 12px;
+      color: var(--ink-soft);
+      padding: 6px 0 6px 24px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      background: white;
+    }
+
+    /* Scripts */
+    .script {
+      background: var(--surface-alt);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 12px 0;
+      border-left: 3px solid var(--accent);
+    }
+    .script-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+    .script p {
+      font-size: 12.5px;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Reference page */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .ref-card {
+      border: 2px solid var(--brand);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .ref-card h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .ref-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 12px;
+    }
+    .ref-row:last-child { border-bottom: none; }
+    .ref-row strong { font-weight: 700; }
+    .ref-row span:last-child { font-weight: 700; color: var(--ink); }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface-alt);
+      color: var(--ink-muted);
+    }
+    .badge.on-request { background: #fef3c7; color: #92400e; }
+
+    .footer-note {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--ink-muted);
+      text-align: center;
+    }
+
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--brand);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,72,255,0.35);
+      z-index: 100;
+    }
+    .print-btn:hover { background: var(--brand-dark); }
+
+    @media print {
+      body { background: white; }
+      .document { box-shadow: none; max-width: none; }
+      .print-btn { display: none; }
+      .page { padding: 0 48px 36px; }
+      .page-header-bar { margin: 0 -48px 28px; padding: 12px 48px; }
+      .cover { min-height: 100vh; }
+    }
+
+    @media screen and (max-width: 768px) {
+      .cover, .page { padding: 32px 24px; }
+      .package-row, .role-grid, .flow-grid, .checklist-grid, .ref-grid, .cover-meta { grid-template-columns: 1fr; }
+      .cover h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Opslaan als PDF</button>
+
+<div class="document">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-top">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Management" class="cover-logo">
+      <div class="cover-brand">Productiehuis Beerthuizen Studios</div>
+      <div class="cover-label">Verkoopgids · Intern document</div>
+      <h1>Nathanisya</h1>
+      <p class="cover-sub">Media Manager handleiding — fotostudio & podcaststudio pakketten, prijzen, klantvragen, extras en communicatie.</p>
+    </div>
+    <dl class="cover-meta">
+      <div>
+        <dt>Productiehuis</dt>
+        <dd>Beerthuizen Studios</dd>
+      </div>
+      <div>
+        <dt>Medewerker</dt>
+        <dd>Nathanisya — Media Manager</dd>
+      </div>
+      <div>
+        <dt>Functie</dt>
+        <dd>Verkoop · Outreach · Klantafstemming</dd>
+      </div>
+      <div>
+        <dt>Versie</dt>
+        <dd>2.0 — Juli 2026</dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd>Definitief tarieven fotostudio</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- TOC -->
+  <section class="page">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">Overzicht</div>
+    <h2>Inhoudsopgave</h2>
+    <p class="section-intro">Dit document is jouw vaste naslagwerk. Gebruik het bij elk klantcontact — van eerste e-mail tot afgestemde afspraak.</p>
+    <ol class="toc-list">
+      <li><span class="toc-num">01</span><a href="#rol">Jouw rol & werkwijze</a></li>
+      <li><span class="toc-num">02</span><a href="#foto-pakketten">Fotostudio — Pakketten & prijzen</a></li>
+      <li><span class="toc-num">03</span><a href="#foto-vragen">Fotostudio — Vragen per klant</a></li>
+      <li><span class="toc-num">04</span><a href="#foto-extras">Fotostudio — Extras & upsells</a></li>
+      <li><span class="toc-num">05</span><a href="#podcast-pakketten">Podcaststudio — Pakketten & prijzen</a></li>
+      <li><span class="toc-num">06</span><a href="#podcast-vragen">Podcaststudio — Intake-call checklist</a></li>
+      <li><span class="toc-num">07</span><a href="#podcast-extras">Podcaststudio — Extras & upsells</a></li>
+      <li><span class="toc-num">08</span><a href="#scripts">Gespreksscripts</a></li>
+      <li><span class="toc-num">09</span><a href="#referentie">Snelle referentiekaart</a></li>
+    </ol>
+
+    <div class="callout">
+      <strong>Jouw kernrol:</strong> Jij bent het vaste aanspreekpunt voor álle klanten. Alle leads via e-mail outreach benader jij. Fotostudio-klanten bel jij altijd na hun online boeking. Podcast-klanten plan jij altijd in voor een intake-call.
+    </div>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section class="page" id="rol">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">01</div>
+    <h2>Jouw rol & werkwijze</h2>
+    <p class="section-intro">Als Media Manager ben jij de schakel tussen binnenkomende leads en tevreden klanten. Dit is wat je doet en hoe de klantreis eruitziet.</p>
+
+    <div class="role-grid">
+      <div class="role-card"><strong>E-mail outreach</strong><span>Alle binnenkomende leads via het e-mailsysteem benaderen en opvolgen.</span></div>
+      <div class="role-card"><strong>Vast aanspreekpunt</strong><span>Hét contact voor vragen, afstemming en follow-up — voor alle diensten.</span></div>
+      <div class="role-card"><strong>Fotostudio opvolging</strong><span>Klant boekt online + betaalt → jij belt altijd na voor extras en afstemming.</span></div>
+      <div class="role-card"><strong>Podcast intake-call</strong><span>Elke podcastklant krijgt een persoonlijke call — alles wordt doorgesproken.</span></div>
+      <div class="role-card"><strong>Upsell & advies</strong><span>Proactief adviseren over pakketten, extras en langdurige samenwerkingen.</span></div>
+      <div class="role-card"><strong>Afspraken afstemmen</strong><span>Planning, bevestigingen en vervolgacties — jij houdt het overzicht.</span></div>
+    </div>
+
+    <h3>Klantreis per dienst</h3>
+    <div class="flow-grid">
+      <div class="flow-box">
+        <div class="tag">Fotostudio</div>
+        Online boeking + betaling<br>
+        → WhatsApp chatbot (extras-vraag)<br>
+        → Jij belt na ter verduidelijking<br>
+        → Alles afstemmen → Shoot
+      </div>
+      <div class="flow-box">
+        <div class="tag">Podcast</div>
+        Lead binnenkomst<br>
+        → Jij plant intake-call<br>
+        → Alles doornemen<br>
+        → Offerte / maatwerk → Start productie
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Onthoud:</strong> De WhatsApp chatbot vraagt fotostudioklanten al over extras — jouw telefoontje is voor persoonlijk contact en verduidelijking. Bij podcast nooit direct afsluiten zonder call. Langdurige deals (12 maanden) zijn maatwerk → plan vervolggesprek met team.
+    </div>
+  </section>
+
+  <!-- SECTION 2 - FOTO -->
+  <section class="page" id="foto-pakketten">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">02</div>
+    <h2>Fotostudio — Pakketten & prijzen</h2>
+    <p class="section-intro">Klanten kunnen online boeken en direct betalen. Jij volgt altijd telefonisch op.</p>
+
+    <div class="package-row">
+      <div class="package-card">
+        <div class="pkg-service photo">Fotostudio</div>
+        <h4>Starter</h4>
+        <div class="pkg-price">€200 <small>/ 2 uur</small></div>
+        <ul class="pkg-details">
+          <li>1 setting</li>
+          <li>Basisverlichting</li>
+          <li>Assistentie indien nodig</li>
+        </ul>
+      </div>
+      <div class="package-card featured">
+        <div class="pkg-service photo">Fotostudio</div>
+        <h4>Growth</h4>
+        <div class="pkg-price">€350 <small>/ 4 uur</small></div>
+        <ul class="pkg-details">
+          <li>Basisverlichting inbegrepen</li>
+          <li>Assistentie inbegrepen</li>
+          <li>Meer tijd voor looks</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-service photo">Fotostudio</div>
+        <h4>Authority</h4>
+        <div class="pkg-price">€650 <small>/ 10 uur</small></div>
+        <ul class="pkg-details">
+          <li>Volledige studio dag</li>
+          <li>Assistentie indien nodig</li>
+          <li>Ideaal voor teams</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Altijd inbegrepen — elke fotostudio boeking</h3>
+    <ul class="included-grid">
+      <li>Meerdere settings beschikbaar</li>
+      <li>Gratis parkeren</li>
+      <li>Premium belichting</li>
+      <li>Draaibare Limbo</li>
+      <li>Assistentie on set</li>
+      <li>High-end make-up tafel</li>
+      <li>2-persoons lounge (gedeeld)</li>
+      <li>Onbeperkt koffie & thee</li>
+      <li>Vending machine met snacks</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Let op:</strong> Fotograaf is niet standaard inbegrepen. Wij regelen dit op aanvraag — veel klanten willen alles uit één hand.
+    </div>
+  </section>
+
+  <!-- SECTION 3 & 4 FOTO -->
+  <section class="page" id="foto-vragen">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">03</div>
+    <h2>Fotostudio — Vragen per klant</h2>
+    <p class="section-intro">Checklist voor elk follow-up telefoontje na online boeking.</p>
+
+    <div class="checklist-grid">
+      <div class="checklist-block">
+        <h4>A · Basisinformatie</h4>
+        <ul class="checklist">
+          <li>Doel van de shoot? (portret, product, team, content)</li>
+          <li>Hoeveel personen on set?</li>
+          <li>Welk pakket geboekt?</li>
+          <li>Datum en tijd passend?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>B · Shoot details</h4>
+        <ul class="checklist">
+          <li>Hoeveel looks / outfits?</li>
+          <li>Moodboard of referenties?</li>
+          <li>Welke setting gewenst?</li>
+          <li>Specifieke merkkleuren nodig?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>C · Team & verzorging</h4>
+        <ul class="checklist">
+          <li>Eigen fotograaf of wij regelen?</li>
+          <li>Visagie gewenst? (op aanvraag)</li>
+          <li>Stylist gewenst? (op aanvraag)</li>
+          <li>Catering nodig? (op aanvraag)</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>D · Extras & praktisch</h4>
+        <ul class="checklist">
+          <li>Extra uren boven pakket?</li>
+          <li>One-stop-shop verzorging?</li>
+          <li>Gratis parkeren benadrukken</li>
+          <li>Aankomsttijd & contactpersoon</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="foto-extras">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">04</div>
+    <h2>Fotostudio — Extras & upsells</h2>
+    <p class="section-intro">Verkoop proactief mee — klanten waarderen het als wij alles regelen.</p>
+
+    <table>
+      <thead>
+        <tr><th>Extra</th><th>Status</th><th>Jouw pitch</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fotograaf</td><td><span class="badge on-request">Op aanvraag</span></td><td class="pitch">"Wij werken met verschillende fotografen — als u alles uit één hand wilt, regelen wij dat graag."</td></tr>
+        <tr><td>Visagie</td><td><span class="badge on-request">Op aanvraag</span></td><td class="pitch">"Voor een complete look regelen wij visagie — u hoeft nergens meer aan te denken."</td></tr>
+        <tr><td>Stylist</td><td><span class="badge on-request">Op aanvraag</span></td><td class="pitch">"Wij organiseren een stylist die meedenkt over outfits en uitstraling."</td></tr>
+        <tr><td>Catering</td><td><span class="badge on-request">Op aanvraag</span></td><td class="pitch">"Voor langere shoots of teams verzorgen wij catering op maat."</td></tr>
+        <tr><td>Upgrade pakket</td><td><span class="badge">Upsell</span></td><td class="pitch">Starter → Growth (€350) of Growth → Authority (€650) — meer rust op de dag zelf.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Upsell-strategie</h3>
+    <table>
+      <thead><tr><th>Situatie</th><th>Actie</th></tr></thead>
+      <tbody>
+        <tr><td>Starter + meerdere outfits</td><td>Growth aanbieden (4 uur)</td></tr>
+        <tr><td>Zakelijke / merkshoot</td><td>Fotograaf + visagie + styling totaalpakket</td></tr>
+        <tr><td>Teamshoot / lange dag</td><td>Authority + catering</td></tr>
+        <tr><td>"Alles geregeld" wens</td><td>One-stop-shop benadrukken</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 5 PODCAST -->
+  <section class="page" id="podcast-pakketten">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">05</div>
+    <h2>Podcaststudio — Pakketten & prijzen</h2>
+    <p class="section-intro">Elke podcastklant start met een intake-call met jou. Nooit direct afsluiten zonder gesprek.</p>
+
+    <div class="package-row">
+      <div class="package-card">
+        <div class="pkg-service podcast">Podcast</div>
+        <h4>Starter</h4>
+        <div class="pkg-price">— <small>3 afleveringen</small></div>
+        <ul class="pkg-details">
+          <li>4 snippets per aflevering</li>
+          <li>Nabewerking + muziek</li>
+          <li>Marketing-ondersteuning</li>
+        </ul>
+      </div>
+      <div class="package-card featured">
+        <div class="pkg-service podcast">Podcast</div>
+        <h4>Growth</h4>
+        <div class="pkg-price">€1.900 <small>/ 6 afleveringen</small></div>
+        <ul class="pkg-details">
+          <li>4 snippets per aflevering</li>
+          <li>Nabewerking + jingles</li>
+          <li>Marketing-ondersteuning</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-service podcast">Podcast</div>
+        <h4>Authority</h4>
+        <div class="pkg-price">€3.600 <small>/ 12 afleveringen</small></div>
+        <ul class="pkg-details">
+          <li>4 snippets per aflevering</li>
+          <li>Volledige productie</li>
+          <li>Marketing-ondersteuning</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Inbegrepen bij elk podcastpakket</h3>
+    <ul class="included-grid">
+      <li>Professionele opname in podcaststudio</li>
+      <li>4 snippets (shorts) per aflevering</li>
+      <li>Nabewerking audio + video</li>
+      <li>Muziek & jingles</li>
+      <li>Marketing-ondersteuning & meedenken</li>
+      <li>Aansturing tijdens productie</li>
+    </ul>
+
+    <table>
+      <thead><tr><th>Extra</th><th>Prijs</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td>Extra shorts</td><td><strong>€25 / stuk</strong></td><td>Boven de 4 inbegrepen per aflevering</td></tr>
+        <tr><td>12-maanden deal</td><td><span class="badge on-request">Maatwerk</span></td><td>Langdurige samenwerking — vervolggesprek plannen</td></tr>
+        <tr><td>Eigen setting</td><td><span class="badge on-request">Op aanvraag</span></td><td>Volledig ingerichte set naar wens</td></tr>
+        <tr><td>Logo in beeld</td><td><span class="badge on-request">Op aanvraag</span></td><td>Prominente merkidentiteit</td></tr>
+        <tr><td>Eigen intro/outro</td><td><span class="badge on-request">Op aanvraag</span></td><td>Custom branded intro</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Rekenvoorbeeld extra shorts:</strong> Growth (6 afleveringen) = 24 snippets inbegrepen. Klant wil 6 per aflevering → 2 extra × 6 = 12 shorts → 12 × €25 = <strong>€300 extra</strong>.
+    </div>
+  </section>
+
+  <!-- SECTION 6 & 7 PODCAST -->
+  <section class="page" id="podcast-vragen">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">06</div>
+    <h2>Podcaststudio — Intake-call checklist</h2>
+    <p class="section-intro">Gebruik deze checklist bij elke intake-call. Neem alles door met de klant.</p>
+
+    <div class="checklist-grid">
+      <div class="checklist-block">
+        <h4>A · Kennismaking</h4>
+        <ul class="checklist">
+          <li>Naam & concept podcast?</li>
+          <li>Doelgroep?</li>
+          <li>Doel (leads, merk, community)?</li>
+          <li>Nieuw of bestaande show?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>B · Omvang & pakket</h4>
+        <ul class="checklist">
+          <li>Starter / Growth / Authority?</li>
+          <li>Opnamefrequentie?</li>
+          <li>Interesse 12-maanden deal?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>C · Content & productie</h4>
+        <ul class="checklist">
+          <li>Content kant-en-klaar of wij produceren?</li>
+          <li>Eigen intro nodig?</li>
+          <li>Extra shorts gewenst?</li>
+          <li>Audio, video of beide?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>D · Branding & setting</h4>
+        <ul class="checklist">
+          <li>Eigen opgemaakte setting?</li>
+          <li>Logo prominent in beeld?</li>
+          <li>Merkkleuren / huisstijl?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>E · Marketing</h4>
+        <ul class="checklist">
+          <li>Publicatieplatformen?</li>
+          <li>Hulp distributie? (inbegrepen)</li>
+          <li>Social media beheer?</li>
+        </ul>
+      </div>
+      <div class="checklist-block">
+        <h4>F · Planning</h4>
+        <ul class="checklist">
+          <li>Startdatum?</li>
+          <li>Hosts & gasten?</li>
+          <li>Deadlines / lancering?</li>
+          <li>Budget & beslisser?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="podcast-extras">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">07</div>
+    <h2>Podcaststudio — Extras & upsells</h2>
+
+    <table>
+      <thead><tr><th>Extra</th><th>Prijs</th><th>Jouw pitch</th></tr></thead>
+      <tbody>
+        <tr><td>Extra shorts</td><td>€25/st</td><td class="pitch">"Voor extra social media bereik maken we extra shorts — €25 per stuk."</td></tr>
+        <tr><td>Eigen setting</td><td>Op aanvraag</td><td class="pitch">"We richten de studio volledig in naar uw merk."</td></tr>
+        <tr><td>Logo in beeld</td><td>Op aanvraag</td><td class="pitch">"Uw logo prominent zichtbaar in elke opname."</td></tr>
+        <tr><td>Eigen intro/outro</td><td>Op aanvraag</td><td class="pitch">"Een herkenbare intro maakt uw podcast direct merkbaar."</td></tr>
+        <tr><td>Jaardeal (12 mnd)</td><td>Maatwerk</td><td class="pitch">"Bij een jaarsamenwerking maken we een voorstel op maat."</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Aanvullende extras (mag je al noemen)</h3>
+    <table>
+      <thead><tr><th>Extra</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td>Show notes & transcript</td><td>Samenvatting + volledige transcriptie per aflevering</td></tr>
+        <tr><td>Thumbnail / cover art</td><td>Professionele afbeeldingen per aflevering</td></tr>
+        <tr><td>Audiogrammen</td><td>Geanimeerde clips voor social media</td></tr>
+        <tr><td>YouTube upload & SEO</td><td>Upload + titels, tags, beschrijvingen</td></tr>
+        <tr><td>Gast booking</td><td>Wij benaderen en plannen gasten</td></tr>
+        <tr><td>Spoedlevering</td><td>Snellere turnaround tegen meerprijs</td></tr>
+        <tr><td>Analytics rapport</td><td>Maandelijks overzicht prestaties</td></tr>
+        <tr><td>Social media management</td><td>Plannen en posten van snippets</td></tr>
+        <tr><td>Host training</td><td>Workshop camera & microfoon</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 8 SCRIPTS -->
+  <section class="page" id="scripts">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">08</div>
+    <h2>Gespreksscripts</h2>
+    <p class="section-intro">Gebruik deze scripts als startpunt — pas ze aan op de situatie.</p>
+
+    <div class="script">
+      <div class="script-label">Fotostudio — telefoon na online boeking</div>
+      <p>"Hoi [naam], met Nathanisya van Productiehuis Beerthuizen Studios. Ik zie dat u een boeking heeft gemaakt voor onze fotostudio — wat leuk! Ik bel even kort om alles af te stemmen en te kijken of we u nog ergens mee kunnen helpen. Heeft u nu even tijd?"</p>
+    </div>
+    <div class="script">
+      <div class="script-label">Podcast — intake-call opening</div>
+      <p>"Hoi [naam], met Nathanisya van Productiehuis Beerthuizen Studios. Leuk dat u interesse heeft in onze podcaststudio! In dit gesprek ga ik met u door wat u precies nodig heeft — van het aantal afleveringen tot extras — zodat we een perfect voorstel kunnen maken. Zullen we beginnen met uw idee voor de podcast?"</p>
+    </div>
+    <div class="script">
+      <div class="script-label">Upsell — langdurige podcastdeal</div>
+      <p>"Als u van plan bent om structureel te podcasten, bijvoorbeeld voor een heel jaar, kunnen we een maatwerk tarief bespreken. Dat is vaak interessanter dan losse afleveringen. Zullen we daar een apart moment voor inplannen?"</p>
+    </div>
+    <div class="script">
+      <div class="script-label">Upsell — fotostudio totaalverzorging</div>
+      <p>"Veel klanten waarderen het dat wij alles regelen — fotograaf, visagie, styling en zelfs catering. Wilt u dat ik een compleet voorstel voor u uitwerk?"</p>
+    </div>
+
+    <h3>Afsluiten — altijd doen</h3>
+    <ul class="included-grid">
+      <li>Samenvatting van afgesproken punten</li>
+      <li>Bevestiging per e-mail / WhatsApp</li>
+      <li>Vervolgactie genoteerd</li>
+      <li>Klant weet: jij bent hun vaste contactpersoon</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 9 REFERENCE -->
+  <section class="page" id="referentie">
+    <div class="page-header-bar">
+      <img src="../assets/beerthuizen-logo-CI_SwKZ7.png" alt="Beerthuizen Studios">
+      <span>Verkoopgids Nathanisya</span>
+    </div>
+    <div class="section-num">09</div>
+    <h2>Snelle referentiekaart</h2>
+    <p class="section-intro">Print deze pagina apart en houd hem bij de hand tijdens calls.</p>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <h4>Fotostudio pakketten</h4>
+        <div class="ref-row"><strong>Starter</strong><span>2 uur · €200</span></div>
+        <div class="ref-row"><strong>Growth</strong><span>4 uur · €350</span></div>
+        <div class="ref-row"><strong>Authority</strong><span>10 uur · €650</span></div>
+      </div>
+      <div class="ref-card">
+        <h4>Podcast pakketten</h4>
+        <div class="ref-row"><strong>Starter</strong><span>3 afleveringen</span></div>
+        <div class="ref-row"><strong>Growth</strong><span>6 afleveringen · €1.900</span></div>
+        <div class="ref-row"><strong>Authority</strong><span>12 afleveringen · €3.600</span></div>
+        <div class="ref-row"><strong>Extra short</strong><span>€25 / stuk</span></div>
+      </div>
+      <div class="ref-card">
+        <h4>Fotostudio — op aanvraag</h4>
+        <div class="ref-row"><span>Fotograaf</span></div>
+        <div class="ref-row"><span>Visagie</span></div>
+        <div class="ref-row"><span>Stylist</span></div>
+        <div class="ref-row"><span>Catering</span></div>
+      </div>
+      <div class="ref-card">
+        <h4>Podcast — op aanvraag</h4>
+        <div class="ref-row"><span>Eigen setting</span></div>
+        <div class="ref-row"><span>Logo in beeld</span></div>
+        <div class="ref-row"><span>Eigen intro/outro</span></div>
+        <div class="ref-row"><span>12-maanden deal</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px">Jouw 5 contactmomenten</h3>
+    <table>
+      <thead><tr><th>#</th><th>Moment</th><th>Actie</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>E-mail outreach</td><td>Elke lead benaderen</td></tr>
+        <tr><td>2</td><td>Fotostudio follow-up</td><td>Altijd bellen na online boeking</td></tr>
+        <tr><td>3</td><td>Podcast intake</td><td>Altijd call plannen</td></tr>
+        <tr><td>4</td><td>Follow-up</td><td>Offerte, bevestiging, planning</td></tr>
+        <tr><td>5</td><td>Vast aanspreekpunt</td><td>Alle vragen komen bij jou</td></tr>
+      </tbody>
+    </table>
+
+    <p class="footer-note">Productiehuis Beerthuizen Studios · Verkoopgids Nathanisya · v2.0 · Juli 2026<br>Bij twijfel over podcast Starter-prijs: check eerst met het team.</p>
+  </section>
+
+</div>
+</body>
+</html>
