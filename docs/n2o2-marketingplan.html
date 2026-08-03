@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketingplan — N2O2 × Beerthuizen Studios</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0f; --soft: #3d3d4a; --muted: #6b6b7b;
+      --bg: #f4f7ff; --border: #dce4f5;
+      --brand: #0048ff; --brand-dark: #0036cc; --brand-deep: #002699; --brand-light: #e6eeff;
+      --green: #059669; --green-bg: #ecfdf5;
+      --amber: #d97706; --amber-bg: #fffbeb;
+      --r: 10px;
+      --f: 'DM Sans', system-ui, sans-serif;
+      --fb: 'Montserrat', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: A4; margin: 0; }
+    body {
+      font-family: var(--f); color: var(--ink); background: #c8d4ef;
+      font-size: 9.5pt; line-height: 1.45;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .doc { max-width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 8px 48px rgba(0,36,120,.18); }
+
+    .cover {
+      min-height: 297mm;
+      background: linear-gradient(155deg, var(--brand-deep) 0%, var(--brand-dark) 28%, var(--brand) 62%, #1a5cff 100%);
+      color: #fff; page-break-after: always;
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .cover::before, .cover::after {
+      content: ''; position: absolute; border-radius: 50%; background: rgba(255,255,255,.06);
+    }
+    .cover::before { top: -120px; right: -90px; width: 400px; height: 400px; }
+    .cover::after { bottom: -80px; left: -70px; width: 280px; height: 280px; background: rgba(255,255,255,.04); }
+    .cover-inner { padding: 44px 48px 28px; flex: 1; display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .cover-logo { max-width: 220px; filter: brightness(0) invert(1); margin-bottom: 36px; }
+    .cover .eyebrow { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; opacity: .7; margin-bottom: 12px; font-weight: 600; }
+    .cover h1 {
+      font-family: var(--fb); font-size: 38px; font-weight: 800; font-style: italic;
+      text-transform: uppercase; line-height: 1.05; margin-bottom: 14px; max-width: 520px;
+    }
+    .cover .subtitle { font-size: 14.5px; opacity: .88; max-width: 460px; line-height: 1.55; margin-bottom: 28px; }
+    .cover-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .cover-pill {
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px; padding: 6px 12px; font-size: 9.5px; font-weight: 600;
+    }
+    .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+    .cover-card {
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--r); padding: 14px 16px;
+    }
+    .cover-card .label { font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .65; margin-bottom: 5px; }
+    .cover-card .value { font-size: 13.5px; font-weight: 700; line-height: 1.3; }
+    .cover-card.highlight {
+      background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.4);
+      grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center;
+    }
+    .cover-card.highlight .value { font-family: var(--fb); font-size: 28px; font-style: italic; font-weight: 800; }
+    .cover-footer {
+      position: relative; z-index: 1; padding: 16px 48px 24px;
+      border-top: 1px solid rgba(255,255,255,.18); font-size: 9pt; opacity: .8;
+    }
+    .cover-footer strong { opacity: 1; }
+
+    .page { padding: 0 44px 24px; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    .bar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--brand); margin: 0 -44px 18px; padding: 9px 44px;
+    }
+    .bar img { height: 18px; filter: brightness(0) invert(1); }
+    .bar span { font-size: 8px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+
+    .part { font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); margin-bottom: 3px; }
+    h2 {
+      font-family: var(--fb); font-size: 20px; font-weight: 800; font-style: italic;
+      text-transform: uppercase; margin-bottom: 6px; line-height: 1.12;
+    }
+    .lead { color: var(--soft); margin-bottom: 12px; font-size: 10pt; max-width: 640px; }
+    h3 { font-size: 11pt; font-weight: 700; margin: 12px 0 6px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0 12px; }
+    .stat {
+      border: 2px solid var(--border); border-radius: var(--r); padding: 10px 8px; text-align: center;
+      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+    }
+    .stat .num { font-family: var(--fb); font-size: 20px; font-weight: 800; color: var(--brand); line-height: 1; margin-bottom: 3px; }
+    .stat .lbl { font-size: 7.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); line-height: 1.3; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 8px 0 10px; }
+    th {
+      text-align: left; font-size: 7.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); padding: 7px 10px; background: var(--bg); border-bottom: 2px solid var(--border);
+    }
+    td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--soft); vertical-align: top; }
+    td:first-child { font-weight: 600; color: var(--ink); }
+    tr:last-child td { border-bottom: none; }
+
+    .callout {
+      background: var(--bg); border-left: 4px solid var(--brand); padding: 10px 14px;
+      margin: 10px 0; font-size: 9.5pt; color: var(--soft); border-radius: 0 var(--r) var(--r) 0;
+    }
+    .callout strong { color: var(--ink); }
+    .callout.green { background: var(--green-bg); border-color: var(--green); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+    .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 10px 0; }
+    .box { border: 1px solid var(--border); border-radius: var(--r); padding: 12px; background: #fff; }
+    .box.filled { background: var(--bg); }
+    .box h4 { font-size: 10pt; font-weight: 700; margin-bottom: 5px; }
+    .box .tag {
+      display: inline-block; font-size: 7.5px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--brand); background: var(--brand-light);
+      padding: 2px 7px; border-radius: 999px; margin-bottom: 5px;
+    }
+    .box p, .box li { font-size: 9pt; color: var(--soft); }
+    .box ul { padding-left: 14px; margin-top: 4px; }
+    .box ul li { margin-bottom: 2px; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+    .pill {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+      padding: 5px 11px; font-size: 8.5pt; font-weight: 600; color: var(--soft);
+    }
+
+    .package { border: 2px solid var(--brand); border-radius: var(--r); overflow: hidden; margin: 10px 0; }
+    .package-head {
+      background: linear-gradient(90deg, var(--brand-dark), var(--brand)); color: #fff;
+      padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .package-head h3 { color: #fff; margin: 0; font-size: 12pt; }
+    .package-head .price { font-family: var(--fb); font-size: 24px; font-weight: 800; font-style: italic; text-align: right; line-height: 1; }
+    .package-head .price small {
+      display: block; font-family: var(--f); font-size: 9px; font-style: normal; font-weight: 500; opacity: .8; margin-top: 3px;
+    }
+    .package-body { padding: 2px 0; }
+    .package-row {
+      display: flex; gap: 10px; padding: 7px 14px; border-bottom: 1px solid var(--border);
+      font-size: 9pt; color: var(--soft); align-items: flex-start;
+    }
+    .package-row:last-child { border-bottom: none; }
+    .package-row .icon {
+      width: 18px; height: 18px; background: var(--green-bg); color: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .package-row strong { color: var(--ink); display: block; margin-bottom: 1px; font-size: 9.5pt; }
+
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; margin: 10px 0 12px; }
+    .flow-step { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 5px; text-align: center; }
+    .flow-step .n { font-family: var(--fb); font-size: 12px; font-weight: 800; color: var(--brand); display: block; margin-bottom: 2px; }
+    .flow-step span { font-size: 7.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--soft); line-height: 1.25; display: block; }
+
+    .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+    .step {
+      border: 1px solid var(--border); border-radius: var(--r); padding: 10px 12px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .step .n {
+      width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: #fff;
+      font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step strong { display: block; font-size: 9.5pt; margin-bottom: 2px; }
+    .step p { font-size: 8.5pt; color: var(--soft); margin: 0; }
+
+    .note {
+      background: var(--amber-bg); border: 1px solid #fcd34d; border-radius: var(--r);
+      padding: 9px 12px; margin: 10px 0; font-size: 9pt; color: var(--soft);
+    }
+    .note strong { color: var(--amber); }
+
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .sign { border: 2px dashed var(--border); border-radius: var(--r); padding: 12px; }
+    .sign h4 { font-size: 8px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+    .sign .line { border-bottom: 1px solid var(--border); height: 24px; margin-bottom: 6px; }
+    .sign .hint { font-size: 8.5pt; color: var(--muted); }
+
+    .foot { text-align: center; font-size: 8.5pt; color: var(--muted); margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+    @media print {
+      body { background: #fff; }
+      .doc { box-shadow: none; }
+      .page { padding: 0 40px 20px; }
+      .bar { margin: 0 -40px 16px; padding: 8px 40px; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-inner">
+      <img class="cover-logo" src="../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen Studios">
+      <div class="eyebrow">Doorlopend social marketingplan</div>
+      <h1>N2O2 Nederland<br>Social Growth Engine</h1>
+      <p class="subtitle">Consistent, converterend en volledig ontzorgd. High-end content, vaste modellen, alle socials gekoppeld — 3 video’s per week.</p>
+      <div class="cover-pills">
+        <span class="cover-pill">3 video’s / week</span>
+        <span class="cover-pill">12 creaties / maand</span>
+        <span class="cover-pill">Volledig socialbeheer</span>
+        <span class="cover-pill">Ads-ready</span>
+        <span class="cover-pill">Inhouse studio</span>
+      </div>
+      <div class="cover-meta">
+        <div class="cover-card">
+          <div class="label">Klant</div>
+          <div class="value">N2O2 Nederland<br>n2o2.nl · @n2o2.breathe</div>
+        </div>
+        <div class="cover-card">
+          <div class="label">Aanbieder</div>
+          <div class="value">Beerthuizen Studios<br>Foto- &amp; podcaststudio</div>
+        </div>
+        <div class="cover-card">
+          <div class="label">Model</div>
+          <div class="value">Doorlopend maandelijks<br>full-service retainer</div>
+        </div>
+        <div class="cover-card">
+          <div class="label">Focus</div>
+          <div class="value">Waarde · Kwaliteit<br>Conversie · Consistentie</div>
+        </div>
+        <div class="cover-card highlight">
+          <div>
+            <div class="label">Maandelijkse investering</div>
+            <div style="font-size:12px;opacity:.85;margin-top:3px">Excl. btw · Excl. ad spend</div>
+          </div>
+          <div class="value">€ 3.500</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer"><strong>Beerthuizen Studios</strong> · High-end content &amp; socialbeheer · Augustus 2026</div>
+  </section>
+
+  <!-- PAGE 1: Waarom + strategie -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen">
+      <span>N2O2 · Marketingplan</span>
+    </div>
+    <div class="part">01 · Aanpak</div>
+    <h2>Geen winkelvloer.<br>Wel een merk dat online verkoopt.</h2>
+    <p class="lead">N2O2 heeft geen fysieke locatie. Social media is daarom de etalage, het bewijs van kwaliteit én het pad naar aankoop. Consistentie maakt waarde zichtbaar — en conversie herhaalbaar.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">12k+</div><div class="lbl">Klanten die al vertrouwen</div></div>
+      <div class="stat"><div class="num">3×</div><div class="lbl">Video’s per week</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">Creaties per maand</div></div>
+      <div class="stat"><div class="num">€3.5k</div><div class="lbl">Full service / maand</div></div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step"><span class="n">01</span><span>Consistent zichtbaar</span></div>
+      <div class="flow-step"><span class="n">02</span><span>Waarde tonen</span></div>
+      <div class="flow-step"><span class="n">03</span><span>Kwaliteit bewijzen</span></div>
+      <div class="flow-step"><span class="n">04</span><span>Vertrouwen bouwen</span></div>
+      <div class="flow-step"><span class="n">05</span><span>Naar shop leiden</span></div>
+      <div class="flow-step"><span class="n">06</span><span>Converteren</span></div>
+    </div>
+
+    <div class="three">
+      <div class="box filled">
+        <div class="tag">Sleep</div>
+        <h4>Slaap beter</h4>
+        <p>Snurken, avondroutines, mondtape — probleem → oplossing → CTA.</p>
+      </div>
+      <div class="box filled">
+        <div class="tag">Train</div>
+        <h4>Presteer harder</h4>
+        <p>Gym/hardloop content, neusstrips in actie, performance-proof.</p>
+      </div>
+      <div class="box filled">
+        <div class="tag">Breathe</div>
+        <h4>Adem bewust</h4>
+        <p>Educatie, gewoontes, mondzorg — waarde die mensen snappen.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Kern:</strong> we bouwen een doorlopende contentmotor waarin N2O2 elke week zichtbaar, geloofwaardig en verkoopgericht is — met vaste modellen en een herkenbare look.
+    </div>
+  </section>
+
+  <!-- PAGE 2: Wat we doen -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen">
+      <span>N2O2 · Marketingplan</span>
+    </div>
+    <div class="part">02 · Levering</div>
+    <h2>Volledig beheer.<br>High-end productie.</h2>
+    <p class="lead">Van script tot publicatie — inclusief captions, editing en ads-ready varianten. Alle socials gekoppeld en actief.</p>
+
+    <div class="two">
+      <div class="box">
+        <h4>Socialbeheer</h4>
+        <ul>
+          <li>Instagram, TikTok, Facebook, YouTube Shorts</li>
+          <li>Contentkalender &amp; inplanning</li>
+          <li>Caption + CTA per video</li>
+          <li>Cross-posting vanuit één systeem</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Productie per video</h4>
+        <ul>
+          <li>Apart script (hook → boodschap → CTA)</li>
+          <li>High-end camerateam</li>
+          <li>Editing &amp; nabewerking</li>
+          <li>Ads-ready cutdowns</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="box">
+        <h4>Studio &amp; team</h4>
+        <ul>
+          <li>Inhouse foto- &amp; podcaststudio</li>
+          <li>Premium belichting &amp; sets</li>
+          <li>Podcast snippets inzetbaar</li>
+          <li>Locatie-shoots waar nodig</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Vaste modellen</h4>
+        <ul>
+          <li>Modelkeuze naar jouw voorkeur</li>
+          <li>Kleur &amp; styling afstemmen</li>
+          <li>Herkenbare faces over weken</li>
+          <li>Consistente merkuitstraling</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Maandmix — 12 creaties</h3>
+    <table>
+      <thead><tr><th>Type</th><th>Aantal</th><th>Doel</th></tr></thead>
+      <tbody>
+        <tr><td>Sleep / lifestyle</td><td>3</td><td>Probleem-oplossing &amp; emotie</td></tr>
+        <tr><td>Train / performance</td><td>3</td><td>Product-in-actie &amp; autoriteit</td></tr>
+        <tr><td>Educatie / Breathe</td><td>2</td><td>Waarde overbrengen</td></tr>
+        <tr><td>Product &amp; kwaliteit</td><td>2</td><td>Premium look &amp; detail</td></tr>
+        <tr><td>Social proof / conversie</td><td>2</td><td>Reviews + directe shop-CTA</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout green">
+      <strong>Organisch → ads:</strong> content die werkt, zetten we door als advertentie-asset (hooks, 15s/30s cutdowns, CTA-overlays) — zonder opnieuw vanaf nul te produceren.
+    </div>
+  </section>
+
+  <!-- PAGE 3: Pakket + start -->
+  <section class="page">
+    <div class="bar">
+      <img src="../assets/beerthuizen_logo_blauw_transparant.png" alt="Beerthuizen">
+      <span>N2O2 · Marketingplan</span>
+    </div>
+    <div class="part">03 · Pakket &amp; start</div>
+    <h2>Full-service social engine</h2>
+    <p class="lead">Eén vaste maandprijs. Geen losse facturen per video. Volledige ontzorging.</p>
+
+    <div class="package">
+      <div class="package-head">
+        <div>
+          <h3>N2O2 Social Growth Package</h3>
+          <div style="opacity:.85;font-size:9.5pt;margin-top:3px">Doorlopend · Full service · High-end</div>
+        </div>
+        <div class="price">€ 3.500<small>excl. btw / maand</small></div>
+      </div>
+      <div class="package-body">
+        <div class="package-row">
+          <div class="icon">✓</div>
+          <div><strong>3 video’s/week · 12 creaties/maand</strong>Concept, script, shoot, editing &amp; nabewerking.</div>
+        </div>
+        <div class="package-row">
+          <div class="icon">✓</div>
+          <div><strong>Volledig socialmediabeheer</strong>Kanalen koppelen, captions, planning &amp; publicatie.</div>
+        </div>
+        <div class="package-row">
+          <div class="icon">✓</div>
+          <div><strong>Vaste modellen + look-afstemming</strong>Persoon, kleur en styling naar voorkeur.</div>
+        </div>
+        <div class="package-row">
+          <div class="icon">✓</div>
+          <div><strong>High-end camerateam + inhouse studio</strong>Foto- &amp; podcaststudio, premium productie.</div>
+        </div>
+        <div class="package-row">
+          <div class="icon">✓</div>
+          <div><strong>Ads-ready content + volledige ontzorging</strong>Organisch én klaar om te schalen als advertentie.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Niet inbegrepen:</strong> mediabudget / ad spend. Wel inbegrepen: creatives die je direct kunt inzetten of opschalen.
+    </div>
+
+    <h3>Zo starten we</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div><strong>Akkoord</strong><p>€ 3.500 excl./maand vastleggen.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div><strong>Kick-off</strong><p>Model, kleur, tone &amp; productfocus.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div><strong>Socials koppelen</strong><p>Toegang + eerste contentkalender.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div><strong>Productie live</strong><p>Scripts → shoot → edit → publicatie.</p></div>
+      </div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Altijd actieve socials</span>
+      <span class="pill">Premium uitstraling</span>
+      <span class="pill">Conversiegericht</span>
+      <span class="pill">Schaalbaar naar ads</span>
+    </div>
+
+    <div class="sign-grid">
+      <div class="sign">
+        <h4>Voor akkoord — N2O2 Nederland</h4>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="hint">Naam · Handtekening · Datum</div>
+      </div>
+      <div class="sign">
+        <h4>Voor akkoord — Beerthuizen Studios</h4>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="hint">Naam · Handtekening · Datum</div>
+      </div>
+    </div>
+
+    <p class="foot">Beerthuizen Studios · N2O2 Social Growth Engine · n2o2.nl · Augustus 2026</p>
+  </section>
+
+</div>
+</body>
+</html>
